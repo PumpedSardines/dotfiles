@@ -1,0 +1,64 @@
+snippet sbp storybook page with props 
+	import React from "react";
+	import { Story, Meta } from "@storybook/react";
+	import _${1}, { ${1}Props } from ".";
+
+	const setting: Meta<${1}Props> = {
+			title: "${2:GROUP}/${1}",
+			component:  _${1}
+	}
+
+	export default setting
+
+	const Template: Story<${1}Props> = args => (
+			<_${1} {...args} />
+	);
+
+	export const ${1} = Template.bind({});
+	${1}.args = {
+		${0}
+	};
+
+
+snippet sb storybook page 
+	import React from "react";
+	import { Story, Meta } from "@storybook/react";
+	import _${1} from ".";
+
+	const setting: Meta = {
+			title: "${2:GROUP}/${1}",
+			component:  _${1}
+	}
+
+	export default setting
+
+	const Template: Story = () => (
+			<_${1} />
+	);
+
+	export const ${1} = Template.bind({});
+	${1}.args = {
+		${0}
+	};
+
+snippet rce react component default export
+	import React from "react";
+
+	export type ${1}Props = {
+
+	};
+
+	const ${1}: React.FC<${1}Props> = props => {
+		return ${0}
+	}
+
+	export default ${1};
+
+snippet rc react component 
+	export type ${1}Props = {
+
+	};
+
+	function ${1}(props: ${1}Props) {
+		return ${0}
+	}
