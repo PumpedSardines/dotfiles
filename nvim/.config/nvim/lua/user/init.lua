@@ -9,9 +9,11 @@ local function read_file(path)
 end
 
 local function update_theme(dark)
-  local theme = (dark and "terafox" or "dayfox")
+  local theme = (dark and "everforest" or "dayfox")
+  local dark = (dark and "dark" or "light")
   vim.cmd("colorscheme " .. theme)
-  return theme
+  vim.cmd("set background=" .. dark)
+  return { theme, dark }
 end
 
 function run_theme_calculation()
@@ -56,7 +58,7 @@ local config = {
     -- },
   },
   -- Set colorscheme to use
-  colorscheme = initial_theme,
+  colorscheme = initial_theme[1],
   -- Add highlight groups in any theme
   highlights = {
     init = function(scheme)
@@ -84,7 +86,7 @@ local config = {
       signcolumn = "auto", -- sets vim.opt.signcolumn to auto
       wrap = true,        -- sets vim.opt.wrap
       -- Everforest color theme light
-      background = "dark",
+      background = initial_theme[2],
     },
     g = {
       -- everforest plugin
@@ -274,6 +276,10 @@ local config = {
           return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
         end
 
+        if require("lspconfig").util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
+          return
+        end
+
         opts.root_dir = utils.root_pattern("package.json", "tsconfig.json")
         require("lspconfig")[server].setup(opts)
         return
@@ -334,15 +340,15 @@ local config = {
       ["max397574/better-escape.nvim"] = { disable = true }, -- disabled jk binding for esc
       ["stevearc/aerial.nvim"] = { disable = true },      -- Disables symbol outline, becuase this plugin is janky as hell
       ["mfussenegger/nvim-dap"] = { disabled = true },    -- Disables the debugger, becuase it's hard too use and really buggy compared to IDE's with built in debuggers
-      --
       -- My personal plugins
-      { "prisma/vim-prisma" },       -- Color theme for prisma
-      { "gpanders/editorconfig.nvim" }, -- Parse .editorconfig files
-      { "rhaiscript/vim-rhai" },     -- Color theme for rhai
+      { "prisma/vim-prisma" },                            -- Color theme for prisma
+      { "gpanders/editorconfig.nvim" },                   -- Parse .editorconfig files
+      { "rhaiscript/vim-rhai" },                          -- Color theme for rhai
       --
       -- Color themes
       { "morhetz/gruvbox" },
       { "sainnhe/everforest" },
+      { "alligator/accent.vim" },
       { "EdenEast/nightfox.nvim" },
       --
       -- Custom plugins
