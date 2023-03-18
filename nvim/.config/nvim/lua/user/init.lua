@@ -417,7 +417,7 @@ local config = {
     ["neo-tree"] = {
       filesystem = {
         filtered_items = {
-          visible = true,
+          visible = false,
           hide_dotfiles = false,
           hide_gitignored = true,
         },

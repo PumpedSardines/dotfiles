@@ -1,2 +1,2 @@
 target
-src/bin/daemon/config.rs
+.env

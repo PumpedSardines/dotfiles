@@ -20,34 +20,38 @@ pub fn get_battery() -> Result<Battery, Box<dyn Error>> {
     Err(NoBatteryError.into())
 }
 
-#[derive(Debug)]
-pub struct BatteryWidgetError;
-impl fmt::Display for BatteryWidgetError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Address is localhost")
-    }
-}
-impl Error for BatteryWidgetError {}
-
-pub struct BatteryWidget;
+pub struct BatteryWidget {}
 impl BatteryWidget {
     pub fn new() -> BatteryWidget {
         BatteryWidget {}
     }
 }
-impl super::widget::Widget for BatteryWidget {
-    fn render_content(&self) -> Result<String, Box<dyn std::error::Error>> {
+impl super::widget::WidgetRenderer<BatteryData> for BatteryWidget {
+    fn get_data(&self) -> Result<BatteryData, Box<dyn std::error::Error>> {
         let battery = get_battery()?;
 
         let is_charging = battery.time_to_full().is_some();
         let percentage = battery.state_of_charge().get::<percent>();
+        let percentage = percentage.round() as usize;
 
-        let mut battery_text = format!("{}%", percentage.round());
+        Ok(BatteryData {
+            is_charging,
+            percentage,
+        })
+    }
 
-        if is_charging {
+    fn render_content(&self, value: BatteryData) -> Option<String> {
+        let mut battery_text = format!("{}%", value.percentage);
+
+        if value.is_charging {
             battery_text = format!("{} {}", "\u{f0e7}", battery_text);
         }
 
-        Ok(battery_text)
+        Some(battery_text)
     }
+}
+
+pub struct BatteryData {
+    pub is_charging: bool,
+    pub percentage: usize,
 }
