@@ -4,5 +4,10 @@ font:
   normal:
     family: agave Nerd Font Mono
 
+mouse:
+  hide_when_typing: true
+
 import:
   - ~/.config/alacritty/color.yml
+
+
