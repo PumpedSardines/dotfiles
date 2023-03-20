@@ -15,10 +15,12 @@ fn main() {
         widget!(SpotifyWidget::new())
             .fg("#ffffff")
             .bg("#125724")
+            .max_width(50)
             .display(),
         widget!(HarvestWidget::new())
             .fg("#ffffff")
             .bg("#c74900")
+            .max_width(50)
             .display(),
         widget!(UptimeWidget::new()).display(),
         widget!(BatteryWidget::new())
