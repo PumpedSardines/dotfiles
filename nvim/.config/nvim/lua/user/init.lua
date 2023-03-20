@@ -62,7 +62,7 @@ local config = {
   -- Add highlight groups in any theme
   highlights = {
     init = function(scheme)
-      local C = require("default_theme.colors")
+      -- local C = require("default_theme.colors")
 
       -- scheme["DiagnosticsErrorFloat"] = { fg = C.blue, underline = true }
       -- scheme["HintFloat"] = { fg = C.blue, underline = true }
