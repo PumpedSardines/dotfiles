@@ -16,8 +16,8 @@ impl widget::widget::WidgetRenderer<Option<super::api::RunningTimerInfo>> for Wi
     fn render_content(&self, value: Option<super::api::RunningTimerInfo>) -> Option<String> {
         if let Some(data) = value {
             return Some(match data.notes {
-                None => format!("{} - {}", data.hours, data.project),
-                Some(notes) => format!("{} - {} - {}", data.hours, notes, data.project),
+                None => format!("\u{f017} {} - {}", data.hours, data.project),
+                Some(notes) => format!("\u{f017} {} - {} - {}", data.hours, notes, data.project),
             });
         }
 

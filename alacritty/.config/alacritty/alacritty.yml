@@ -1,5 +1,8 @@
 live_config_reload: true
 
+env:
+  TERM: xterm-256color
+
 font:
   normal:
     family: agave Nerd Font Mono
@@ -9,5 +12,3 @@ mouse:
 
 import:
   - ~/.config/alacritty/color.yml
-
-

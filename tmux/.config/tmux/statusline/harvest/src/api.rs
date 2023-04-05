@@ -31,13 +31,13 @@ impl<'a> Api<'a> {
                     None => None,
                     Some(notes) => match re.is_match(&notes) {
                         true => None,
-                        false => Some(notes),
+                        false => Some(notes.replace("\n", "")),
                     },
                 };
 
                 return Ok(Some(RunningTimerInfo {
                     notes,
-                    project: entry.project.name,
+                    project: entry.project.name.replace("\n", ""),
                     hours: {
                         let time = entry.hours;
                         let hours = (time - (time % 1.0)).round();

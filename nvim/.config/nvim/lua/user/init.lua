@@ -1,3 +1,20 @@
+local defaults = {
+  show_hidden_files = false,
+}
+
+require("neoconf").setup({})
+require("neoconf.plugins").register({
+  on_schema = function(schema)
+    -- this call will create a json schema based on the lua types of your default settings
+    schema:import("fritiof", defaults)
+    -- Optionally update some of the json schema
+    schema:set("fritiof.show_hidden_files", {
+      description = "If neo-tree should show hidden files",
+    })
+  end,
+})
+
+-- local my_settings = Neoconf.get("neodev", defaults)
 local function read_file(path)
   local file = io.open(path, "rb") -- r read mode and b binary mode
   if not file then
@@ -41,16 +58,16 @@ local initial_theme = run_theme_calculation()
 local config = {
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin",   -- remote to use
-    channel = "stable",  -- "stable" or "nightly"
-    version = "latest",  -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "main",     -- branch name (NIGHTLY ONLY)
-    commit = nil,        -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil,   -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- skip prompts about breaking changes
+    remote = "origin",     -- remote to use
+    channel = "stable",    -- "stable" or "nightly"
+    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "main",       -- branch name (NIGHTLY ONLY)
+    commit = nil,          -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false,  -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_reload = false, -- automatically reload and sync packer after a successful update
-    auto_quit = false,   -- automatically quit the current session after a successful update
+    auto_reload = false,   -- automatically reload and sync packer after a successful update
+    auto_quit = false,     -- automatically quit the current session after a successful update
     -- remotes = { -- easily add new remotes to track
     --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
     --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
@@ -81,10 +98,10 @@ local config = {
   options = {
     opt = {
       relativenumber = true, -- sets vim.opt.relativenumber
-      number = true,      -- sets vim.opt.number
-      spell = false,      -- sets vim.opt.spell
-      signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-      wrap = true,        -- sets vim.opt.wrap
+      number = true,         -- sets vim.opt.number
+      spell = false,         -- sets vim.opt.spell
+      signcolumn = "auto",   -- sets vim.opt.signcolumn to auto
+      wrap = true,           -- sets vim.opt.wrap
       -- Everforest color theme light
       background = initial_theme[2],
     },
@@ -95,14 +112,14 @@ local config = {
       -- copilot plugin
       copilot_no_tab_map = true,
       -- random plugins
-      mapleader = " ",                -- sets vim.g.mapleader
-      autoformat_enabled = true,      -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
-      cmp_enabled = true,             -- enable completion at start
-      autopairs_enabled = true,       -- enable autopairs at start
-      diagnostics_enabled = true,     -- enable diagnostics at start
+      mapleader = " ",                   -- sets vim.g.mapleader
+      autoformat_enabled = true,         -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
+      cmp_enabled = true,                -- enable completion at start
+      autopairs_enabled = true,          -- enable autopairs at start
+      diagnostics_enabled = true,        -- enable diagnostics at start
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
-      icons_enabled = true,           -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
-      heirline_bufferline = true,     -- enable new heirline based bufferline (requires :PackerSync after changing)
+      icons_enabled = true,              -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
+      heirline_bufferline = true,        -- enable new heirline based bufferline (requires :PackerSync after changing)
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -117,10 +134,19 @@ local config = {
 
   -- Set dashboard header
   header = {
-    " _  ___   _____ __  __ ",
-    "| \\| \\ \\ / /_ _|  \\/  |",
-    "| .` |\\ V / | || |\\/| |",
-    "|_|\\_| \\_/ |___|_|  |_|",
+
+    [[                                    ]],
+    [[ _   _         __     ___           ]],
+    [[| \ | | ___  __\ \   / (_)_ __ ___  ]],
+    [[|  \| |/ _ \/ _ \ \ / /| | '_ ` _ \ ]],
+    [[| |\  |  __/ (_) \ V / | | | | | | |]],
+    [[|_| \_|\___|\___/ \_/  |_|_| |_| |_|]],
+    [[                                    ]],
+    [[                                    ]],
+    -- " _  ___   _____ __  __ ",
+    -- "| \\| \\ \\ / /_ _|  \\/  |",
+    -- "| .` |\\ V / | || |\\/| |",
+    -- "|_|\\_| \\_/ |___|_|  |_|",
     --
     -- " █████  ███████ ████████ ██████   ██████",
     -- "██   ██ ██         ██    ██   ██ ██    ██",
@@ -191,7 +217,7 @@ local config = {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = true,     -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -338,12 +364,34 @@ local config = {
     init = {
       -- Disable astronvim plugins
       ["max397574/better-escape.nvim"] = { disable = true }, -- disabled jk binding for esc
-      ["stevearc/aerial.nvim"] = { disable = true },      -- Disables symbol outline, becuase this plugin is janky as hell
-      ["mfussenegger/nvim-dap"] = { disabled = true },    -- Disables the debugger, becuase it's hard too use and really buggy compared to IDE's with built in debuggers
+      ["stevearc/aerial.nvim"] = { disable = true },         -- Disables symbol outline, becuase this plugin is janky as hell
+      ["mfussenegger/nvim-dap"] = { disabled = true },       -- Disables the debugger, becuase it's hard too use and really buggy compared to IDE's with built in debuggers
+      --
       -- My personal plugins
-      { "prisma/vim-prisma" },                            -- Color theme for prisma
-      { "gpanders/editorconfig.nvim" },                   -- Parse .editorconfig files
-      { "rhaiscript/vim-rhai" },                          -- Color theme for rhai
+      { "prisma/vim-prisma" },          -- Color theme for prisma
+      { "gpanders/editorconfig.nvim" }, -- Parse .editorconfig files
+      { "rhaiscript/vim-rhai" },        -- Color theme for rhai
+      { "github/copilot.vim" },         -- Copilot
+      { "folke/neoconf.nvim" },         -- Conf
+      { "rebelot/kanagawa.nvim" },
+      {
+        "samodostal/image.nvim",
+        requires = {
+          "nvim-lua/plenary.nvim",
+        },
+        config = {
+          render = {
+            min_padding = 5,
+            show_label = true,
+            use_dither = true,
+            foreground_color = false,
+            background_color = false,
+          },
+          events = {
+            update_on_nvim_resize = true,
+          },
+        },
+      },
       --
       -- Color themes
       { "morhetz/gruvbox" },
@@ -418,7 +466,7 @@ local config = {
       filesystem = {
         filtered_items = {
           visible = false,
-          hide_dotfiles = false,
+          hide_dotfiles = true,
           hide_gitignored = true,
         },
       },
@@ -430,10 +478,24 @@ local config = {
         mappings = {
           ["v"] = "open_vsplit",
           ["H"] = "toggle_hidden",
+          ["h"] = "close_node",
+          ["P"] = { "toggle_preview", config = { use_float = true } },
+          ["l"] = "focus_preview",
           ["L"] = false,
         },
       },
     },
+    ["which-key"] = function(opts)
+      opts.window = {
+        border = "none",          -- none, single, double, shadow
+        position = "bottom",      -- bottom, top
+        margin = { 1, 0, 1, 0 },  -- extra window margin [top, right, bottom, left]
+        padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
+        winblend = 0,             -- value between 0-100 0 for fully opaque and 100 for fully transparent
+      }
+
+      return opts
+    end,
     cmp = function(opts)
       -- opts parameter is the default options table
       -- the function is lazy loaded so cmp is able to be required
@@ -478,7 +540,8 @@ local config = {
     -- Extend filetypes
     filetype_extend = {
       javascriptreact = { "javascript" },
-      typescriptreact = { "typescript" },
+      typescript = { "javascript" },
+      typescriptreact = { "typescript", "javascript" },
     },
     -- Configure luasnip loaders (vscode, lua, and/or snipmate)
     snipmate = {
@@ -504,6 +567,7 @@ local config = {
   },
   -- Modify which-key registration (Use this with mappings table in the above.)
   ["which-key"] = {
+
     -- Add bindings which show up as group name
     register = {
       -- first key is the mode, n == normal mode
@@ -519,12 +583,12 @@ local config = {
     },
   },
   polish = function()
-    -- vim.api.nvim_create_autocmd("SigUSR1", {
-    --   command = "lua run_theme_calculation()",
-    -- })
-    -- vim.api.nvim_create_autocmd("RecordingLeave", {
-    --   command = "Copilot enable",
-    -- })
+    vim.api.nvim_create_autocmd("RecordingEnter", {
+      command = "Copilot disable",
+    })
+    vim.api.nvim_create_autocmd("RecordingLeave", {
+      command = "Copilot enable",
+    })
 
     -- vim.api.nvim_create_autocmd("VimEnter,BufNewFile,BufReadPost", { command = "call HardMode()" })
 
@@ -533,13 +597,13 @@ local config = {
 
     vim.cmd("command! -nargs=? Theme !colortheme <f-args>")
 
-    -- vim.cmd [[let g:copilot_no_tab_map = v:true]]
-    -- local copilot_options = { silent = true, expr = true, script = true }
-    -- vim.api.nvim_set_keymap("i", "<C-f>", "copilot#Accept(<Tab>)", copilot_options)
+    vim.cmd([[let g:copilot_no_tab_map = v:true]])
+    local copilot_options = { silent = true, expr = true, script = true }
+    vim.api.nvim_set_keymap("i", "<C-f>", "copilot#Accept(<Tab>)", copilot_options)
 
-    vim.cmd([[set foldlevel=99]])
-    vim.cmd([[set foldmethod=expr]])
-    vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
+    -- vim.cmd [[set foldlevel=99]]
+    -- vim.cmd [[set foldmethod=expr]]
+    -- vim.cmd [[set foldexpr=nvim_treesitter#foldexpr()]]
 
     -- vim.cmd [[command! -nargs=? LoremIpsum lua write_under_line(lorem_ipsum(<args>))]]
   end,

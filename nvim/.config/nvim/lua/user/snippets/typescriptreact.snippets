@@ -1,50 +1,47 @@
-snippet sbp storybook page with props 
+snippet sb storybook page with props 
 	import React from "react";
-	import { Story, Meta } from "@storybook/react";
-	import _${1}, { ${1}Props } from ".";
+  import { ComponentStory, ComponentMeta } from '@storybook/react';
+	import _${1} from ".";
 
-	const setting: Meta<${1}Props> = {
-			title: "${2:GROUP}/${1}",
-			component:  _${1}
+	const setting: ComponentMeta<typeof _${1}> = {
+		title: "${2:GROUP}/${1}",
+		component:  _${1}
 	}
 
 	export default setting
 
-	const Template: Story<${1}Props> = args => (
-			<_${1} {...args} />
+	const Template: ComponentStory<typeof _${1}> = args => (
+		<_${1} {...args} />
 	);
 
 	export const ${1} = Template.bind({});
 	${1}.args = {
 		${0}
 	};
+snippet sb7 Storybook page with the new format
+	import type { Meta, StoryObj } from '@storybook/react';
 
+	import ${1} from './';
 
-snippet sb storybook page 
-	import React from "react";
-	import { Story, Meta } from "@storybook/react";
-	import _${1} from ".";
+	const meta: Meta<typeof ${1}> = {
+  	title: '${2}/${1}',
+  	component: ${1},
+	};
 
-	const setting: Meta = {
-			title: "${2:GROUP}/${1}",
-			component:  _${1}
-	}
+	export default meta;
 
-	export default setting
+	type Story = StoryObj<typeof ${1}>;
 
-	const Template: Story = () => (
-			<_${1} />
-	);
-
-	export const ${1} = Template.bind({});
-	${1}.args = {
-		${0}
+	export const Primary: Story = {
+  	args: {
+  		${0}
+  	},
 	};
 
 snippet rce react component default export
 	import React from "react";
 
-	export type ${1}Props = {
+	type ${1}Props = {
 
 	};
 
@@ -55,7 +52,7 @@ snippet rce react component default export
 	export default ${1};
 
 snippet rc react component 
-	export type ${1}Props = {
+	type ${1}Props = {
 
 	};
 

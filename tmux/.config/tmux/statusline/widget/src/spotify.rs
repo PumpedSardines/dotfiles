@@ -39,7 +39,7 @@ impl super::widget::WidgetRenderer<Option<String>> for SpotifyWidget {
 	            end tell
             end if";
 
-        let re = Regex::new(r"^\s|\s$").unwrap();
+        let re = Regex::new(r"^\s+-?\s*|\s*-?\s+$").unwrap();
 
         let output = Command::new("osascript").arg("-e").arg(command).output()?;
 
@@ -50,7 +50,7 @@ impl super::widget::WidgetRenderer<Option<String>> for SpotifyWidget {
             return Ok(None);
         }
 
-        return Ok(Some(result.to_string()));
+        return Ok(Some(format!("\u{f001} {}", result)));
     }
 
     #[cfg(not(target_os = "macos"))]
