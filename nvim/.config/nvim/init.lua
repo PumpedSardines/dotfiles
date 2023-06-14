@@ -1,3 +1,7 @@
+vim.cmd([[
+set guitablabel="Example %N/\ %t\ %M"
+
+]])
 require("plugins")
 
 require("options")

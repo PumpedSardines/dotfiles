@@ -24,6 +24,8 @@ local map_table = {
     ["<C-Right>"] = ":vertical resize +2<CR>",
     ["[d"] = { ":lua vim.diagnostic.goto_prev()<CR>", "Previous diagnostic" },
     ["]d"] = { ":lua vim.diagnostic.goto_next()<CR>", "Next diagnostic" },
+    ["[t"] = { "<cmd>tabp<cr>", "Previous diagnostic" },
+    ["]t"] = { "<cmd>tabn<cr>", "Next diagnostic" },
   },
   v = {
     [">"] = ">gv",
@@ -55,12 +57,12 @@ end
 local wk = require("which-key")
 
 wk.register({
-  ["e"] = { ":Neotree toggle<CR>", "Toggle Explorer" },
-  ["o"] = { ":Neotree focus<CR>", "Focus Explorer" },
-  ["h"] = { ":noh<CR>", "Hide selected" },
-  -- TODO: Make this binding not close the window
-  -- ["<leader>c"] = {":bd<CR>",}
-  ["/"] = { ":CommentToggle<CR>", "Comment toggle" },
+  ["c"] = { "<cmd>Bdelete<CR>", "Close buffer" },
+  ["e"] = { "<cmd>Neotree toggle<CR>", "Toggle Explorer" },
+  ["s"] = { "<cmd>SymbolsOutline<CR>", "Toggle Symbols Outline" },
+  ["o"] = { "<cmd>Neotree focus<CR>", "Focus Explorer" },
+  ["h"] = { "<cmd>noh<CR>", "Hide selected" },
+  ["/"] = { "<cmd>CommentToggle<CR>", "Comment toggle" },
   -- === Telescope ===
   ["f"] = {
     name = "+Find",
@@ -70,7 +72,8 @@ wk.register({
     d = { ":Telescope diagnostics<CR>", "Buffer Diagnostics" },
     b = { ":Telescope buffers<CR>", "Buffers" },
     h = { ":Telescope help_tags<CR>", "Help Docs" },
-    t = { ":TodoTelescope<CR>", "Search Todo comments" },
+    T = { ":TodoTelescope<CR>", "Search Todo comments" },
+    t = { ":Telescope telescope-tabs list_tabs<CR>", "Tabs" },
   },
   -- === LSP ===
   ["l"] = {
@@ -86,8 +89,16 @@ wk.register({
     ["b"] = { '<cmd>lua require("gitsigns").blame_line()<cr>', "Blame Line" },
   },
   -- === Terminal ===
-  ["t"] = {
+  ["T"] = {
     name = "+Terminal",
     ["f"] = { "<cmd>ToggleTerm direction=float<CR>", "Float terminal" },
+  },
+  -- === Tabs ===
+  ["t"] = {
+    name = "+Tabs",
+    ["n"] = { "<cmd>tabnew<CR>", "New Tab" },
+    ["s"] = { "<cmd>tab split<CR>", "Open buffer in new tab" },
+    ["c"] = { "<cmd>tabclose<CR>", "Close current tab" },
+    ["r"] = { "<cmd>lua require('rename_tab')()<CR>", "Rename tab" },
   },
 }, { mode = "n", prefix = "<leader>" })

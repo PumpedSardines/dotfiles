@@ -1,3 +1,13 @@
+snippet iife Create an iife
+	(() => {
+		${0}
+	})()
+
+snippet aiife Create an async iife
+	(async () => {
+		${0}
+	})()
+
 snippet sb storybook page with props 
 	import React from "react";
   import { ComponentStory, ComponentMeta } from '@storybook/react';
@@ -42,7 +52,7 @@ snippet rce react component default export
 	import React from "react";
 
 	type ${1}Props = {
-
+		${2}
 	};
 
 	const ${1}: React.FC<${1}Props> = props => {
@@ -51,11 +61,50 @@ snippet rce react component default export
 
 	export default ${1};
 
+snippet rcem react component memo default export
+	import React from "react";
+
+	type ${1}Props = {
+		${2}
+	};
+
+	const ${1}: React.FC<${1}Props> = React.memo(function ${1} (props) {
+		return ${0}
+	})
+
+	export default ${1};
+
+snippet arce async react component default export
+	import React from "react";
+
+	type ${1}Props = {
+		${2}
+	};
+
+	const ${1} = async (props: ${1}Props): Promise<JSX.Element> => {
+		return ${0}
+	}
+
+	export default ${1};
+
 snippet rc react component 
 	type ${1}Props = {
-
+		${2}
 	};
 
 	function ${1}(props: ${1}Props) {
 		return ${0}
 	}
+
+snippet sci server component ignore
+	{/* @ts-expect-error HACK: Server Component */}
+	${0}
+
+snippet rhe React hook default export
+	import React from 'react';
+
+	function use${1:HookName}() {
+		${0}
+	}
+
+	export default use${1:HookName};
