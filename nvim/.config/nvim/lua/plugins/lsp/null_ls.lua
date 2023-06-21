@@ -35,9 +35,10 @@ return {
             create_config_file_name = ".cspell.json",
           },
         }),
+        b.formatting.alejandra,
         b.formatting.black,
         b.formatting.stylua,
-        b.formatting.prettierd,
+        b.formatting.prettier_d_slim,
         b.code_actions.eslint_d,
         b.diagnostics.eslint_d.with({
           filter = function(diagnostic)

@@ -5,73 +5,13 @@ env:
 
 font:
   normal:
-    family: agave Nerd Font Mono
+    family: IntelOneMono Nerd Font
 
 mouse:
   hide_when_typing: true
 
 import:
   - ~/.config/alacritty/color.yml
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
