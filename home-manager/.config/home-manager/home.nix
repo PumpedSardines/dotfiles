@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
-
-{
+{ config
+, pkgs
+, ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "fritiofrusck";
@@ -20,40 +21,36 @@
 
   home.packages = with pkgs; [
     # The main programs
-    neovim
     httpie
-    gh # github cli
 
     # programs
     nodejs_20
+    ripgrep
 
     # tools
-    direnv
     stow
 
     # Random nvim things
     nodePackages.prettier_d_slim
     nodePackages.eslint_d
     alejandra
-    fzf
   ];
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+  # # Adds the 'hello' command to your environment. It prints a friendly
+  # # "Hello, world!" when run.
+  # pkgs.hello
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+  # # It is sometimes useful to fine-tune packages, for example, by applying
+  # # overrides. You can do that directly here, just don't forget the
+  # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+  # # fonts?
+  # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  
+  # # You can also create simple shell scripts directly inside your
+  # # configuration. For example, this adds a command 'my-hello' to your
+  # # environment:
+  # (pkgs.writeShellScriptBin "my-hello" ''
+  #   echo "Hello, ${config.home.username}!"
+  # '')
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -86,22 +83,35 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.gh.enable = true;
+  programs.lazygit.enable = true;
 
   programs.git = {
     enable = true;
     ignores = [ ".envrc" ".direnv" ".DS_Store" ];
   };
 
+  programs.fzf.enable = true;
+
+  programs.neovim = {
+    enable = true;
+  };
+
+  # imports = [./nvim.nix];
+
   programs.alacritty = {
     enable = true;
-    settings =  {
+    settings = {
       live_config_reload = true;
       env = {
         TERM = "xterm-256color";
       };
-      font= {
+      font = {
         normal = {
           family = "IntelOneMono Nerd Font";
         };
@@ -110,7 +120,7 @@
         hide_when_typing = true;
       };
       import = [
-         "~/.config/alacritty/color.yml"
+        "~/.config/alacritty/color.yml"
       ];
     };
   };
@@ -122,8 +132,10 @@
     keyMode = "vi";
     baseIndex = 1;
     extraConfig = ''
-      # set -g default-terminal "screen-256color"
-      # set-option -sa terminal-overrides ",xterm*:RGB"
+      bind -r k select-pane -U
+      bind -r j select-pane -D
+      bind -r h select-pane -L
+      bind -r l select-pane -R
 
       bind-key -T copy-mode-vi y send -X copy-selection-and-cancel
       bind-key -T copy-mode-vi v send -X begin-selection
@@ -143,12 +155,8 @@
       set -g status-bg black
       set -g status-fg white
 
-      set-option -g status-right "#(~/.config/tmux/statusline/target/release/statusline)"
+      # set-option -g status-right "#(~/.config/tmux/statusline/target/release/statusline)"
     '';
-  };
-
-  programs.lazygit = {
-    enable = true;
   };
 
   programs.fish = {
@@ -166,10 +174,16 @@
         };
       }
     ];
+    shellInit = ''
+      # Disable fish greeting
+      set fish_greeting
+      # Disable 'activate.fish' auto setting and displaying fish status
+      set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+    '';
     functions = {
       alacritty-theme = {
         description = "Set the alacritty theme";
-        argumentNames = ["theme"];
+        argumentNames = [ "theme" ];
         body = ''
           if ! test -f ~/.config/alacritty/color.yml
             echo "file ~/.config/alacritty/color.yml doesn't exist"
@@ -195,7 +209,7 @@
       };
       colortheme = {
         description = "Set the color theme (DONT WORK ATM)";
-        argumentNames = ["theme"];
+        argumentNames = [ "theme" ];
         body = ''
           alacritty-theme $theme
 
