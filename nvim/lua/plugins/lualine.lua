@@ -10,8 +10,8 @@ return {
         return "Recording @" .. recording_register
       end
     end
-
     local lualine = require("lualine")
+
     vim.api.nvim_create_autocmd("recordingenter", {
       callback = function()
         lualine.refresh({

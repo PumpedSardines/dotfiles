@@ -13,6 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  require("plugins.tools.fwatch"),
+
   require("plugins.colorschemes.everforest"),
   require("plugins.colorschemes.nightfox"),
   -- require("plugins.colorschemes.accent"),
@@ -38,6 +40,7 @@ require("lazy").setup({
   require("plugins.which-key"),
   require("plugins.todo-comments"),
   require("plugins.copilot"),
+  require("plugins.config-local"),
 
   require("plugins.tweaks.bufdelete"),
   require("plugins.tweaks.telescope-tabs"),

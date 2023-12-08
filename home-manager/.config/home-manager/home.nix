@@ -24,7 +24,6 @@
     httpie
 
     # programs
-    nodejs_20
     ripgrep
 
     # tools
@@ -60,6 +59,15 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
+    ".config/nvim" = {
+      source = ../../../nvim;
+      recursive = true;
+    };
+    ".config/alacritty" = {
+      source = ../../../alacritty;
+      recursive = true;
+    };
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
@@ -79,6 +87,7 @@
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     # EDITOR = "emacs";
+    TERM = "xterm-256color";
   };
 
   # Let Home Manager install and manage itself.
@@ -93,7 +102,7 @@
 
   programs.git = {
     enable = true;
-    ignores = [ ".envrc" ".direnv" ".DS_Store" ];
+    ignores = [ ".nvim.lua" "node_modules/" ".envrc" ".direnv" ".DS_Store" ];
   };
 
   programs.fzf.enable = true;
@@ -132,6 +141,8 @@
     keyMode = "vi";
     baseIndex = 1;
     extraConfig = ''
+      set-option -sa terminal-overrides ',xterm-256color:RGB'
+
       bind -r k select-pane -U
       bind -r j select-pane -D
       bind -r h select-pane -L
@@ -155,7 +166,7 @@
       set -g status-bg black
       set -g status-fg white
 
-      # set-option -g status-right "#(~/.config/tmux/statusline/target/release/statusline)"
+      # set-option -g status-right "#(battery_percentage)"
     '';
   };
 
@@ -185,22 +196,23 @@
         description = "Set the alacritty theme";
         argumentNames = [ "theme" ];
         body = ''
-          if ! test -f ~/.config/alacritty/color.yml
-            echo "file ~/.config/alacritty/color.yml doesn't exist"
-            return
-          end
+          # if ! test -f ~/.config/alacritty/c.yml
+          #   echo "file ~/.config/alacritty/c.yml doesn't exist"
+          #   return
+          # end
 
           # sed doesn't like symlinks, get the absolute path
-          set -l config_path (realpath ~/.config/alacritty/color.yml)
-          set -l alacritty_path (realpath ~/.config/alacritty/alacritty.yml)
+          set -l light_path (realpath ~/.config/alacritty/light.yml)
+          set -l dark_path (realpath ~/.config/alacritty/dark.yml)
+          set -l color_path ~/.config/alacritty/color.yml
 
           if [ $theme = "dark" ]
-            echo "" > $config_path
+            echo "$(cat $dark_path)" > $color_path
             return
           end
 
           if [ $theme = "light" ]
-            echo "import: [\"~/.config/alacritty/themes/themes/papercolor_light.yaml\"]" > $config_path
+            echo "$(cat $light_path)" > $color_path
             return
           end
 
@@ -208,7 +220,7 @@
         '';
       };
       colortheme = {
-        description = "Set the color theme (DONT WORK ATM)";
+        description = "Set the color theme";
         argumentNames = [ "theme" ];
         body = ''
           alacritty-theme $theme
@@ -222,6 +234,22 @@
               end
             end
           end
+        '';
+      };
+      workspace = {
+        description = "Start a tmux workspace";
+        argumentNames = [ "name" ];
+        body = ''
+          echo "Starting workspace $name"
+          if [ $name = "raytracer" ]
+            tmux new-session -s raytracer -c ~/Code/Private/raytracer
+          end
+        '';
+      };
+      battery_percentage = {
+        description = "Get the battery percentage";
+        body = ''
+          pmset -g batt | grep -Eo "\d+%" | cut -d% -f1
         '';
       };
       fish_prompt = {
