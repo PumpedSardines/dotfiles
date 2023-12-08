@@ -219,21 +219,11 @@
           echo "Invalid argument \"$theme\", can be either dark or light"
         '';
       };
-      colortheme = {
+      theme = {
         description = "Set the color theme";
         argumentNames = [ "theme" ];
         body = ''
           alacritty-theme $theme
-
-          for six in (~/.nix-profile/bin/tmux list-sessions -F '#{session_name}')
-            for wix in (~/.nix-profile/bin/tmux list-windows -t $six -F "$six:#{window_index}")
-              for pix in (~/.nix-profile/bin/tmux list-panes -F "$six:#{window_index}.#{pane_index}" -t $wix)
-                set -l is_vim "ps -o state= -o comm= -t '#{pane_tty}'  | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?\$'"
-                ~/.nix-profile/bin/tmux if-shell -t "$pix" "$is_vim" "send-keys -t $pix escape ENTER"
-                ~/.nix-profile/bin/tmux if-shell -t "$pix" "$is_vim" "send-keys -t $pix ':lua run_theme_calculation()' ENTER"
-              end
-            end
-          end
         '';
       };
       workspace = {
