@@ -1,6 +1,6 @@
 # My .dotfiles
 
-Settings for the tools i use. Everything is managed with GNU stow.
+Settings for the tools i use. Everything is managed with nix and home manager.
 
 ### Features 🤩
 
