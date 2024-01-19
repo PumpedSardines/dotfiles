@@ -41,6 +41,7 @@ require("lazy").setup({
   require("plugins.todo-comments"),
   require("plugins.copilot"),
   require("plugins.config-local"),
+  require("plugins.compile-explorer"),
 
   require("plugins.tweaks.bufdelete"),
   require("plugins.tweaks.telescope-tabs"),

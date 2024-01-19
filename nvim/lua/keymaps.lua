@@ -83,6 +83,15 @@ wk.register({
     ["a"] = { ":lua vim.lsp.buf.code_action()<CR>", "Code Action" },
     ["r"] = { ":lua vim.lsp.buf.rename()<CR>", "Rename Token" },
   },
+  -- === CODE EXPLORER ===
+  ["C"] = {
+    name = "+Code Explorer",
+    ["c"] = { "<cmd>CECompile<CR>", "Compile once and show in a new window" },
+    ["l"] = { "<cmd>CECompileLive<CR>", "Compile live and show the result in a new window" },
+    ["k"] = { "<cmd>CEShowTooltip<CR>", "Hover diagnostic in assembly code" },
+    ["w"] = { "<cmd>CEOpenWebsite<CR>", "Open the code with the compiler options in a website" },
+    ["d"] = { "<cmd>CEDeleteCache<CR>", "Clear cache about compiler options" },
+  },
   -- === GIT ==
   ["g"] = {
     name = "+Git",
