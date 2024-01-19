@@ -9,6 +9,9 @@ let
   debug = pkgs.writeShellScriptBin "debug" ''
     echo ${customPkgs.tmux-status-line}
   '';
+  fzfws = pkgs.writeShellScriptBin "fzfws" ''
+    workspace open -n "$(workspace list | fzf | sed 's/:.*//')"
+  '';
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -29,7 +32,7 @@ in
   # environment.
 
   home. packages =
-    [ debug customPkgs.workspace customPkgs.tmux-status-line ]
+    [ fzfws debug customPkgs.workspace customPkgs.tmux-status-line ]
     ++ (with pkgs; [
       # The main programs
       httpie
@@ -179,6 +182,8 @@ in
       set -g status-fg white
 
       set-option -g status-right "#(tmux_status_line)"
+      # set-option -g status-right "#[fg=default,bg=default] 2 minutes #[fg=#000000,bg=#dfa000]  7% #[fg=default,bg=default] Tue 15:48 2023-12-12"
+
     '';
   };
 }

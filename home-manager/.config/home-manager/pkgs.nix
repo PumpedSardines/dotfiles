@@ -6,8 +6,8 @@
           {
             owner = "PumpedSardines";
             repo = "workspace";
-            rev = "87819ac";
-            sha256 = "sha256-vabtJG+AXkVY4O29PFJdsil3wWlc8vjlVicnSYuY+NI=";
+            rev = "0e28d95";
+            sha256 = "sha256-F0qJIqfXJieaKAeveRF4u2cb9mcgLVts9K2OXqWYlro=";
           }
       )
       { };
