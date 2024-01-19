@@ -86,11 +86,11 @@ wk.register({
   -- === CODE EXPLORER ===
   ["C"] = {
     name = "+Code Explorer",
-    ["c"] = { "<cmd>CECompile<CR>", "Compile once and show in a new window" },
-    ["l"] = { "<cmd>CECompileLive<CR>", "Compile live and show the result in a new window" },
-    ["k"] = { "<cmd>CEShowTooltip<CR>", "Hover diagnostic in assembly code" },
-    ["w"] = { "<cmd>CEOpenWebsite<CR>", "Open the code with the compiler options in a website" },
-    ["d"] = { "<cmd>CEDeleteCache<CR>", "Clear cache about compiler options" },
+    ["c"] = { "<cmd>CECompile<CR>", "Compile once" },
+    ["l"] = { "<cmd>CECompileLive<CR>", "Compile live" },
+    ["k"] = { "<cmd>CEShowTooltip<CR>", "Hover diagnostic in asm" },
+    ["w"] = { "<cmd>CEOpenWebsite<CR>", "Open in website" },
+    ["d"] = { "<cmd>CEDeleteCache<CR>", "Clear cache" },
   },
   -- === GIT ==
   ["g"] = {
