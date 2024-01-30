@@ -22,6 +22,8 @@
       set fish_greeting
       # Disable 'activate.fish' auto setting and displaying fish status
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+
+      alias ws="workspace"
     '';
     functions = {
       alacritty-theme = {

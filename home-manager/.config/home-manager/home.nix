@@ -9,15 +9,18 @@ let
   debug = pkgs.writeShellScriptBin "debug" ''
     echo ${customPkgs.tmux-status-line}
   '';
-  fzfws = pkgs.writeShellScriptBin "fzfws" ''
-    workspace open -n "$(workspace list | fzf | sed 's/:.*//')"
+  wss = pkgs.writeShellScriptBin "wss" ''
+    workspace open -n "$(workspace ls | fzf | sed 's/:.*//')" && tmux -u a
+  '';
+  wso = pkgs.writeShellScriptBin "wso" ''
+    workspace open -n "$1"
   '';
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home. username = "fritiofrusck";
-  home. homeDirectory = "/Users/fritiofrusck";
+  home.username = "fritiofrusck";
+  home.homeDirectory = "/Users/fritiofrusck";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -31,20 +34,16 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  home. packages =
-    [ fzfws debug customPkgs.workspace customPkgs.tmux-status-line ]
+  home.packages =
+    [ wss wso debug customPkgs.workspace customPkgs.tmux-status-line ]
     ++ (with pkgs; [
-      # The main programs
+      # Main programs that i use a lot
       httpie
-
-      # programs
-      ripgrep
-
-      # tools
-      stow
+      nodejs_20
+      cargo
+      python3
 
       # Random nvim things
-      nodejs_20 # Copilot needs this sadly :(
       nodePackages.prettier_d_slim
       nodePackages.eslint_d
       alejandra
