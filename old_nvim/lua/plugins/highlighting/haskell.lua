@@ -1,3 +1,0 @@
-return {
-  "neovimhaskell/haskell-vim",
-}
