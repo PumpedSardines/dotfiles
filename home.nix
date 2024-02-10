@@ -38,12 +38,22 @@ in {
       cargo
       python3
 
-      # Random nvim things
-      nodePackages.prettier_d_slim # JavaScript formatter
+      # Neovim LSP
+      # JavaScript
+      prettierd # JavaScript formatter
       nodePackages.eslint_d # JavaScript linter
-      alejandra # nix formatter
-      # LSP
       nodePackages.typescript-language-server
+      # Spell check
+      nodePackages.cspell
+      # Lua
+      stylua
+      lua-language-server
+      # Rust
+      rustfmt
+      rust-analyzer
+      # nix
+      alejandra
+      nixd
     ]);
 
   # Adds files recursively to a path and keeps them in sync with home-manager
@@ -68,6 +78,7 @@ in {
     nix-direnv.enable = true;
   };
 
+  programs.ripgrep.enable = true;
   programs.gh.enable = true;
   programs.lazygit.enable = true;
 
