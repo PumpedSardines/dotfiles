@@ -31,9 +31,9 @@
         argumentNames = [ "theme" ];
         body = ''
           # sed doesn't like symlinks, get the absolute path
-          set -l light_path (realpath ~/.config/alacritty/light.yml)
-          set -l dark_path (realpath ~/.config/alacritty/dark.yml)
-          set -l color_path ~/.config/alacritty/color.yml
+          set -l light_path (realpath ~/.config/alacritty/light.toml)
+          set -l dark_path (realpath ~/.config/alacritty/dark.toml)
+          set -l color_path ~/.config/alacritty/color.toml
 
           if [ $theme = "dark" ]
             echo "$(cat $dark_path)" > $color_path

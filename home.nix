@@ -1,9 +1,9 @@
-{ config
-, pkgs
-, workspace
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  workspace,
+  ...
+}: let
   customPkgs = import ./pkgs.nix {
     inherit pkgs;
   };
@@ -13,25 +13,24 @@ let
   wso = pkgs.writeShellScriptBin "wso" ''
     workspace open -n "$1" && tmux -u a
   '';
-in
-{
+in {
   home.username = "fritiofrusck";
   home.homeDirectory = "/Users/fritiofrusck";
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  imports = [ ./fish.nix ];
+  imports = [./fish.nix ./nvim/nvim.nix];
 
   # Home Manager has problems adding pacakges to ~/Applications so this is needed
   # Not sure why?
   # https://gist.github.com/jmatsushita/5c50ef14b4b96cb24ae5268dab613050
-  environment.systemPackages = with pkgs; [
-    alacritty
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   alacritty
+  # ];
 
   home.packages =
-    [ wss wso customPkgs.workspace customPkgs.tmux-status-line ]
+    [wss wso customPkgs.workspace customPkgs.tmux-status-line]
     ++ (with pkgs; [
-      dvipng # Used for Anki to generate LaTeX images
+      # dvipng # Used for Anki to generate LaTeX images
 
       # Main programs that i use a lot
       httpie
@@ -43,15 +42,17 @@ in
       nodePackages.prettier_d_slim # JavaScript formatter
       nodePackages.eslint_d # JavaScript linter
       alejandra # nix formatter
+      # LSP
+      nodePackages.typescript-language-server
     ]);
 
   # Adds files recursively to a path and keeps them in sync with home-manager
   # Very convinient :)
   home.file = {
-    ".config/nvim" = {
-      source = ./nvim;
-      recursive = true;
-    };
+    # ".config/nvim" = {
+    #   source = ./nvim;
+    #   recursive = true;
+    # };
     ".config/alacritty" = {
       source = ./alacritty;
       recursive = true;
@@ -59,7 +60,6 @@ in
   };
   home.sessionVariables = {
     TERM = "xterm-256color";
-    EDITOR = "nvim";
   };
   programs.home-manager.enable = true;
 
@@ -73,19 +73,16 @@ in
 
   programs.git = {
     enable = true;
-    ignores = [ ".nvim.lua" "node_modules/" ".envrc" ".direnv" ".DS_Store" ];
+    ignores = [".nvim.lua" "node_modules/" ".envrc" ".direnv" ".DS_Store"];
   };
 
   programs.fzf.enable = true;
-
-  programs.neovim = {
-    enable = true;
-  };
 
   programs.alacritty = {
     enable = true;
     settings = {
       live_config_reload = true;
+
       env = {
         TERM = "xterm-256color";
       };
@@ -98,7 +95,7 @@ in
         hide_when_typing = true;
       };
       import = [
-        "~/.config/alacritty/color.yml"
+        "~/.config/alacritty/color.toml"
       ];
     };
   };

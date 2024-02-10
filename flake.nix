@@ -12,23 +12,18 @@
     };
   };
 
-  outputs =
-    { nixpkgs
-    , workspace
-    , home-manager
-    , ...
-    }:
-    let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeConfigurations."fritiofrusck" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home.nix
-          workspace
-        ];
-      };
+  outputs = {
+    nixpkgs,
+    workspace,
+    home-manager,
+    ...
+  }: let
+    system = "aarch64-darwin";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    homeConfigurations."fritiofrusck" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [./home.nix];
     };
+  };
 }
