@@ -2,6 +2,7 @@
   config,
   pkgs,
   workspace,
+  tmux-status-line,
   ...
 }: let
   customPkgs = import ./pkgs.nix {
@@ -28,7 +29,7 @@ in {
   # ];
 
   home.packages =
-    [wss wso customPkgs.workspace customPkgs.tmux-status-line]
+    [wss wso workspace tmux-status-line]
     ++ (with pkgs; [
       # dvipng # Used for Anki to generate LaTeX images
 
