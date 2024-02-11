@@ -1,0 +1,38 @@
+{
+  "words": [
+    "fwatch",
+    "everforest",
+    "alacritty",
+    "cmdheight",
+    "completeopt",
+    "conceallevel",
+    "fileencoding"
+    "hlsearch",
+    "ignorecase",
+    "pumheight",
+    "showmode",
+    "showtabline",
+    "smartcase",
+    "smartindent",
+    "splitbelow",
+    "splitright",
+    "swapfile",
+    "termguicolors",
+    "timeoutlen",
+    "undofile",
+    "updatetime",
+    "writebackup",
+    "expandtab",
+    "shiftwidth",
+    "cursorline",
+    "relativenumber",
+    "numberwidth",
+    "signcolumn",
+    "scrolloff",
+    "sidescrolloff",
+    "langnoremap"
+  ],
+  "language": "en",
+  "version": "0.2",
+  "flagWords": []
+}

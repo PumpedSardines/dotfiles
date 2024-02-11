@@ -11,7 +11,7 @@
     workspace open -n "$(workspace ls | fzf | sed 's/:.*//')" && tmux -u a
   '';
   wso = pkgs.writeShellScriptBin "wso" ''
-    workspace open -n "$1" && tmux -u a
+    workspace open -n "$1"
   '';
 in {
   home.username = "fritiofrusck";
@@ -59,10 +59,6 @@ in {
   # Adds files recursively to a path and keeps them in sync with home-manager
   # Very convinient :)
   home.file = {
-    # ".config/nvim" = {
-    #   source = ./nvim;
-    #   recursive = true;
-    # };
     ".config/alacritty" = {
       source = ./alacritty;
       recursive = true;
@@ -93,7 +89,6 @@ in {
     enable = true;
     settings = {
       live_config_reload = true;
-
       env = {
         TERM = "xterm-256color";
       };

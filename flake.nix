@@ -7,14 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    workspace = {
-      url = "github:PumpedSardines/workspace";
-    };
+    #   workspace = {
+    #     url = "github:PumpedSardines/workspace";
+    #   };
   };
 
   outputs = {
     nixpkgs,
-    workspace,
     home-manager,
     ...
   }: let
