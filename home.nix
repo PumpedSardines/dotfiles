@@ -43,6 +43,7 @@ in {
       prettierd # JavaScript formatter
       nodePackages.eslint_d # JavaScript linter
       nodePackages.typescript-language-server
+      vscode-langservers-extracted # html, css, json, eslint
       # Spell check
       nodePackages.cspell
       # Lua
