@@ -43,11 +43,14 @@ in {
       dressing-nvim
       gitsigns-nvim
       luasnip
+
       nvim-cmp
       cmp-nvim-lsp
       cmp-path
       cmp-buffer
       cmp-cmdline
+      cmp_luasnip
+
       lualine-nvim
       copilot-vim
       todo-comments-nvim

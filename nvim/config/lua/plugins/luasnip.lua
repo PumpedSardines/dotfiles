@@ -1,1 +1,1 @@
-require("luasnip.loaders.from_snipmate").lazy_load({ path = { "./snippets" } })
+require("luasnip.loaders.from_snipmate").load({ path = { "~/.config/nvim/snippets" } })

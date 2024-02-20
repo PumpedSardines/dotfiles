@@ -1,3 +1,5 @@
+require("plugins.luasnip")
+
 require("plugins.copilot")
 require("plugins.colorthemes")
 
@@ -9,7 +11,6 @@ require("plugins.telescope")
 require("plugins.tabby")
 require("plugins.dressing")
 require("plugins.gitsigns")
-require("plugins.luasnip")
 require("plugins.cmp")
 require("plugins.lualine")
 require("plugins.todo-comments")

@@ -4,6 +4,7 @@ require("lsp.nixd")
 require("lsp.null_ls")
 require("lsp.rust-analyzer")
 require("lsp.cssls")
+require("lsp.zls")
 
 -- vim.lsp.buf.format({
 -- 	filter = function(client)

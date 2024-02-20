@@ -43,6 +43,7 @@ local options = {
 }
 vim.wo.fillchars = "eob: "
 vim.opt.shortmess:append("c")
+
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end

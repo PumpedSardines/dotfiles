@@ -50,6 +50,11 @@ in {
       # Lua
       stylua
       lua-language-server
+
+      # Zig
+      zig
+      zls
+
       # Rust
       rustfmt
       rust-analyzer
@@ -65,9 +70,6 @@ in {
       source = ./alacritty;
       recursive = true;
     };
-  };
-  home.sessionVariables = {
-    TERM = "xterm-256color";
   };
   programs.home-manager.enable = true;
 
@@ -116,6 +118,7 @@ in {
     baseIndex = 1;
     extraConfig = ''
       set-option -sa terminal-overrides ',xterm-256color:RGB'
+      set -g default-terminal "screen-256color"
 
       bind -r k select-pane -U
       bind -r j select-pane -D
@@ -141,8 +144,6 @@ in {
       set -g status-fg white
 
       set-option -g status-right "#(tmux_status_line)"
-      # set-option -g status-right "#[fg=default,bg=default] 2 minutes #[fg=#000000,bg=#dfa000]  7% #[fg=default,bg=default] Tue 15:48 2023-12-12"
-
     '';
   };
 }

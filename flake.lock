@@ -179,15 +179,16 @@
         "nixpkgsUnstable": "nixpkgsUnstable"
       },
       "locked": {
-        "lastModified": 1702218171,
-        "narHash": "sha256-kfGpjnjabTGHUrhpolFrB5lPbG31fpOhfRhM1nmQuEM=",
+        "lastModified": 1707824253,
+        "narHash": "sha256-vxNYPOQFnjQN+lm1/Zc1qBC1A2LT/ADPd8rwBE63yHk=",
         "owner": "PumpedSardines",
         "repo": "tmux-status-line",
-        "rev": "2d65790d13020f486fa7680db6c52b6a223781ae",
+        "rev": "4d264e5a341b8e532605914a5f78b50437985b01",
         "type": "github"
       },
       "original": {
         "owner": "PumpedSardines",
+        "ref": "4d264e5",
         "repo": "tmux-status-line",
         "type": "github"
       }
@@ -199,11 +200,11 @@
         "nixpkgsUnstable": "nixpkgsUnstable_2"
       },
       "locked": {
-        "lastModified": 1706617438,
-        "narHash": "sha256-K1QW5uILSlWVwl6suQw9AlhJLnrkd1QUZfsirIas0LM=",
+        "lastModified": 1707681997,
+        "narHash": "sha256-AiTTabrx2tC9zRQcHvr+dAaeTr/beXhejf2gwkuM92Y=",
         "owner": "PumpedSardines",
         "repo": "workspace",
-        "rev": "0c3a495589b5bbfac8455c67785c4361d881dbd1",
+        "rev": "8602e35126853878a918507cdad84b1e171b573d",
         "type": "github"
       },
       "original": {
