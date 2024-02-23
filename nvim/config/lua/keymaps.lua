@@ -78,10 +78,22 @@ wk.register({
   -- === LSP ===
   ["l"] = {
     name = "+LSP",
-    ["d"] = { ":lua vim.diagnostic.open_float()<CR>", "Hover Diagnostic" },
-    ["f"] = { ":lua vim.lsp.buf.format()<CR>", "Format Code" },
-    ["a"] = { ":lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-    ["r"] = { ":lua vim.lsp.buf.rename()<CR>", "Rename Token" },
+    ["d"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Hover Diagnostic" },
+    ["f"] = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format Code" },
+    ["a"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
+    ["r"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Token" },
+    ["c"] = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run code lens" },
+  },
+  -- === DEBUGGER ===
+  ["d"] = {
+    name = "+LSP",
+    ["b"] = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Toggle Breakpoint" },
+    ["c"] = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
+    ["s"] = { "<cmd>lua require('dap').step_over()<CR>", "Step Over" },
+    ["i"] = { "<cmd>lua require('dap').step_into()<CR>", "Step Into" },
+    ["o"] = { "<cmd>lua require('dap').step_out()<CR>", "Step Out" },
+    ["r"] = { "<cmd>lua require('dap').repl.toggle()<CR>", "Toggle Repl" },
+    ["l"] = { "<cmd>lua require('dap').run_last()<CR>", "Run Last" },
   },
   -- === CODE EXPLORER ===
   ["C"] = {

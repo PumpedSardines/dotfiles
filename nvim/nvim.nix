@@ -34,8 +34,13 @@ in {
       nui-nvim
 
       nvim-lspconfig
+      rustaceanvim
       none-ls-nvim
+
       nvim-treesitter.withAllGrammars
+
+      nvim-dap
+      nvim-dap-ui
 
       which-key-nvim
       neo-tree-nvim

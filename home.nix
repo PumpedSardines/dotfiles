@@ -19,7 +19,8 @@ in {
   home.homeDirectory = "/Users/fritiofrusck";
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  imports = [./fish.nix ./nvim/nvim.nix];
+  imports = [./fish.nix];
+  programs.neovim.enable = true;
 
   # Home Manager has problems adding pacakges to ~/Applications so this is needed
   # Not sure why?
@@ -40,6 +41,7 @@ in {
       python3
 
       # Neovim LSP
+      lldb_17
       # JavaScript
       prettierd # JavaScript formatter
       nodePackages.eslint_d # JavaScript linter
@@ -54,6 +56,9 @@ in {
       # Zig
       zig
       zls
+
+      # Java
+      jdk21
 
       # Rust
       rustfmt
