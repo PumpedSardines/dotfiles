@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     workspace = {
-      url = "github:PumpedSardines/workspace";
+      url = "github:PumpedSardines/workspace/b49eb10";
     };
     tmux-status-line = {
       url = "github:PumpedSardines/tmux-status-line/4d264e5";
@@ -29,8 +29,9 @@
       inherit pkgs;
       modules = [./home.nix];
       extraSpecialArgs = {
-        workspace = workspace.packages.aarch64-darwin.default;
-        tmux-status-line = tmux-status-line.packages.aarch64-darwin.default;
+        workspace = workspace.packages.${system}.default;
+        tmux-status-line = tmux-status-line.packages.${system}.default;
+        gdbgui = nixpkgs.legacyPackages.x86_64-darwin.gdbgui;
       };
     };
   };

@@ -5,6 +5,7 @@ require("lsp.null_ls")
 -- require("lsp.rust-analyzer")
 require("lsp.cssls")
 require("lsp.zls")
+require("lsp.gleam")
 
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
@@ -27,9 +28,3 @@ autocmd("LspAttach", {
 		end
 	end,
 })
-
--- vim.lsp.buf.format({
--- 	filter = function(client)
--- 		return client.name ~= "tsserver"
--- 	end,
--- })

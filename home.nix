@@ -3,6 +3,7 @@
   pkgs,
   workspace,
   tmux-status-line,
+  gdbgui,
   ...
 }: let
   customPkgs = import ./pkgs.nix {
@@ -17,10 +18,9 @@
 in {
   home.username = "fritiofrusck";
   home.homeDirectory = "/Users/fritiofrusck";
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  imports = [./fish.nix];
-  programs.neovim.enable = true;
+  imports = [./fish.nix ./nvim/nvim.nix];
 
   # Home Manager has problems adding pacakges to ~/Applications so this is needed
   # Not sure why?
@@ -39,14 +39,16 @@ in {
       nodejs_20
       cargo
       python3
+      gdbgui
+      jq
 
       # Neovim LSP
-      lldb_17
       # JavaScript
       prettierd # JavaScript formatter
       nodePackages.eslint_d # JavaScript linter
       nodePackages.typescript-language-server
       vscode-langservers-extracted # html, css, json, eslint
+
       # Spell check
       nodePackages.cspell
       # Lua
@@ -59,6 +61,10 @@ in {
 
       # Java
       jdk21
+
+      # Gleam
+      gleam
+      erlang
 
       # Rust
       rustfmt

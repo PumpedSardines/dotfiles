@@ -8,5 +8,4 @@ require("color")
 require("keymaps")
 
 require("lsp")
-require("dap")
 require("tweaks")
