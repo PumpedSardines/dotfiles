@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     workspace = {
-      url = "github:PumpedSardines/workspace/b49eb10";
+      url = "github:PumpedSardines/workspace/6052219";
     };
     tmux-status-line = {
       url = "github:PumpedSardines/tmux-status-line/4d264e5";
