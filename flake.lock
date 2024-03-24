@@ -200,16 +200,16 @@
         "nixpkgsUnstable": "nixpkgsUnstable_2"
       },
       "locked": {
-        "lastModified": 1710144871,
-        "narHash": "sha256-JKsjrOS0fvAFMfJQcZWQq4XWP7aJl+eltT59Xu7Wza8=",
+        "lastModified": 1711278756,
+        "narHash": "sha256-dIgldiqAq/L0dEtTJEyb8YadU48rLCBmfnlIonIb4uo=",
         "owner": "PumpedSardines",
         "repo": "workspace",
-        "rev": "b49eb10e6b668c81833dc6cc94a504ff75ad0d37",
+        "rev": "60522197f18414f39d5ff41290279ba99a4f571f",
         "type": "github"
       },
       "original": {
         "owner": "PumpedSardines",
-        "ref": "b49eb10",
+        "ref": "6052219",
         "repo": "workspace",
         "type": "github"
       }
