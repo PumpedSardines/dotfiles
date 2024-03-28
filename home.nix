@@ -55,6 +55,10 @@ in {
       stylua
       lua-language-server
 
+      # Golang
+      gopls
+      go
+
       # Zig
       zig
       zls
