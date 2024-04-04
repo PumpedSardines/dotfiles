@@ -41,6 +41,7 @@ in {
       python3
       gdbgui
       jq
+      zoxide
 
       # Neovim LSP
       # JavaScript
