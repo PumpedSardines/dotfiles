@@ -1,6 +1,7 @@
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }: {
   programs.fish = {
     enable = true;
@@ -24,11 +25,12 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
       alias ws="workspace"
+      zoxide init --cmd c fish | source
     '';
     functions = {
       alacritty-theme = {
         description = "Set the alacritty theme";
-        argumentNames = [ "theme" ];
+        argumentNames = ["theme"];
         body = ''
           # sed doesn't like symlinks, get the absolute path
           set -l light_path (realpath ~/.config/alacritty/light.toml)
@@ -50,7 +52,7 @@
       };
       theme = {
         description = "Set the color theme";
-        argumentNames = [ "theme" ];
+        argumentNames = ["theme"];
         body = ''
           alacritty-theme $theme
         '';
