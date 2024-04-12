@@ -25,7 +25,8 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
       alias ws="workspace"
-      zoxide init --cmd c fish | source
+
+      zoxide init --cmd cd fish | source
     '';
     functions = {
       alacritty-theme = {
