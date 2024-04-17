@@ -64,12 +64,12 @@ wk.register({
 	["h"] = { "<cmd>noh<CR>", "Hide selected" },
 	["/"] = { "<cmd>CommentToggle<CR>", "Comment toggle" },
 
-	["f"] = { "<cmd>Telescope find_files<cr>", "Find File Name" },
-	["w"] = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
 
 	-- === Telescope ===
 	["F"] = {
 		name = "+Find",
+		f = { "<cmd>Telescope find_files<cr>", "File Name" },
+		w = { ":Telescope live_grep<CR>", "Words" },
 		s = { ":Telescope lsp_workspace_symbols<CR>", "Workspace Symbols" },
 		d = { ":Telescope diagnostics<CR>", "Buffer Diagnostics" },
 		b = { ":Telescope buffers<CR>", "Buffers" },
