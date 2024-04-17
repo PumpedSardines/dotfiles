@@ -64,9 +64,8 @@ wk.register({
 	["h"] = { "<cmd>noh<CR>", "Hide selected" },
 	["/"] = { "<cmd>CommentToggle<CR>", "Comment toggle" },
 
-
 	-- === Telescope ===
-	["F"] = {
+	["f"] = {
 		name = "+Find",
 		f = { "<cmd>Telescope find_files<cr>", "File Name" },
 		w = { ":Telescope live_grep<CR>", "Words" },
