@@ -113,6 +113,7 @@ in {
         TERM = "xterm-256color";
       };
       font = {
+        size = 13;
         normal = {
           family = "IntelOneMono Nerd Font";
         };
