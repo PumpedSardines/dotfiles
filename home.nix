@@ -130,7 +130,8 @@ in {
   programs.tmux = {
     enable = true;
     escapeTime = 0;
-    mouse = true;
+    # NOTE: Turning of mouse since i use it too much
+    # mouse = true;
     keyMode = "vi";
     baseIndex = 1;
     extraConfig = ''
