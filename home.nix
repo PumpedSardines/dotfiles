@@ -109,11 +109,18 @@ in {
     enable = true;
     settings = {
       live_config_reload = true;
+      window = {
+        dimensions = {
+          columns = 100;
+          lines = 30;
+        };
+      };
       env = {
         TERM = "xterm-256color";
       };
       font = {
-        size = 13;
+        size = 11.75;
+        # size = 11;
         normal = {
           family = "IntelOneMono Nerd Font";
         };
@@ -130,8 +137,7 @@ in {
   programs.tmux = {
     enable = true;
     escapeTime = 0;
-    # NOTE: Turning of mouse since i use it too much
-    # mouse = true;
+    mouse = true;
     keyMode = "vi";
     baseIndex = 1;
     extraConfig = ''

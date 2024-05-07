@@ -43,7 +43,14 @@ in {
       nvim-dap-ui
 
       which-key-nvim
-      neo-tree-nvim
+      # neo-tree-nvim
+      (
+        vimPackageFromGitHub
+        "PumpedSardines"
+        "neo-tree.nvim"
+        "e245c99"
+        "sha256-jgAeeGHzyjZlGUuV0haCoFJA6pE2K0DdKM8rgj9NC1Y="
+      )
       tabby-nvim
       dressing-nvim
       gitsigns-nvim
@@ -79,6 +86,13 @@ in {
         "telescope-tabs"
         "c357235"
         "sha256-4mVDF/GOeQod89jeSkmbKoQpGzyL8dYaiwnZK3M4sFU="
+      )
+      (
+        vimPackageFromGitHub
+        "hedyhli"
+        "outline.nvim"
+        "bdfd2da"
+        "sha256-Il27Z/vQVJ3WSrFnTOUwBeAFCjopXwDhdsi7A5v1gzU="
       )
       (
         vimPackageFromGitHub
