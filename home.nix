@@ -15,6 +15,12 @@
   wso = pkgs.writeShellScriptBin "wso" ''
     workspace open -n "$1"
   '';
+  wsa = pkgs.writeShellScriptBin "wsa" ''
+    workspace add -n "$(pwd | sed "s/^.*\///")"
+  '';
+  wsr = pkgs.writeShellScriptBin "wsa" ''
+    workspace rm -n "$(pwd | sed "s/^.*\///")"
+  '';
 in {
   home.username = "fritiofrusck";
   home.homeDirectory = "/Users/fritiofrusck";
