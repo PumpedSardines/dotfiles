@@ -11,7 +11,7 @@
       url = "github:PumpedSardines/workspace/6052219";
     };
     tmux-status-line = {
-      url = "github:PumpedSardines/tmux-status-line/74c6a1d";
+      url = "github:PumpedSardines/tmux-status-line/3e84cc8";
     };
   };
 

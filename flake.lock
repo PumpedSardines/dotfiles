@@ -179,16 +179,16 @@
         "nixpkgsUnstable": "nixpkgsUnstable"
       },
       "locked": {
-        "lastModified": 1713185823,
-        "narHash": "sha256-rXU7pFKyUIWooWlXPWC6IuWnpmJG3DuMI4OCASRHegg=",
+        "lastModified": 1718354275,
+        "narHash": "sha256-2railEy+GHE+ZOFeuYBa/Yu9PrV0XDfrAqUFw0L6JbM=",
         "owner": "PumpedSardines",
         "repo": "tmux-status-line",
-        "rev": "74c6a1d6e6b13fc60cb5d5f53df133020d6e0f52",
+        "rev": "3e84cc88b5ad72b9299c7481b7d50602f1a07389",
         "type": "github"
       },
       "original": {
         "owner": "PumpedSardines",
-        "ref": "74c6a1d",
+        "ref": "3e84cc8",
         "repo": "tmux-status-line",
         "type": "github"
       }

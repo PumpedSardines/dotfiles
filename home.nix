@@ -6,9 +6,6 @@
   gdbgui,
   ...
 }: let
-  customPkgs = import ./pkgs.nix {
-    inherit pkgs;
-  };
   wss = pkgs.writeShellScriptBin "wss" ''
     workspace open -n "$(workspace ls | fzf | sed 's/:.*//')" && tmux -u a
   '';
@@ -18,9 +15,26 @@
   wsa = pkgs.writeShellScriptBin "wsa" ''
     workspace add -n "$(pwd | sed "s/^.*\///")"
   '';
-  wsr = pkgs.writeShellScriptBin "wsa" ''
+  wsr = pkgs.writeShellScriptBin "wsr" ''
     workspace rm -n "$(pwd | sed "s/^.*\///")"
   '';
+  # oxc_lsp = let
+  #   repo = pkgs.fetchFromGitHub {
+  #     owner = "oxc-project";
+  #     repo = "oxc";
+  #     rev = "9c31ed917866210ce122ab85738c80455a06ab6a";
+  #     sha256 = "sha256-igIC0DRGBmjFqzk/nNV7GW8itxGoBH1Sd2svxJVMm/I=";
+  #   };
+  #   manifest = (builtins.fromTOML (builtins.readFile "${repo}/crates/oxc_language_server/Cargo.toml")).package;
+  # in
+  #   pkgs.rustPlatform.buildRustPackage rec {
+  #     pname = manifest.name;
+  #     version = manifest.version;
+  #     buildInputs = [pkgs.nodejs_20];
+  #     cargoLock.lockFile = "${repo}/Cargo.lock";
+  #     cargoBuildFlags = "-p oxc_language_server";
+  #     src = repo;
+  #   };
 in {
   home.username = "fritiofrusck";
   home.homeDirectory = "/Users/fritiofrusck";
@@ -36,7 +50,7 @@ in {
   # ];
 
   home.packages =
-    [wss wso workspace tmux-status-line]
+    [wss wso wsa wsr workspace tmux-status-line]
     ++ (with pkgs; [
       # dvipng # Used for Anki to generate LaTeX images
 
@@ -48,6 +62,9 @@ in {
       gdbgui
       jq
       zoxide
+
+      gnupg
+      git-crypt
 
       # Neovim LSP
       # JavaScript
@@ -80,6 +97,7 @@ in {
       # Rust
       rustfmt
       rust-analyzer
+
       # nix
       alejandra
       nixd
@@ -106,7 +124,7 @@ in {
 
   programs.git = {
     enable = true;
-    ignores = [".nvim.lua" "node_modules/" ".envrc" ".direnv" ".DS_Store"];
+    ignores = [".fritiof.lua" "node_modules/" ".envrc" ".direnv" ".DS_Store"];
   };
 
   programs.fzf.enable = true;

@@ -43,6 +43,7 @@ in {
       nvim-dap-ui
 
       which-key-nvim
+      nvim-config-local
       # neo-tree-nvim
       (
         vimPackageFromGitHub

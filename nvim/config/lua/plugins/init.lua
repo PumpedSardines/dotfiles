@@ -1,3 +1,4 @@
+require("plugins.config-local")
 require("plugins.luasnip")
 
 require("plugins.copilot")
