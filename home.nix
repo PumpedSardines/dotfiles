@@ -110,6 +110,10 @@ in {
       source = ./alacritty;
       recursive = true;
     };
+    ".harvest" = {
+      source = ./secrets/harvest;
+      recursive = true;
+    };
   };
   programs.home-manager.enable = true;
 
