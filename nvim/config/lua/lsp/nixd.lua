@@ -1,3 +1,3 @@
-local lspconfig = require("lspconfig");
+local lspconfig = require("lspconfig")
 
-lspconfig.nixd.setup {}
+lspconfig.nixd.setup({})

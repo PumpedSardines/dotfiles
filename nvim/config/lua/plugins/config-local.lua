@@ -6,7 +6,7 @@ config_local.setup({
 	autocommands_create = false,
 	commands_create = true,
 	silent = false,
-	lookup_parents = false,
+	lookup_parents = true,
 })
 
 config_local.source()

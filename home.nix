@@ -84,6 +84,7 @@ in {
 
       gnupg
       git-crypt
+      git-lfs
 
       # Neovim LSP
       # JavaScript
@@ -144,6 +145,7 @@ in {
   programs.ripgrep.enable = true;
   programs.gh.enable = true;
   programs.lazygit.enable = true;
+  programs.helix.enable = true;
 
   programs.git = {
     enable = true;

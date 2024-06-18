@@ -8,6 +8,12 @@
   lib,
   ...
 }: let
+  vimPackageFromPluginDir = name: version:
+    pkgs.vimUtils.buildVimPlugin {
+      pname = "${lib.strings.sanitizeDerivationName name}";
+      version = version;
+      src = ./plugins/${name};
+    };
   vimPackageFromGitHub = owner: repo: rev: sha256:
     pkgs.vimUtils.buildVimPlugin {
       pname = "${lib.strings.sanitizeDerivationName (owner + "/" + repo)}";
@@ -51,6 +57,16 @@ in {
         "neo-tree.nvim"
         "e245c99"
         "sha256-jgAeeGHzyjZlGUuV0haCoFJA6pE2K0DdKM8rgj9NC1Y="
+      )
+      (
+        vimPackageFromPluginDir
+        "fritiof"
+        "1.0"
+      )
+      (
+        vimPackageFromPluginDir
+        "css-module-open"
+        "1.0"
       )
       tabby-nvim
       dressing-nvim
