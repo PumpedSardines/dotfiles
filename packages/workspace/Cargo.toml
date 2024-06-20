@@ -1,0 +1,13 @@
+[package]
+name = "workspace"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+homedir = "0.2.1"
+clap = { version = "4.5.7", features = ["derive"] }
+regex = "1.10.5"
+tmux_interface = "0.3.2"
+skim = "0.10.4"

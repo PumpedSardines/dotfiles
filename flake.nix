@@ -7,15 +7,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    workspace = {
-      url = "github:PumpedSardines/workspace/6052219";
-    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    workspace,
     ...
   }: let
     system = "aarch64-darwin";
@@ -25,7 +21,6 @@
       inherit pkgs;
       modules = [./home.nix];
       extraSpecialArgs = {
-        workspace = workspace.packages.${system}.default;
         gdbgui = nixpkgs.legacyPackages.x86_64-darwin.gdbgui;
       };
     };

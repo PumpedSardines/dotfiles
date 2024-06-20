@@ -5,17 +5,16 @@
   gdbgui,
   ...
 }: let
+  # Bash scripts to handle workspaces, this bash script handles searching and opening a workspace in tmux
   wss = pkgs.writeShellScriptBin "wss" ''
-    workspace open -n "$(workspace ls | fzf | sed 's/:.*//')" && tmux -u a
+    workspace
+
+    if [[ ! "$TERM_PROGRAM" = tmux ]]; then
+      tmux -u a
+    fi
   '';
-  wso = pkgs.writeShellScriptBin "wso" ''
-    workspace open -n "$1"
-  '';
-  wsa = pkgs.writeShellScriptBin "wsa" ''
-    workspace add -n "$(pwd | sed "s/^.*\///")"
-  '';
-  wsr = pkgs.writeShellScriptBin "wsr" ''
-    workspace rm -n "$(pwd | sed "s/^.*\///")"
+  wse = pkgs.writeShellScriptBin "wse" ''
+    nvim $(workspace config)
   '';
   tmux-status-line = let
     repo = pkgs.lib.cleanSource ./packages/tmux-status-line;
@@ -37,23 +36,16 @@
       cargoLock.lockFile = "${repo}/Cargo.lock";
       src = repo;
     };
-  # oxc_lsp = let
-  #   repo = pkgs.fetchFromGitHub {
-  #     owner = "oxc-project";
-  #     repo = "oxc";
-  #     rev = "9c31ed917866210ce122ab85738c80455a06ab6a";
-  #     sha256 = "sha256-igIC0DRGBmjFqzk/nNV7GW8itxGoBH1Sd2svxJVMm/I=";
-  #   };
-  #   manifest = (builtins.fromTOML (builtins.readFile "${repo}/crates/oxc_language_server/Cargo.toml")).package;
-  # in
-  #   pkgs.rustPlatform.buildRustPackage rec {
-  #     pname = manifest.name;
-  #     version = manifest.version;
-  #     buildInputs = [pkgs.nodejs_20];
-  #     cargoLock.lockFile = "${repo}/Cargo.lock";
-  #     cargoBuildFlags = "-p oxc_language_server";
-  #     src = repo;
-  #   };
+  workspace = let
+    repo = pkgs.lib.cleanSource ./packages/workspace;
+    manifest = (builtins.fromTOML (builtins.readFile "${repo}/Cargo.toml")).package;
+  in
+    pkgs.rustPlatform.buildRustPackage rec {
+      pname = manifest.name;
+      version = manifest.version;
+      cargoLock.lockFile = "${repo}/Cargo.lock";
+      src = repo;
+    };
 in {
   home.username = "fritiofrusck";
   home.homeDirectory = "/Users/fritiofrusck";
@@ -69,7 +61,7 @@ in {
   # ];
 
   home.packages =
-    [wss wso wsa wsr workspace tmux-status-line]
+    [wss wse workspace tmux-status-line]
     ++ (with pkgs; [
       # dvipng # Used for Anki to generate LaTeX images
 
@@ -85,6 +77,9 @@ in {
       gnupg
       git-crypt
       git-lfs
+      git-secret
+      azure-cli
+      kubernetes-helm
 
       # Neovim LSP
       # JavaScript
@@ -144,7 +139,14 @@ in {
 
   programs.ripgrep.enable = true;
   programs.gh.enable = true;
-  programs.lazygit.enable = true;
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui.theme = {
+        selectedLineBgColor = ["reverse"];
+      };
+    };
+  };
   programs.helix.enable = true;
 
   programs.git = {
@@ -152,7 +154,10 @@ in {
     ignores = [".fritiof.lua" "node_modules/" ".envrc" ".direnv" ".DS_Store"];
   };
 
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    tmux.enableShellIntegration = true;
+  };
 
   programs.alacritty = {
     enable = true;

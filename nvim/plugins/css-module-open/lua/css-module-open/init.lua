@@ -66,8 +66,10 @@ local get_file_path = function()
   return file_path, nil
 end
 
-local open_in_right_most_window = function(file_path)
+local open_to_the_right = function(file_path)
   local windows = {}
+
+  local current_win = vim.api.nvim_get_current_win()
 
   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
     local buf_id = vim.api.nvim_win_get_buf(win)
@@ -78,41 +80,38 @@ local open_in_right_most_window = function(file_path)
     end
   end
 
-  if #windows == 0 then
-    assert(false, "No windows found")
-    return
-  end
+  local col_of_current_win = vim.api.nvim_win_get_position(current_win)[2]
 
-  if #windows == 1 then
-    vim.cmd("vnew")
-    vim.cmd("edit " .. file_path)
-    return
-  end
-
-  local right_most = nil
-  local right_most_col = 0
+  local right_most_window = nil
+  local right_most_col = math.huge
 
   for _, win in ipairs(windows) do
     local col = vim.api.nvim_win_get_position(win)[2]
-    if col > right_most_col then
-      right_most = win
+    if col < right_most_col and col > col_of_current_win then
       right_most_col = col
+      right_most_window = win
     end
   end
 
-  vim.api.nvim_set_current_win(right_most)
+  if right_most_window then
+    vim.api.nvim_set_current_win(right_most_window)
+  else
+    vim.cmd("vnew")
+  end
+
   vim.cmd("edit " .. file_path)
 end
 
 M.open = function()
   local file_path, err = get_file_path()
+
   if err then
     print("Error: " .. err)
     return
   end
 
   -- Open new window with the file
-  open_in_right_most_window(file_path)
+  open_to_the_right(file_path)
 end
 
 return M
