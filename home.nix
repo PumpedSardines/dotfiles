@@ -73,7 +73,9 @@ in {
       gdbgui
       jq
       zoxide
+      du-dust
 
+      # other packages that i need to use alot
       gnupg
       git-crypt
       git-lfs
