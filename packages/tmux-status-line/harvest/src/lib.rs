@@ -1,13 +1,13 @@
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 
-pub struct Api {
-    username: String,
-    password: String,
+pub struct Api<'a> {
+    username: &'a str,
+    password: &'a str,
 }
 
-impl Api {
-    pub fn new(username: String, password: String) -> Api {
+impl<'a> Api<'a> {
+    pub fn new(username: &'a str, password: &'a str) -> Api<'a> {
         Api { username, password }
     }
 
@@ -15,8 +15,8 @@ impl Api {
         let client = reqwest::blocking::Client::new();
         let response = client
             .get("https://api.harvestapp.com/v2/time_entries")
-            .header("Authorization", format!("Bearer {}", self.password.clone()))
-            .header("Harvest-Account-ID", self.username.clone())
+            .header("Authorization", format!("Bearer {}", self.password))
+            .header("Harvest-Account-ID", self.username)
             .header("User-Agent", "statusline daemon")
             .send()?;
 

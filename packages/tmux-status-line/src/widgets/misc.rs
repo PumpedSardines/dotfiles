@@ -65,3 +65,21 @@ impl<'a> WidgetRenderer<String> for DateWidget<'a> {
         Some(value)
     }
 }
+
+pub struct TextWidget<'a> {
+    text: &'a str,
+}
+impl<'a> TextWidget<'a> {
+    pub fn from(text: &'a str) -> TextWidget<'a> {
+        TextWidget { text }
+    }
+}
+impl<'a> WidgetRenderer<String> for TextWidget<'a> {
+    fn get_data(&self) -> Result<String, Box<dyn std::error::Error>> {
+        Ok(self.text.to_string())
+    }
+
+    fn render_content(&self, value: String) -> Option<String> {
+        Some(value)
+    }
+}

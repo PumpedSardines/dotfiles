@@ -14,6 +14,7 @@ pub struct Widget<T> {
     renderer: Box<dyn WidgetRenderer<T>>,
     max_width: Option<usize>,
     enabled: bool,
+    padding: bool,
     fgf: Box<dyn Fn(&T) -> String>,
     bgf: Box<dyn Fn(&T) -> String>,
 }
@@ -23,6 +24,7 @@ impl<T> Widget<T> {
         Widget {
             renderer,
             max_width: None,
+            padding: true,
             enabled: true,
             fgf: Box::new(|_| "default".to_string()),
             bgf: Box::new(|_| "default".to_string()),
@@ -61,6 +63,11 @@ impl<T> Widget<T> {
         self
     }
 
+    pub fn padding(mut self, padding: bool) -> Widget<T> {
+        self.padding = padding;
+        self
+    }
+
     pub fn display(&self) -> Option<String> {
         if !self.enabled {
             return None;
@@ -84,6 +91,9 @@ impl<T> Widget<T> {
                         content
                     };
 
+                    if !self.padding {
+                        return Some(format!("#[fg={},bg={}]{}", fg, bg, content));
+                    }
                     return Some(format!("#[fg={},bg={}] {} ", fg, bg, content));
                 }
 

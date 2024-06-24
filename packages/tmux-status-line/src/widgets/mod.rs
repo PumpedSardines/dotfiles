@@ -4,4 +4,7 @@ mod harvest;
 pub use harvest::HarvestWidget;
 mod misc;
 pub use misc::DateWidget;
+pub use misc::TextWidget;
 pub use misc::UptimeWidget;
+mod disk;
+pub use disk::DiskWidget;

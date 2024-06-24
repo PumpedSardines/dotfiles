@@ -2,18 +2,19 @@ use tmux_status_line::Cache;
 use tmux_status_line::WidgetRenderer;
 
 pub struct HarvestWidget {
-    api: harvest::Api,
+    username: String,
+    password: String,
 }
-impl<'a> HarvestWidget {
+impl HarvestWidget {
     pub fn new(username: String, password: String) -> Self {
-        Self {
-            api: harvest::Api::new(username, password),
-        }
+        HarvestWidget { username, password }
     }
 }
 
-impl<'a> WidgetRenderer<Option<harvest::RunningTimerInfo>> for HarvestWidget {
+impl WidgetRenderer<Option<harvest::RunningTimerInfo>> for HarvestWidget {
     fn get_data(&self) -> Result<Option<harvest::RunningTimerInfo>, Box<dyn std::error::Error>> {
+        let api = harvest::Api::new(&self.username, &self.password);
+
         let cache = Cache::new("harvest", 20);
 
         let data = cache.load::<harvest::RunningTimerInfo>();
@@ -22,7 +23,7 @@ impl<'a> WidgetRenderer<Option<harvest::RunningTimerInfo>> for HarvestWidget {
             return Ok(Some(data));
         }
 
-        let resp: Option<harvest::RunningTimerInfo> = self.api.running_timer().ok().flatten();
+        let resp: Option<harvest::RunningTimerInfo> = api.running_timer().ok().flatten();
 
         if let Some(resp) = resp.clone() {
             cache.save(resp);
