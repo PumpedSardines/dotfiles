@@ -120,6 +120,9 @@ in {
       nixd
     ]);
 
+  home.sessionVariables = {
+    LANG = "en_GB";
+  };
   # Adds files recursively to a path and keeps them in sync with home-manager
   # Very convinient :)
   home.file = {
