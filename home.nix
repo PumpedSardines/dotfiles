@@ -227,6 +227,7 @@ in {
       set -g status-bg black
       set -g status-fg white
 
+      set -g mode-style bg=green,fg=#000000
       set-option -g status-right "#(tmux_status_line)"
     '';
   };
