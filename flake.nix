@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of fritiofrusck";
+  description = "Darwin configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -27,7 +27,7 @@
           ./configuration.nix
           home-manager.darwinModules.home-manager
           {
-            users.users.fritiofrusck.home = "/Users/fritiofrusck";
+            # users.users.fritiofrusck.home = "/Users/fritiofrusck";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.fritiofrusck = import ./home.nix;

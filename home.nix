@@ -48,7 +48,7 @@
     };
 in {
   home.username = "fritiofrusck";
-  # home.homeDirectory = "/Users/fritiofrusck";
+  home.homeDirectory = "/Users/fritiofrusck";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [./fish.nix ./nvim/nvim.nix];
