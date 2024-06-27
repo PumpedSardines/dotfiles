@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -25,8 +26,13 @@
       extra-platforms = x86_64-darwin aarch64-darwin
     '';
 
-  # Create /etc/bashrc that loads the nix-darwin environment.
-  # programs.zsh.enable = true;
+  environment.variables = {
+    EDITOR = "nvim";
+    LANG = "en_US.UTF-8";
+  };
+
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -36,7 +42,6 @@
   # Issue: https://github.com/nix-community/home-manager/issues/1341
   environment.systemPackages = with pkgs; [
     alacritty
-    emacs
   ];
 
   # https://github.com/nix-community/home-manager/issues/423
@@ -54,7 +59,7 @@
 
   # Keyboard
   system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToEscape = false;
+  system.keyboard.remapCapsLockToEscape = true;
 
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;

@@ -28,8 +28,8 @@
           ./configuration.nix
           home-manager.darwinModules.home-manager
           {
-            # users.users.fritiofrusck.name = "fritiofrusck";
-            # users.users.fritiofrusck.home = "/Users/fritiofrusck";
+            users.users.fritiofrusck.name = "fritiofrusck";
+            users.users.fritiofrusck.home = "/Users/fritiofrusck";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.fritiofrusck.imports = [ ./home.nix ];

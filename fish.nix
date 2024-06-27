@@ -19,6 +19,9 @@
       }
     ];
     shellInit = ''
+      # Random PATH extra i need to add
+      export PATH="$PATH:/etc/profiles/per-user/$USER/bin/"
+
       # Disable fish greeting
       set fish_greeting
       # Disable 'activate.fish' auto setting and displaying fish status

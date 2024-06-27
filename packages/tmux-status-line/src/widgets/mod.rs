@@ -8,3 +8,5 @@ pub use misc::TextWidget;
 pub use misc::UptimeWidget;
 mod disk;
 pub use disk::DiskWidget;
+mod spotify;
+pub use spotify::SpotifyWidget;

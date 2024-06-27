@@ -112,6 +112,10 @@ fn main() {
         .unwrap_or("".to_string());
 
     widgets![
+        w!(SpotifyWidget::new())
+            .fg("#ffffff")
+            .bg("#125724")
+            .max_width(50),
         w!(HarvestWidget::new(username, password))
             .fg("#ffffff")
             .bg("#c74900")

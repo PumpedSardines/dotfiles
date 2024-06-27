@@ -1,8 +1,6 @@
 {
   config,
   pkgs,
-  workspace,
-  gdbgui,
   ...
 }: let
   # Bash scripts to handle workspaces, this bash script handles searching and opening a workspace in tmux
@@ -119,10 +117,6 @@ in {
       alejandra
       nixd
     ]);
-
-  home.sessionVariables = {
-    LANG = "en_GB";
-  };
 
   # Adds files recursively to a path and keeps them in sync with home-manager
   # Very convinient :)

@@ -1,6 +1,6 @@
 use std::path::Path;
 use std::{error::Error, fmt};
-use sysinfo::{Components, Disks, Networks, System};
+use sysinfo::{Disks, System};
 use tmux_status_line::WidgetRenderer;
 
 struct HumanReadableSize(f64, String);
