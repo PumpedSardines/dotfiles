@@ -20,7 +20,7 @@
     system = "aarch64-darwin";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    darwinConfigurations."fritiofrusck" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."Fritiofs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
       system = system;
       modules = [./configuration.nix];
     };

@@ -3,16 +3,16 @@
   lib,
   ...
 }: {
-  nix.binaryCaches = [
+  nix.settings.substituters = [
     "https://cache.nixos.org/"
   ];
-  nix.binaryCachePublicKeys = [
+  nix.settings.trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
   ];
-  nix.trustedUsers = [
+  nix.settings.trusted-users = [
     "@admin"
   ];
-  users.nix.configureBuildUsers = true;
+  nix.configureBuildUsers = true;
 
   # Enable experimental nix command and flakes
   # nix.package = pkgs.nixUnstable;
@@ -45,15 +45,15 @@
   programs.nix-index.enable = true;
 
   # Fonts
-  fonts.enableFontDir = true;
-  fonts.fonts = with pkgs; [
-    recursive
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
-  ];
+  # fonts.enableFontDir = true;
+  # fonts.fonts = with pkgs; [
+  #   recursive
+  #   (nerdfonts.override {fonts = ["JetBrainsMono"];})
+  # ];
 
   # Keyboard
   system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToEscape = true;
+  system.keyboard.remapCapsLockToEscape = false;
 
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
