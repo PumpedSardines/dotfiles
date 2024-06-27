@@ -31,7 +31,7 @@ impl WidgetRenderer<Option<String>> for SpotifyWidget {
 			            set track_name to name of current track
 			            set artist_name to artist of current track
 			            if player state is playing then
-				            set now_playing to artist_name & \" - \" & track_name
+				            set now_playing to track_name & \" - \" & artist_name
 			            end if
 		            end if
 	            end tell
