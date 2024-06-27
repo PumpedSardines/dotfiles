@@ -70,6 +70,7 @@ in {
       nodejs_20
       cargo
       python3
+      lazydocker
       gdbgui
       jq
       zoxide
