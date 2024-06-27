@@ -147,7 +147,7 @@ in {
   programs.ripgrep.enable = true;
   programs.gh.enable = true;
   programs.lazygit = {
-    enable = true;
+    enable = false;
     settings = {
       gui.theme = {
         selectedLineBgColor = ["reverse"];

@@ -20,15 +20,21 @@
     system = "aarch64-darwin";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    darwinConfigurations."Fritiofs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      system = system;
-      modules = [./configuration.nix];
-    };
-    homeConfigurations."fritiofrusck" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [./home.nix];
-      extraSpecialArgs = {
-        gdbgui = nixpkgs.legacyPackages.x86_64-darwin.gdbgui;
+    darwinConfigurations = {
+      "Fritiofs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+        system = system;
+        modules = [
+          ./configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.fritiofrusck = import ./home.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
       };
     };
   };
