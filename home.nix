@@ -48,7 +48,7 @@
     };
 in {
   home.username = "fritiofrusck";
-  home.homeDirectory = "/Users/fritiofrusck";
+  # home.homeDirectory = "/Users/fritiofrusck";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [./fish.nix ./nvim/nvim.nix];
@@ -71,7 +71,6 @@ in {
       cargo
       python3
       lazydocker
-      gdbgui
       jq
       zoxide
       du-dust
@@ -147,7 +146,7 @@ in {
   programs.ripgrep.enable = true;
   programs.gh.enable = true;
   programs.lazygit = {
-    enable = false;
+    enable = true;
     settings = {
       gui.theme = {
         selectedLineBgColor = ["reverse"];

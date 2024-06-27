@@ -27,6 +27,7 @@
           ./configuration.nix
           home-manager.darwinModules.home-manager
           {
+            users.users.fritiofrusck.home = "/Users/fritiofrusck";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.fritiofrusck = import ./home.nix;
