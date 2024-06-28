@@ -110,12 +110,11 @@ fn main() {
         .as_ref()
         .map(|c| c.password.clone())
         .unwrap_or("".to_string());
-    let theme = get_color_scheme();
 
     widgets![
         w!(SpotifyWidget::new())
-            .fg("#000000")
-            .bg(everforest_color(Color::Statusline1, &theme))
+            .fg("#ffffff")
+            .bg("#125724")
             .max_width(50),
         w!(HarvestWidget::new(username, password))
             .fg("#ffffff")
