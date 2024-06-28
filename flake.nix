@@ -18,12 +18,16 @@
     ...
   }: let
     system = "aarch64-darwin";
-    pkgs = nixpkgs.legacyPackages.${system};
+    customPackages = import ./packages/pkgs.nix;
+    pkgs = nixpkgs.legacyPackages.${system}.extend (_: _: {
+      workspace = customPackages.workspace;
+      tmux-status-line = customPackages.tmux-status-line;
+    });
   in {
     darwinConfigurations = {
       "Fritiofs-MacBook-Pro" = darwin.lib.darwinSystem {
         system = system;
-        pkgs = import nixpkgs {system = "aarch64-darwin";};
+        pkgs = pkgs;
         modules = [
           ./configuration.nix
           home-manager.darwinModules.home-manager
@@ -32,11 +36,7 @@
             users.users.fritiofrusck.home = "/Users/fritiofrusck";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.fritiofrusck.imports = [./home.nix];
-            # home-manager.users.fritiofrusck = import ./home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
+            home-manager.users.fritiofrusck = import ./home-manager/home.nix;
           }
         ];
       };
