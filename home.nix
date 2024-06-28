@@ -14,6 +14,36 @@
   wse = pkgs.writeShellScriptBin "wse" ''
     nvim $(workspace config)
   '';
+  tmux-status-line = let
+    repo = pkgs.lib.cleanSource ./packages/tmux-status-line;
+    frameworks = pkgs.darwin.apple_sdk.frameworks;
+    manifest = (builtins.fromTOML (builtins.readFile "${repo}/Cargo.toml")).package;
+  in
+    pkgs.rustPlatform.buildRustPackage {
+      pname = manifest.name;
+      version = manifest.version;
+      buildInputs = [
+        frameworks.Security
+        frameworks.CoreFoundation
+        frameworks.CoreServices
+        frameworks.ApplicationServices
+        frameworks.SystemConfiguration
+        frameworks.CoreVideo
+        frameworks.AppKit
+      ];
+      cargoLock.lockFile = "${repo}/Cargo.lock";
+      src = repo;
+    };
+  workspace = let
+    repo = pkgs.lib.cleanSource ./packages/workspace;
+    manifest = (builtins.fromTOML (builtins.readFile "${repo}/Cargo.toml")).package;
+  in
+    pkgs.rustPlatform.buildRustPackage {
+      pname = manifest.name;
+      version = manifest.version;
+      cargoLock.lockFile = "${repo}/Cargo.lock";
+      src = repo;
+    };
 in {
   # home.username = "fritiofrusck";
   # home.homeDirectory = "/Users/fritiofrusck";
@@ -29,12 +59,8 @@ in {
   # ];
 
   home.packages =
-    [wss wse]
+    [wss wse workspace tmux-status-line]
     ++ (with pkgs; [
-      # Custom packages
-      workspace
-      tmux-status-line
-
       # dvipng # Used for Anki to generate LaTeX images
 
       # Main programs that i use a lot
