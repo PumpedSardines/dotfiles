@@ -19,7 +19,7 @@
     frameworks = pkgs.darwin.apple_sdk.frameworks;
     manifest = (builtins.fromTOML (builtins.readFile "${repo}/Cargo.toml")).package;
   in
-    pkgs.rustPlatform.buildRustPackage rec {
+    pkgs.rustPlatform.buildRustPackage {
       pname = manifest.name;
       version = manifest.version;
       buildInputs = [
@@ -38,7 +38,7 @@
     repo = pkgs.lib.cleanSource ./packages/workspace;
     manifest = (builtins.fromTOML (builtins.readFile "${repo}/Cargo.toml")).package;
   in
-    pkgs.rustPlatform.buildRustPackage rec {
+    pkgs.rustPlatform.buildRustPackage {
       pname = manifest.name;
       version = manifest.version;
       cargoLock.lockFile = "${repo}/Cargo.lock";
