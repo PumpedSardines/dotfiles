@@ -55,7 +55,7 @@ snippet rce react component default export
 		${2}
 	};
 
-	const ${1}: React.FC<${1}Props> = props => {
+	function ${1}(props: ${1}Props) => {
 		return ${0}
 	}
 
@@ -68,11 +68,11 @@ snippet rcem react component memo default export
 		${2}
 	};
 
-	const ${1}: React.FC<${1}Props> = React.memo(function ${1} (props) {
+	function ${1}(props: ${1}Props) => {
 		return ${0}
-	})
+	}
 
-	export default ${1};
+	export default React.memo(${1});
 
 snippet arce async react component default export
 	import React from "react";
@@ -81,7 +81,7 @@ snippet arce async react component default export
 		${2}
 	};
 
-	const ${1} = async (props: ${1}Props): Promise<JSX.Element> => {
+	async function ${1}(props: ${1}Props) => {
 		return ${0}
 	}
 
@@ -95,10 +95,6 @@ snippet rc react component
 	function ${1}(props: ${1}Props) {
 		return ${0}
 	}
-
-snippet sci server component ignore
-	{/* @ts-expect-error HACK: Server Component */}
-	${0}
 
 snippet rhe React hook default export
 	import React from 'react';

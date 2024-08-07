@@ -50,13 +50,12 @@ in {
 
       which-key-nvim
       nvim-config-local
-      # neo-tree-nvim
       (
         vimPackageFromGitHub
-        "PumpedSardines"
+        "nvim-neo-tree"
         "neo-tree.nvim"
-        "e245c99"
-        "sha256-jgAeeGHzyjZlGUuV0haCoFJA6pE2K0DdKM8rgj9NC1Y="
+        "206241e451c12f78969ff5ae53af45616ffc9b72"
+        "sha256-eNGuQEjAKsPuRDGaw95kCVOmP64ZDnUuFBppqtcrhZ4="
       )
       (
         vimPackageFromPluginDir
@@ -86,6 +85,7 @@ in {
 
       # Tweaks
       nvim-comment
+      editorconfig-nvim
       bufdelete-nvim
       autoclose-nvim
       indent-blankline-nvim

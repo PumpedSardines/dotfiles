@@ -72,6 +72,7 @@ in {
       jq
       zoxide
       du-dust
+      transmission
 
       # other packages that i need to use alot
       gnupg
@@ -80,6 +81,9 @@ in {
       git-secret
       azure-cli
       kubernetes-helm
+      sshfs
+      macfuse-stubs
+      openssh
 
       # Neovim LSP
       # JavaScript

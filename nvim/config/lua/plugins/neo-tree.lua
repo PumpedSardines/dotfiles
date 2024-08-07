@@ -40,6 +40,7 @@ require("neo-tree").setup({
 		use_libuv_file_watcher = true,
 		filtered_items = {
 			never_show = {
+				".git",
 				".DS_Store",
 				"thumbs.db",
 				".envrc",
