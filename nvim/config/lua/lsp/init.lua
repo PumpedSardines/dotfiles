@@ -2,14 +2,16 @@ require("lsp.tsserver")
 require("lsp.lua_ls")
 require("lsp.nixd")
 require("lsp.null_ls")
--- require("lsp.rust-analyzer")
 require("lsp.cssls")
 require("lsp.golang")
 require("lsp.zls")
 require("lsp.gleam")
+require("lsp.astro")
 
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
+-- require("lsp.rust-analyzer")
+
+-- local autocmd = vim.api.nvim_create_autocmd
+-- local augroup = vim.api.nvim_create_augroup
 
 -- DON'T LIKE THIS BEHVAIOUR ANYMORE
 -- -- set up code lens

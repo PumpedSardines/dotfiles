@@ -43,7 +43,20 @@ in {
       rustaceanvim
       none-ls-nvim
 
-      nvim-treesitter.withAllGrammars
+      (nvim-treesitter.withPlugins (_:
+        nvim-treesitter.allGrammars
+        ++ [
+          (pkgs.tree-sitter.buildGrammar {
+            language = "ejs";
+            version = "v0.21.0";
+            src = pkgs.fetchFromGitHub {
+              owner = "tree-sitter";
+              repo = "tree-sitter-embedded-template";
+              rev = "38d5004a797298dc42c85e7706c5ceac46a3f29f";
+              sha256 = "sha256-IPPCexaq42Em5A+kmrj5e/SFrXoKdWCTYAL/TWvbDJ0=";
+            };
+          })
+        ]))
 
       nvim-dap
       nvim-dap-ui

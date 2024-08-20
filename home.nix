@@ -84,6 +84,8 @@ in {
       sshfs
       macfuse-stubs
       openssh
+      openssl
+      ffmpeg-full
 
       # Neovim LSP
       # JavaScript
@@ -91,6 +93,7 @@ in {
       nodePackages.eslint_d # JavaScript linter
       nodePackages.typescript-language-server
       vscode-langservers-extracted # html, css, json, eslint
+      nodePackages."@astrojs/language-server"
 
       # Spell check
       nodePackages.cspell
