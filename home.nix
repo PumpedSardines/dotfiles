@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgsUnstable,
   ...
 }: let
   # Bash scripts to handle workspaces, this bash script handles searching and opening a workspace in tmux
@@ -50,6 +51,7 @@ in {
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [./fish.nix ./nvim/nvim.nix];
+  programs.neovim.package = pkgsUnstable.neovim;
 
   # Home Manager has problems adding pacakges to ~/Applications so this is needed
   # Not sure why?
@@ -59,7 +61,13 @@ in {
   # ];
 
   home.packages =
-    [wss wse workspace tmux-status-line]
+    [
+      wss
+      wse
+      workspace
+      tmux-status-line
+      pkgsUnstable.neovim
+    ]
     ++ (with pkgs; [
       # dvipng # Used for Anki to generate LaTeX images
 

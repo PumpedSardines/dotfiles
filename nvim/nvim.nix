@@ -5,6 +5,7 @@
 {
   config,
   pkgs,
+  pkgsUnstable,
   lib,
   ...
 }: let
@@ -28,6 +29,7 @@
 in {
   programs.neovim = {
     enable = true;
+    # package = pkgsUnstable.neovim;
     defaultEditor = true;
     withNodeJs = true;
     viAlias = true;
