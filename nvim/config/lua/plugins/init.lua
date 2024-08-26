@@ -1,4 +1,5 @@
-require("plugins.config-local")
+-- Too slow, maybe add this later
+-- require("plugins.config-local")
 require("plugins.luasnip")
 
 require("plugins.copilot")

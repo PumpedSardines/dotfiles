@@ -74,8 +74,9 @@ in {
       du-dust
       transmission
 
-      # other packages that i need to use alot
+      # other packages that i need to use
       gnupg
+      postgresql
       git-crypt
       git-lfs
       git-secret
@@ -86,6 +87,7 @@ in {
       openssh
       openssl
       ffmpeg-full
+      fontforge
 
       # Neovim LSP
       # JavaScript
@@ -187,7 +189,7 @@ in {
         size = 11.75;
         # size = 11;
         normal = {
-          family = "IntelOneMono Nerd Font";
+          family = "IntoneMono Nerd Font Light";
         };
       };
       mouse = {

@@ -38,6 +38,7 @@ in {
       plenary-nvim
       nvim-web-devicons
       nui-nvim
+      nvim-web-devicons
 
       nvim-lspconfig
       rustaceanvim
@@ -69,6 +70,21 @@ in {
         "neo-tree.nvim"
         "206241e451c12f78969ff5ae53af45616ffc9b72"
         "sha256-eNGuQEjAKsPuRDGaw95kCVOmP64ZDnUuFBppqtcrhZ4="
+      )
+      # https://github.com//render-markdown.nvim
+      (
+        vimPackageFromGitHub
+        "MeanderingProgrammer"
+        "render-markdown.nvim"
+        "7718ee87596b601ddbc93170de3a354f598185e4"
+        "sha256-9AkeYMD4CW/jgtaFlo/KRFYaeqSSy+UbX5p6VZxfmyo="
+      )
+      (
+        vimPackageFromGitHub
+        "yetone"
+        "avante.nvim"
+        "26409d94b5a0a51fcd512571403d26cca12033da"
+        "sha256-DNflPrgerO6QQ+s015iRhiLjvem3dnlsqAb3QQ1FSc0="
       )
       (
         vimPackageFromPluginDir
