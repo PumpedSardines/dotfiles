@@ -29,7 +29,7 @@
 in {
   programs.neovim = {
     enable = true;
-    # package = pkgsUnstable.neovim;
+    package = pkgsUnstable.neovim-unwrapped;
     defaultEditor = true;
     withNodeJs = true;
     viAlias = true;

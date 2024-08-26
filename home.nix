@@ -51,7 +51,6 @@ in {
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [./fish.nix ./nvim/nvim.nix];
-  programs.neovim.package = pkgsUnstable.neovim;
 
   # Home Manager has problems adding pacakges to ~/Applications so this is needed
   # Not sure why?
@@ -66,7 +65,6 @@ in {
       wse
       workspace
       tmux-status-line
-      pkgsUnstable.neovim
     ]
     ++ (with pkgs; [
       # dvipng # Used for Anki to generate LaTeX images
@@ -95,6 +93,7 @@ in {
       openssh
       openssl
       ffmpeg-full
+      logisim
       fontforge
 
       # Neovim LSP

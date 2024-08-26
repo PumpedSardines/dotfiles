@@ -16,6 +16,7 @@ require("plugins.gitsigns")
 require("plugins.outline")
 require("plugins.cmp")
 require("plugins.lualine")
+require("plugins.render-markdown")
 require("plugins.todo-comments")
 
 require("plugins.tweaks.comment")
