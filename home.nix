@@ -198,6 +198,15 @@ in {
         normal = {
           family = "IntoneMono Nerd Font Light";
         };
+        italic = {
+          family = "IntoneMono Nerd Font Light Italic";
+        };
+        bolditalic = {
+          family = "IntoneMono Nerd Font Italic";
+        };
+        bold = {
+          family = "IntoneMono Nerd Font";
+        };
       };
       mouse = {
         hide_when_typing = true;
