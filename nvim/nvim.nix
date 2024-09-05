@@ -29,7 +29,8 @@
 in {
   programs.neovim = {
     enable = true;
-    package = pkgsUnstable.neovim-unwrapped;
+    # Currently breaks my current config
+    # package = pkgsUnstable.neovim-unwrapped;
     defaultEditor = true;
     withNodeJs = true;
     viAlias = true;

@@ -33,7 +33,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.fritiofrusck.imports = [./home.nix];
-            # home-manager.users.fritiofrusck = import ./home.nix;
           }
         ];
       };

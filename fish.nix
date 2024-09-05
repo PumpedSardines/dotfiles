@@ -28,7 +28,7 @@
       set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
       alias ws="workspace"
-      alias tsm="transmission-remote"
+      alias ls="lsd"
 
       zoxide init --cmd cd fish | source
     '';

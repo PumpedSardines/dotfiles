@@ -77,8 +77,8 @@ in {
       lazydocker
       jq
       zoxide
-      du-dust
-      transmission
+      lsd
+      bitwarden-cli
 
       # other packages that i need to use
       gnupg
@@ -93,8 +93,8 @@ in {
       openssh
       openssl
       ffmpeg-full
-      logisim
       fontforge
+      rars
 
       # Neovim LSP
       # JavaScript
@@ -179,6 +179,29 @@ in {
     tmux.enableShellIntegration = true;
   };
 
+  programs.wezterm = {
+    enable = true;
+    extraConfig = "
+      local config = {}
+      if wezterm.config_builder then
+        config = wezterm.config_builder()
+      end
+
+      config.color_scheme = 'Everforest Dark Soft (Gogh)'
+      config.hide_tab_bar_if_only_one_tab = true
+      config.automatically_reload_config = true
+      config.font = wezterm.font 'IntoneMono Nerd Font'
+      config.window_padding = {
+        left = 0,
+        right = 0,
+        top = 0,
+        bottom = 0,
+      }
+
+      return config
+    ";
+  };
+
   programs.alacritty = {
     enable = true;
     settings = {
@@ -198,12 +221,12 @@ in {
         normal = {
           family = "IntoneMono Nerd Font Light";
         };
-        italic = {
-          family = "IntoneMono Nerd Font Light Italic";
-        };
-        bolditalic = {
-          family = "IntoneMono Nerd Font Italic";
-        };
+        # italic = {
+        #   family = "IntoneMono Nerd Font Light Italic";
+        # };
+        # bold_italic = {
+        #   family = "IntoneMono Nerd Font Italic";
+        # };
         bold = {
           family = "IntoneMono Nerd Font";
         };
