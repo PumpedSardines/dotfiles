@@ -1,7 +1,3 @@
 #!/bin/bash
 
-# For installing
-# nix run nix-darwin -- switch --flake ~/.config/home-manager
-#
-# For rebuilding
-nix run nix-darwin -- switch --flake ~/.config/home-manager
+nix run home-manager/master -- switch --flake ~/.config/home-manager
