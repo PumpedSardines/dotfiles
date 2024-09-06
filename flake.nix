@@ -2,7 +2,7 @@
   description = "Darwin configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?rev=f8e2ebd66d097614d51a56a755450d4ae1632df1";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs?rev=b833ff01a0d694b910daca6e2ff4a3f26dee478c";
     darwin.url = "github:LnL7/nix-darwin?ref=50581970f37f06a4719001735828519925ef8310";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager?rev=5b9156fa9a8b8beba917b8f9adbfd27bf63e16af";

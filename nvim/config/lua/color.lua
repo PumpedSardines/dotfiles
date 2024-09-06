@@ -6,8 +6,8 @@ local function update_theme(dark)
 	local is_dark = (dark and "dark" or "light")
 
 	vim.cmd("let g:everforest_background = 'medium'")
-	vim.cmd("colorscheme " .. theme)
 	vim.cmd("set background=" .. is_dark)
+	vim.cmd("colorscheme " .. theme)
 	return { theme, dark }
 end
 

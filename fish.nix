@@ -55,11 +55,31 @@
           echo "Invalid argument \"$theme\", can be either dark or light"
         '';
       };
+      wezterm-theme = {
+        description = "Set the wezterm theme";
+        argumentNames = ["theme"];
+        body = ''
+          set -l theme_path ~/.config/wezterm/theme.lua
+
+          if [ $theme = "dark" ]
+            echo "return \"Everforest Dark\"" > $theme_path
+            return
+          end
+
+          if [ $theme = "light" ]
+            echo "return \"Everforest Light\"" > $theme_path
+            return
+          end
+
+          echo "Invalid argument \"$theme\", can be either dark or light"
+        '';
+      };
       theme = {
         description = "Set the color theme";
         argumentNames = ["theme"];
         body = ''
           alacritty-theme $theme
+          wezterm-theme $theme
         '';
       };
       new_flake = {

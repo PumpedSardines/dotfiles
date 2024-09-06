@@ -141,6 +141,10 @@ in {
       source = ./alacritty;
       recursive = true;
     };
+    ".config/wezterm" = {
+      source = ./wezterm;
+      recursive = true;
+    };
     ".harvest" = {
       source = ./secrets/harvest;
       recursive = true;
@@ -159,7 +163,7 @@ in {
     enable = true;
     settings = {
       gui.theme = {
-        selectedLineBgColor = ["reverse"];
+        # selectedLineBgColor = ["reverse"];
       };
     };
   };
@@ -177,29 +181,6 @@ in {
   programs.fzf = {
     enable = true;
     tmux.enableShellIntegration = true;
-  };
-
-  programs.wezterm = {
-    enable = true;
-    extraConfig = "
-      local config = {}
-      if wezterm.config_builder then
-        config = wezterm.config_builder()
-      end
-
-      config.color_scheme = 'Everforest Dark Soft (Gogh)'
-      config.hide_tab_bar_if_only_one_tab = true
-      config.automatically_reload_config = true
-      config.font = wezterm.font 'IntoneMono Nerd Font'
-      config.window_padding = {
-        left = 0,
-        right = 0,
-        top = 0,
-        bottom = 0,
-      }
-
-      return config
-    ";
   };
 
   programs.alacritty = {
@@ -248,7 +229,7 @@ in {
     baseIndex = 1;
     extraConfig = ''
       set-option -sa terminal-overrides ',xterm-256color:RGB'
-      set -g default-terminal "screen-256color"
+      set -g default-terminal "tmux-256color"
 
       bind -r k select-pane -U
       bind -r j select-pane -D

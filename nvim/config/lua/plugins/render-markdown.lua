@@ -1,1 +1,2 @@
-require("render-markdown").setup({})
+-- Only works on nvim version 0.10
+-- require("render-markdown").setup({})
