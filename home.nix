@@ -6,7 +6,12 @@
 }: let
   # Bash scripts to handle workspaces, this bash script handles searching and opening a workspace in tmux
   wss = pkgs.writeShellScriptBin "wss" ''
+    #!/bin/bash
     workspace
+
+    if [ $? -eq 1 ]; then
+      exit 1
+    fi
 
     if [[ ! "$TERM_PROGRAM" = tmux ]]; then
       tmux -u a

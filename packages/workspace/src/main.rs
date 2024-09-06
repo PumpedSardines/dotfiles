@@ -53,7 +53,7 @@ fn main() {
 
         let item = search(items);
         if item.is_none() {
-            std::process::exit(0);
+            std::process::exit(1);
         }
         let item = item.unwrap();
 
@@ -128,7 +128,7 @@ fn main() {
                     .add_command(
                         SendKeys::new()
                             .target_pane(format!("{}:{}.1", workspace.name, window_index))
-                            .key(&format!("{}\n", window.command)),
+                            .key(&format!("{} Enter", window.command)),
                     )
                     .output()
                     .unwrap();
