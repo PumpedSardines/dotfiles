@@ -13,7 +13,7 @@ How it works:
 
 -- Helper so we easily can change the theme from nvim
 vim.cmd([[
-  command! -nargs=1 theme :call system('theme ' . <q-args>)
+  command! -nargs=1 Theme :call system('theme ' . <q-args>)
 ]])
 
 local fwatch = require("fwatch")
