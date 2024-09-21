@@ -84,6 +84,7 @@ in {
       zoxide
       lsd
       bitwarden-cli
+      go-task
 
       # other packages that i need to use
       gnupg
