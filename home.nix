@@ -244,10 +244,10 @@ in {
       set-option -sa terminal-overrides ',xterm-256color:RGB'
       set -g default-terminal "tmux-256color"
 
-      bind -r k select-pane -U
-      bind -r j select-pane -D
-      bind -r h select-pane -L
-      bind -r l select-pane -R
+      bind k select-pane -U
+      bind j select-pane -D
+      bind h select-pane -L
+      bind l select-pane -R
 
       bind-key -T copy-mode-vi y send -X copy-selection-and-cancel
       bind-key -T copy-mode-vi v send -X begin-selection
