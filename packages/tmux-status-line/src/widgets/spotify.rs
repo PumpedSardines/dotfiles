@@ -48,7 +48,7 @@ impl WidgetRenderer<Option<String>> for SpotifyWidget {
             return Ok(None);
         }
 
-        return Ok(Some(format!("\u{f001} {}", result)));
+        return Ok(Some(format!("\u{f001}  {}", result)));
     }
 
     #[cfg(not(target_os = "macos"))]

@@ -35,8 +35,8 @@ impl WidgetRenderer<Option<harvest::RunningTimerInfo>> for HarvestWidget {
     fn render_content(&self, value: Option<harvest::RunningTimerInfo>) -> Option<String> {
         if let Some(data) = value {
             return Some(match data.notes {
-                None => format!("\u{f017} {} - {}", data.hours, data.project),
-                Some(notes) => format!("\u{f017} {} - {} - {}", data.hours, notes, data.project),
+                None => format!("\u{f017}  {} - {}", data.hours, data.project),
+                Some(notes) => format!("\u{f017}  {} - {} - {}", data.hours, notes, data.project),
             });
         }
 
