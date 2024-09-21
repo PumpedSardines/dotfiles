@@ -7,6 +7,7 @@ require("lsp.golang")
 require("lsp.zls")
 require("lsp.gleam")
 require("lsp.astro")
+require("lsp.clangd")
 
 -- require("lsp.rust-analyzer")
 

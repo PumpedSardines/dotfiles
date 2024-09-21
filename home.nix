@@ -137,6 +137,11 @@ in {
       # nix
       alejandra
       nixd
+
+      # haskell
+      haskellPackages.haskell-language-server
+      ghc
+      haskellPackages.cabal-install
     ]);
 
   # Adds files recursively to a path and keeps them in sync with home-manager
