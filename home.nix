@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  pkgsUnstable,
+  dtekv-emulator,
   ...
 }: let
   # Bash scripts to handle workspaces, this bash script handles searching and opening a workspace in tmux
@@ -20,6 +20,7 @@
   wse = pkgs.writeShellScriptBin "wse" ''
     nvim $(workspace config)
   '';
+  test = pkgs.writeShellScriptBin "path_dtekv_emulator" "echo \"${dtekv-emulator}\"";
   tmux-status-line = let
     repo = pkgs.lib.cleanSource ./packages/tmux-status-line;
     frameworks = pkgs.darwin.apple_sdk.frameworks;
@@ -70,6 +71,8 @@ in {
       wse
       workspace
       tmux-status-line
+      dtekv-emulator
+      test
     ]
     ++ (with pkgs; [
       # dvipng # Used for Anki to generate LaTeX images
@@ -77,7 +80,6 @@ in {
       # Main programs that i use a lot
       httpie
       nodejs_20
-      cargo
       python3
       lazydocker
       jq
@@ -85,6 +87,7 @@ in {
       lsd
       bitwarden-cli
       go-task
+      cargo
 
       # other packages that i need to use
       gnupg
@@ -104,8 +107,10 @@ in {
 
       # Neovim LSP
       # JavaScript
+      deno
       prettierd # JavaScript formatter
       nodePackages.eslint_d # JavaScript linter
+      nodePackages.pnpm
       nodePackages.typescript-language-server
       vscode-langservers-extracted # html, css, json, eslint
       nodePackages."@astrojs/language-server"
@@ -138,6 +143,12 @@ in {
       # nix
       alejandra
       nixd
+
+      # PHP
+      php
+      php83Packages.php-cs-fixer
+      php83Packages.composer
+      nodePackages_latest.intelephense
 
       # haskell
       haskellPackages.haskell-language-server

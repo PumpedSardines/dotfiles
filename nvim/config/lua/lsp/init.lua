@@ -9,6 +9,7 @@ require("lsp.gleam")
 require("lsp.astro")
 require("lsp.clangd")
 require("lsp.hls")
+require("lsp.intelephense")
 
 -- require("lsp.rust-analyzer")
 

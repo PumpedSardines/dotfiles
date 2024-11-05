@@ -21,6 +21,7 @@ require("null-ls").setup({
 				config_file_preferred_name = ".cspell.json",
 			},
 		}),
+		-- b.formatting.phpcsfixer,
 		b.formatting.zigfmt,
 		b.formatting.alejandra,
 		b.formatting.black,
