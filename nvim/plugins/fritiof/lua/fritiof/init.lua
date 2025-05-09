@@ -2,6 +2,7 @@ local M = {}
 
 local settings = {
 	["lsp.css.enabled"] = { type = "boolean", default = true },
+	["ai.enabled"] = { type = "boolean", default = true },
 }
 
 local settings_values = {}

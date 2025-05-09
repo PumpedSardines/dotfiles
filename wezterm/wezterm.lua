@@ -7,6 +7,62 @@ end
 
 -- https://github.com/Gogh-Co/Gogh
 config.color_schemes = {
+  ["NeoVim Default Light"] = {
+    background = "#E0E2EA",
+    foreground = "#2c2e33",
+
+    cursor_bg = "#2c2e33",
+    cursor_fg = "#E0E2EA",
+
+    ansi = {
+      "#4f5258",
+      "#590008",
+      "#005523",
+      "#DBBC7F",
+      "#004c63",
+      "#470045",
+      "#007373",
+      "#EEF1F8",
+    },
+    brights = {
+      "#4f5258",
+      "#590008",
+      "#005523",
+      "#DBBC7F",
+      "#004c63",
+      "#470045",
+      "#007373",
+      "#EEF1F8",
+    },
+  },
+  ["NeoVim Default Dark"] = {
+    background = "#14161B",
+    foreground = "#E0E2EA",
+
+    cursor_bg = "#E0E2EA",
+    cursor_fg = "#14161B",
+
+    ansi = {
+      "#9b9ea4",
+      "#FFC0B9",
+      "#b4f6c0",
+      "#FCE094",
+      "#A6DBFF",
+      "#FFCAFF",
+      "#8cf8f7",
+      "#EEF1F8",
+    },
+    brights = {
+      "#9b9ea4",
+      "#FFC0B9",
+      "#b4f6c0",
+      "#FCE094",
+      "#A6DBFF",
+      "#FFCAFF",
+      "#8cf8f7",
+      "#EEF1F8",
+    },
+  },
   ["Everforest Dark"] = {
     background = "#2D353B",
     foreground = "#D3C6AA",
@@ -67,6 +123,7 @@ config.color_schemes = {
 }
 config.hide_tab_bar_if_only_one_tab = true
 config.automatically_reload_config = true
+config.window_close_confirmation = "NeverPrompt"
 
 config.font = wezterm.font("CaskaydiaCove Nerd Font")
 

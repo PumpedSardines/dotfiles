@@ -10,8 +10,7 @@ require("lsp.astro")
 require("lsp.clangd")
 require("lsp.hls")
 require("lsp.intelephense")
-
--- require("lsp.rust-analyzer")
+require("lsp.rust-analyzer")
 
 -- local autocmd = vim.api.nvim_create_autocmd
 -- local augroup = vim.api.nvim_create_augroup

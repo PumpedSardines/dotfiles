@@ -5,7 +5,7 @@
 {
   config,
   pkgs,
-  pkgsUnstable,
+  nixpkgsUnstable,
   lib,
   ...
 }: let
@@ -30,7 +30,7 @@ in {
   programs.neovim = {
     enable = true;
     # Currently breaks my current config
-    # package = pkgsUnstable.neovim-unwrapped;
+    package = nixpkgsUnstable.neovim-unwrapped;
     defaultEditor = true;
     withNodeJs = true;
     viAlias = true;
@@ -44,8 +44,9 @@ in {
       nvim-web-devicons
 
       nvim-lspconfig
-      rustaceanvim
       none-ls-nvim
+
+      nixpkgsUnstable.vimPlugins.avante-nvim
 
       (nvim-treesitter.withPlugins (_:
         nvim-treesitter.allGrammars
@@ -116,7 +117,8 @@ in {
       telescope-fzy-native-nvim
       nvim-window-picker
 
-      everforest
+      nixpkgsUnstable.vimPlugins.everforest
+
       lush-nvim
       (
         vimPackageFromGitHub

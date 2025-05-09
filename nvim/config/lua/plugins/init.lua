@@ -1,5 +1,5 @@
 -- Too slow, maybe add this later
--- require("plugins.config-local")
+require("plugins.config-local")
 require("plugins.luasnip")
 
 require("plugins.copilot")
@@ -18,6 +18,7 @@ require("plugins.cmp")
 require("plugins.lualine")
 require("plugins.render-markdown")
 require("plugins.todo-comments")
+require("plugins.avante")
 
 require("plugins.tweaks.comment")
 require("plugins.tweaks.comment")

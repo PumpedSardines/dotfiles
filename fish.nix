@@ -18,9 +18,12 @@
         };
       }
     ];
+    # NOTE: I gave up, adding brew :(
     shellInit = ''
       # Random PATH extra i need to add
       export PATH="$PATH:/etc/profiles/per-user/$USER/bin/"
+      export PATH="$PATH:/opt/homebrew/bin"
+      export ANTHROPIC_API_KEY="$(cat ~/.anthropic)"
 
       # Disable fish greeting
       set fish_greeting

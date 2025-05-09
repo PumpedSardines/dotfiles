@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  dtekv-emulator,
+  nixpkgsUnstable,
   ...
 }: let
   # Bash scripts to handle workspaces, this bash script handles searching and opening a workspace in tmux
@@ -20,7 +20,6 @@
   wse = pkgs.writeShellScriptBin "wse" ''
     nvim $(workspace config)
   '';
-  test = pkgs.writeShellScriptBin "path_dtekv_emulator" "echo \"${dtekv-emulator}\"";
   tmux-status-line = let
     repo = pkgs.lib.cleanSource ./packages/tmux-status-line;
     frameworks = pkgs.darwin.apple_sdk.frameworks;
@@ -71,8 +70,6 @@ in {
       wse
       workspace
       tmux-status-line
-      dtekv-emulator
-      test
     ]
     ++ (with pkgs; [
       # dvipng # Used for Anki to generate LaTeX images
@@ -83,18 +80,21 @@ in {
       python3
       lazydocker
       jq
+      nixpkgsUnstable.cargo
       zoxide
       lsd
-      bitwarden-cli
-      go-task
-      cargo
+      cmake
 
       # other packages that i need to use
+      samply
       gnupg
+      lldb
       postgresql
       git-crypt
       git-lfs
       git-secret
+      bitwarden-cli
+      go-task
       azure-cli
       kubernetes-helm
       sshfs
@@ -104,10 +104,12 @@ in {
       ffmpeg-full
       fontforge
       rars
+      qemu
+      dtc
 
       # Neovim LSP
       # JavaScript
-      deno
+      nixpkgsUnstable.deno
       prettierd # JavaScript formatter
       nodePackages.eslint_d # JavaScript linter
       nodePackages.pnpm
@@ -126,8 +128,8 @@ in {
       go
 
       # Zig
-      zig
-      zls
+      nixpkgsUnstable.zig
+      nixpkgsUnstable.zls
 
       # Java
       jdk21
@@ -137,8 +139,8 @@ in {
       erlang
 
       # Rust
-      rustfmt
-      rust-analyzer
+      nixpkgsUnstable.rustfmt
+      nixpkgsUnstable.rust-analyzer
 
       # nix
       alejandra
@@ -151,9 +153,11 @@ in {
       nodePackages_latest.intelephense
 
       # haskell
-      haskellPackages.haskell-language-server
+      haskell-language-server
       ghc
-      haskellPackages.cabal-install
+      stack
+      ormolu
+      cabal-install
     ]);
 
   # Adds files recursively to a path and keeps them in sync with home-manager
@@ -171,6 +175,10 @@ in {
       source = ./secrets/harvest;
       recursive = true;
     };
+    ".anthropic" = {
+      source = ./secrets/anthropic;
+      recursive = true;
+    };
   };
   programs.home-manager.enable = true;
 
@@ -185,7 +193,7 @@ in {
     enable = true;
     settings = {
       gui.theme = {
-        # selectedLineBgColor = ["reverse"];
+        selectedLineBgColor = ["reverse"];
       };
     };
   };
