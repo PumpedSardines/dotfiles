@@ -46,7 +46,6 @@ in {
       nvim-lspconfig
       none-ls-nvim
 
-      nixpkgsUnstable.vimPlugins.avante-nvim
       (
         vimPackageFromGitHub
         "yetone"
