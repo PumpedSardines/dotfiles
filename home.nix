@@ -116,6 +116,7 @@ in {
       nodePackages.typescript-language-server
       vscode-langservers-extracted # html, css, json, eslint
       nodePackages."@astrojs/language-server"
+      nest-cli
 
       # Spell check
       nodePackages.cspell
