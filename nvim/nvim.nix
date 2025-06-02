@@ -46,13 +46,14 @@ in {
       nvim-lspconfig
       none-ls-nvim
 
-      (
-        vimPackageFromGitHub
-        "yetone"
-        "avante.nvim"
-        "22418bff8bcac4377ebf975cd48f716823867979"
-        "sha256-qyeiDDjeReOr+TvgCWnKhb8FBN9t1YPFGvVqPvxXr0k="
-      )
+      nixpkgsUnstable.vimPlugins.avante-nvim
+      # (
+      #   vimPackageFromGitHub
+      #   "yetone"
+      #   "avante.nvim"
+      #   "22418bff8bcac4377ebf975cd48f716823867979"
+      #   "sha256-qyeiDDjeReOr+TvgCWnKhb8FBN9t1YPFGvVqPvxXr0k="
+      # )
 
       (nvim-treesitter.withPlugins (_:
         nvim-treesitter.allGrammars
