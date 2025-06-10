@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?rev=5ac14523b6ae564923fb952ca3a0a88f4bfa0322";
     nixpkgsUnstable.url = "github:nixos/nixpkgs?rev=43001f1cdf2f9fbb8c15a1d95d1392a3f581f276";
     home-manager = {
-      url = "github:nix-community/home-manager?rev=5b9156fa9a8b8beba917b8f9adbfd27bf63e16af";
+      url = "github:nix-community/home-manager?rev=7aae0ee71a17b19708b93b3ed448a1a0952bf111";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
