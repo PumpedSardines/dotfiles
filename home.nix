@@ -93,7 +93,6 @@ in {
       git-crypt
       git-lfs
       git-secret
-      bitwarden-cli
       go-task
       kubernetes-helm
       sshfs
