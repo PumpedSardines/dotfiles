@@ -29,8 +29,6 @@
 in {
   programs.neovim = {
     enable = true;
-    # Currently breaks my current config
-    package = nixpkgsUnstable.neovim-unwrapped;
     defaultEditor = true;
     withNodeJs = true;
     viAlias = true;
