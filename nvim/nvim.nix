@@ -121,21 +121,8 @@ in {
       )
 
       fwatch-nvim # To update the colortheme on the fly
-
-      (
-        vimPackageFromGitHub
-        "hedyhli"
-        "outline.nvim"
-        "bdfd2da"
-        "sha256-Il27Z/vQVJ3WSrFnTOUwBeAFCjopXwDhdsi7A5v1gzU="
-      )
-      (
-        vimPackageFromGitHub
-        "davidmh"
-        "cspell.nvim"
-        "2e65904"
-        "sha256-5QridFGEUVpW7fXTOrmbZqqFNDFgSDf0m+t2/0hT7L8="
-      )
+      outline-nvim
+      cspell-nvim
     ];
   };
   home.file = {
