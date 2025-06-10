@@ -3,9 +3,6 @@
  * 
  * This file contains an implementation of the quick sort algorithm,
  * which is an efficient, comparison-based sorting algorithm.
- * Average time complexity: O(n log n)
- * Worst case time complexity: O(n²)
- * Space complexity: O(log n)
  */
 
 /**
