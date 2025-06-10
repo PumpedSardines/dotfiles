@@ -52,7 +52,7 @@ in {
         "yetone"
         "avante.nvim"
         "f23550bd94e1e39ac0ed61baa3cb35fd822ee4a2"
-        ""
+        "sha256-tiBtLrlxFAHH7OXPzFmvumoAWGdbEHJ59PhtZvTS6dk="
       )
 
       (nvim-treesitter.withPlugins (_:
