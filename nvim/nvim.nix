@@ -46,14 +46,7 @@ in {
       nvim-lspconfig
       none-ls-nvim
 
-      # nixpkgsUnstable.vimPlugins.avante-nvim
-      (
-        vimPackageFromGitHub
-        "yetone"
-        "avante.nvim"
-        "f23550bd94e1e39ac0ed61baa3cb35fd822ee4a2"
-        "sha256-tiBtLrlxFAHH7OXPzFmvumoAWGdbEHJ59PhtZvTS6dk="
-      )
+      avante-nvim
 
       (nvim-treesitter.withPlugins (_:
         nvim-treesitter.allGrammars
@@ -75,13 +68,7 @@ in {
 
       which-key-nvim
       nvim-config-local
-      (
-        vimPackageFromGitHub
-        "nvim-neo-tree"
-        "neo-tree.nvim"
-        "206241e451c12f78969ff5ae53af45616ffc9b72"
-        "sha256-eNGuQEjAKsPuRDGaw95kCVOmP64ZDnUuFBppqtcrhZ4="
-      )
+      neo-tree-nvim
       (
         vimPackageFromPluginDir
         "fritiof"
