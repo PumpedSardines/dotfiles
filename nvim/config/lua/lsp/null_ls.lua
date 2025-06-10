@@ -29,18 +29,18 @@ require("null-ls").setup({
 		b.formatting.prettier.with({
 			command = "prettierd",
 		}),
-		b.code_actions.eslint_d,
-		b.diagnostics.eslint_d.with({
-			filter = function(diagnostic)
-				local possible_useless = {
-					diagnostic.code == "prettier/prettier",
-					not not diagnostic.message:find("Error: No ESLint configuration found"),
-				}
+		-- b.code_actions.eslint_d,
+		-- b.diagnostics.eslint_d.with({
+		-- 	filter = function(diagnostic)
+		-- 		local possible_useless = {
+		-- 			diagnostic.code == "prettier/prettier",
+		-- 			not not diagnostic.message:find("Error: No ESLint configuration found"),
+		-- 		}
 
-				return not vim.tbl_contains(possible_useless, true)
-			end,
-		}),
-		b.formatting.eslint_d,
+		-- 		return not vim.tbl_contains(possible_useless, true)
+		-- 	end,
+		-- }),
+		-- b.formatting.eslint_d,
 		b.formatting.rustfmt,
 	},
 })
