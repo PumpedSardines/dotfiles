@@ -95,7 +95,6 @@ in {
       git-secret
       bitwarden-cli
       go-task
-      azure-cli
       kubernetes-helm
       sshfs
       macfuse-stubs
