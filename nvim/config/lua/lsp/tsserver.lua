@@ -47,10 +47,10 @@ lspconfig.denols.setup({
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 })
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   on_attach = function(client)
     if require("lspconfig").util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
-      if client.name == "tsserver" then
+      if client.name == "ts_ls" then
         client.stop()
         return
       end
