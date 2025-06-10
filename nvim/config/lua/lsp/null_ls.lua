@@ -29,6 +29,7 @@ require("null-ls").setup({
 		b.formatting.prettier.with({
 			command = "prettierd",
 		}),
+		b.formatting.prisma_format
 		-- b.code_actions.eslint_d,
 		-- b.diagnostics.eslint_d.with({
 		-- 	filter = function(diagnostic)
