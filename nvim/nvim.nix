@@ -124,13 +124,6 @@ in {
 
       (
         vimPackageFromGitHub
-        "LukasPietzschmann"
-        "telescope-tabs"
-        "c357235"
-        "sha256-4mVDF/GOeQod89jeSkmbKoQpGzyL8dYaiwnZK3M4sFU="
-      )
-      (
-        vimPackageFromGitHub
         "hedyhli"
         "outline.nvim"
         "bdfd2da"
