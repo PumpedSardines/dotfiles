@@ -53,7 +53,7 @@
 in {
   home.username = "fritiofrusck";
   home.homeDirectory = "/Users/fritiofrusck";
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "23.11";
 
   imports = [./fish.nix ./nvim/nvim.nix];
 
@@ -151,13 +151,6 @@ in {
       php83Packages.php-cs-fixer
       php83Packages.composer
       nodePackages_latest.intelephense
-
-      # haskell
-      haskell-language-server
-      ghc
-      stack
-      ormolu
-      cabal-install
     ]);
 
   # Adds files recursively to a path and keeps them in sync with home-manager
