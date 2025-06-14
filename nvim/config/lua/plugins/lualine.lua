@@ -40,7 +40,7 @@ end
 function M:update_status()
   if self.processing then
     self.spinner_index = (self.spinner_index % spinner_symbols_len) + 1
-    return spinner_symbols[self.spinner_index]
+    return "CodeCompanion " + spinner_symbols[self.spinner_index]
   else
     return nil
   end
@@ -105,7 +105,7 @@ require("lualine").setup({
       {
         M,
         color = { fg = "#ff9e64" },
-        padding = { left = 1, right = 0 },
+        padding = { left = 0, right = 1 },
       },
     },
 		lualine_y = { "filetype", "progress" },
