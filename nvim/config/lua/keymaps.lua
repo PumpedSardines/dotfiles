@@ -62,70 +62,62 @@ end
 
 local wk = require("which-key")
 
-wk.register({
-  ["c"] = { "<cmd>Bdelete<CR>", "Close buffer" },
-  ["e"] = { "<cmd>Neotree toggle<CR>", "Toggle Explorer" },
-  ["s"] = { "<cmd>Outline<CR>", "Toggle Symbols Outline" },
-  ["m"] = { '<cmd>lua require("css-module-open").open()<CR>', "Open css module file" },
-  ["o"] = { "<cmd>Neotree focus<CR>", "Focus Explorer" },
-  ["h"] = { "<cmd>noh<CR>", "Hide selected" },
-  ["/"] = { "<cmd>CommentToggle<CR>", "Comment toggle" },
+wk.add({
+  mode = "n",
+  { "<leader>c", "<cmd>Bdelete<CR>", desc = "Close buffer" },
+  { "<leader>e", "<cmd>Neotree toggle<CR>", desc = "Toggle Explorer" },
+  { "<leader>s", "<cmd>Outline<CR>", desc = "Toggle Symbols Outline" },
+  { "<leader>m", '<cmd>lua require("css-module-open").open()<CR>', desc = "Open css module file" },
+  { "<leader>o", "<cmd>Neotree focus<CR>", desc = "Focus Explorer" },
+  { "<leader>h", "<cmd>noh<CR>", desc = "Hide selected" },
+  { "<leader>/", "<cmd>CommentToggle<CR>", desc = "Comment toggle" },
 
-  -- === Config Local ===
-  ["L"] = {
-    name = "+Config Local",
-    t = { "<cmd>ConfigLocalTrust<cr>", "Trust" },
-    i = { "<cmd>ConfigLocalIgnore<cr>", "Ignore" },
-  },
+  -- Config Local
+  { "<leader>L", group = "Config Local" },
+  { "<leader>Lt", "<cmd>ConfigLocalTrust<cr>", desc = "Trust" },
+  { "<leader>Li", "<cmd>ConfigLocalIgnore<cr>", desc = "Ignore" },
 
-  -- === Telescope ===
-  ["f"] = {
-    name = "+Find",
-    f = { "<cmd>Telescope find_files<cr>", "File Name" },
-    w = { ":Telescope live_grep<CR>", "Words" },
-    s = { ":Telescope lsp_document_symbols<CR>", "Document Symbols" },
-    S = { ":Telescope lsp_workspace_symbols<CR>", "Workspace Symbols" },
-    d = { ":Telescope diagnostics<CR>", "Buffer Diagnostics" },
-    b = { ":Telescope buffers<CR>", "Buffers" },
-    h = { ":Telescope help_tags<CR>", "Help Docs" },
-    T = { ":TodoTelescope<CR>", "Search Todo comments" },
-    t = { ":Telescope telescope-tabs list_tabs<CR>", "Tabs" },
-  },
-  -- === LSP ===
-  ["l"] = {
-    name = "+LSP",
-    ["d"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Hover Diagnostic" },
-    ["f"] = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format Code" },
-    ["a"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-    ["r"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Token" },
-    ["R"] = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "Goto references" },
-    ["c"] = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run code lens" },
-  },
-  -- === CODE EXPLORER ===
-  ["C"] = {
-    name = "+Code Explorer",
-    ["c"] = { "<cmd>CECompile<CR>", "Compile once" },
-    ["l"] = { "<cmd>CECompileLive<CR>", "Compile live" },
-    ["k"] = { "<cmd>CEShowTooltip<CR>", "Hover diagnostic in asm" },
-    ["w"] = { "<cmd>CEOpenWebsite<CR>", "Open in website" },
-    ["d"] = { "<cmd>CEDeleteCache<CR>", "Clear cache" },
-  },
-  -- === GIT ==
-  ["g"] = {
-    name = "+Git",
-    ["b"] = { '<cmd>lua require("gitsigns").blame_line()<cr>', "Blame Line" },
-  },
-  -- === Terminal ===
-  ["T"] = {
-    name = "+Terminal",
-    ["f"] = { "<cmd>ToggleTerm direction=float<CR>", "Float terminal" },
-  },
-  -- === Tabs ===
-  ["t"] = {
-    name = "+Tabs",
-    ["n"] = { "<cmd>tabnew<CR>", "New Tab" },
-    ["s"] = { "<cmd>tab split<CR>", "Open buffer in new tab" },
-    ["c"] = { "<cmd>tabclose<CR>", "Close current tab" },
-    ["r"] = { "<cmd>lua require('rename_tab')()<CR>", "Rename tab" },
-  },
-}, { mode = "n", prefix = "<leader>" })
+  -- Telescope
+  { "<leader>f", group = "Find" },
+  { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File Name" },
+  { "<leader>fw", ":Telescope live_grep<CR>", desc = "Words" },
+  { "<leader>fs", ":Telescope lsp_document_symbols<CR>", desc = "Document Symbols" },
+  { "<leader>fS", ":Telescope lsp_workspace_symbols<CR>", desc = "Workspace Symbols" },
+  { "<leader>fd", ":Telescope diagnostics<CR>", desc = "Buffer Diagnostics" },
+  { "<leader>fb", ":Telescope buffers<CR>", desc = "Buffers" },
+  { "<leader>fh", ":Telescope help_tags<CR>", desc = "Help Docs" },
+  { "<leader>fT", ":TodoTelescope<CR>", desc = "Search Todo comments" },
+  { "<leader>ft", ":Telescope telescope-tabs list_tabs<CR>", desc = "Tabs" },
+
+  -- LSP
+  { "<leader>l", group = "LSP" },
+  { "<leader>ld", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Hover Diagnostic" },
+  { "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", desc = "Format Code" },
+  { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code Action" },
+  { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename Token" },
+  { "<leader>lR", "<cmd>lua require('telescope.builtin').lsp_references()<CR>", desc = "Goto references" },
+  { "<leader>lc", "<cmd>lua vim.lsp.codelens.run()<CR>", desc = "Run code lens" },
+
+  -- Code Explorer
+  { "<leader>C", group = "Code Explorer" },
+  { "<leader>Cc", "<cmd>CECompile<CR>", desc = "Compile once" },
+  { "<leader>Cl", "<cmd>CECompileLive<CR>", desc = "Compile live" },
+  { "<leader>Ck", "<cmd>CEShowTooltip<CR>", desc = "Hover diagnostic in asm" },
+  { "<leader>Cw", "<cmd>CEOpenWebsite<CR>", desc = "Open in website" },
+  { "<leader>Cd", "<cmd>CEDeleteCache<CR>", desc = "Clear cache" },
+
+  -- Git
+  { "<leader>g", group = "Git" },
+  { "<leader>gb", '<cmd>lua require("gitsigns").blame_line()<cr>', desc = "Blame Line" },
+
+  -- Terminal
+  { "<leader>T", group = "Terminal" },
+  { "<leader>Tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Float terminal" },
+
+  -- Tabs
+  { "<leader>t", group = "Tabs" },
+  { "<leader>tn", "<cmd>tabnew<CR>", desc = "New Tab" },
+  { "<leader>ts", "<cmd>tab split<CR>", desc = "Open buffer in new tab" },
+  { "<leader>tc", "<cmd>tabclose<CR>", desc = "Close current tab" },
+  { "<leader>tr", "<cmd>lua require('rename_tab')()<CR>", desc = "Rename tab" },
+})

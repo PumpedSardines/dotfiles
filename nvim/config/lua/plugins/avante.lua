@@ -11,13 +11,13 @@ Implementations:
     - note: for class files, don't create a class name describe block. I.e don't do:
       describe(\"MyClass\", () => {
         describe(\"method\", () => {
-          test.skip(\"test\");
+          test.todo(\"test\");
         });
       });
     - Example:
       describe(\"feature1\", () => {
-        test.skip(\"test1\");
-        test.skip(\"test2\");
+        test.todo(\"test1\");
+        test.todo(\"test2\");
       });
 ]]
 
