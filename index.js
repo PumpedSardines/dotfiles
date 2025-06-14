@@ -1,101 +1,110 @@
 /**
- * Quick Sort implementation in JavaScript
+ * Unit Tests for Quick Sort implementation
  * 
- * This file contains an implementation of the quick sort algorithm,
- * which is an efficient, comparison-based sorting algorithm.
+ * This file contains tests for the quick sort algorithm functions
+ * using Jest testing framework.
  */
 
-/**
- * Swaps two elements in an array
- * @param {Array} arr - The array containing elements to swap
- * @param {Number} i - Index of first element
- * @param {Number} j - Index of second element
- */
-function swap(arr, i, j) {
-  const temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-}
+// Import the functions to test
+const { quickSort, partition, swap } = require('./quickSort');
 
-/**
- * Partitions the array around a pivot element
- * @param {Array} arr - The array to partition
- * @param {Number} low - Starting index
- * @param {Number} high - Ending index
- * @returns {Number} - The partition index
- */
-function partition(arr, low, high) {
-  // Using the last element as the pivot
-  const pivot = arr[high];
-  
-  // Index of smaller element
-  let i = low - 1;
-  
-  for (let j = low; j < high; j++) {
-    // If current element is smaller than or equal to pivot
-    if (arr[j] <= pivot) {
-      i++;
-      swap(arr, i, j);
-    }
-  }
-  
-  // Place pivot in its correct position
-  swap(arr, i + 1, high);
-  
-  // Return the partition index
-  return i + 1;
-}
+describe('Swap Function', () => {
+  test('swaps two elements in an array', () => {
+    const arr = [1, 2, 3, 4, 5];
+    swap(arr, 0, 4);
+    expect(arr).toEqual([5, 2, 3, 4, 1]);
+  });
 
-/**
- * Recursive implementation of quick sort
- * @param {Array} arr - The array to sort
- * @param {Number} low - Starting index
- * @param {Number} high - Ending index
- */
-function quickSortRecursive(arr, low, high) {
-  if (low < high) {
-    // Find the partition index
-    const partitionIndex = partition(arr, low, high);
+  test('handles swapping an element with itself', () => {
+    const arr = [1, 2, 3];
+    swap(arr, 1, 1);
+    expect(arr).toEqual([1, 2, 3]);
+  });
+
+  test('works with arrays of different data types', () => {
+    const arr = [1, 'two', { three: 3 }];
+    swap(arr, 0, 2);
+    expect(arr).toEqual([{ three: 3 }, 'two', 1]);
+  });
+});
+
+describe('Partition Function', () => {
+  test('correctly partitions an array around a pivot', () => {
+    const arr = [10, 7, 8, 9, 1, 5];
+    const pivotIndex = partition(arr, 0, arr.length - 1);
     
-    // Recursively sort elements before and after partition
-    quickSortRecursive(arr, low, partitionIndex - 1);
-    quickSortRecursive(arr, partitionIndex + 1, high);
-  }
-}
+    // Elements before pivotIndex should be <= pivot
+    for (let i = 0; i < pivotIndex; i++) {
+      expect(arr[i]).toBeLessThanOrEqual(arr[pivotIndex]);
+    }
+    
+    // Elements after pivotIndex should be > pivot
+    for (let i = pivotIndex + 1; i < arr.length; i++) {
+      expect(arr[i]).toBeGreaterThan(arr[pivotIndex]);
+    }
+  });
 
-/**
- * Main quick sort function
- * @param {Array} arr - The array to sort
- * @returns {Array} - The sorted array
- */
-function quickSort(arr) {
-  // Create a copy to avoid modifying the original array
-  const result = [...arr];
-  
-  // Call the recursive implementation
-  quickSortRecursive(result, 0, result.length - 1);
-  
-  return result;
-}
+  test('handles arrays with duplicate values', () => {
+    const arr = [5, 5, 5, 5, 5];
+    const pivotIndex = partition(arr, 0, arr.length - 1);
+    expect(pivotIndex).toBe(4); // All elements equal, so pivot should be at the end
+  });
 
-// Example usage
-function example() {
-  const unsortedArray = [10, 7, 8, 9, 1, 5, 3, 2, 6, 4];
-  console.log("Unsorted array:", unsortedArray);
-  
-  const sortedArray = quickSort(unsortedArray);
-  console.log("Sorted array:", sortedArray);
-  
-  // Original array remains unchanged
-  console.log("Original array:", unsortedArray);
-}
+  test('works with a single element array', () => {
+    const arr = [42];
+    const pivotIndex = partition(arr, 0, 0);
+    expect(pivotIndex).toBe(0);
+    expect(arr).toEqual([42]);
+  });
+});
 
-// Uncomment to run the example
-// example();
+describe('QuickSort Function', () => {
+  test('sorts an array of numbers in ascending order', () => {
+    const unsorted = [10, 7, 8, 9, 1, 5, 3, 2, 6, 4];
+    const sorted = quickSort(unsorted);
+    expect(sorted).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  });
 
-module.exports = {
-  quickSort,
-  partition,
-  swap
-};
+  test('does not modify the original array', () => {
+    const original = [10, 7, 8, 9, 1, 5];
+    const originalCopy = [...original];
+    quickSort(original);
+    expect(original).toEqual(originalCopy);
+  });
 
+  test('handles an empty array', () => {
+    const empty = [];
+    const result = quickSort(empty);
+    expect(result).toEqual([]);
+  });
+
+  test('handles an array with a single element', () => {
+    const single = [42];
+    const result = quickSort(single);
+    expect(result).toEqual([42]);
+  });
+
+  test('handles an array with duplicate elements', () => {
+    const duplicates = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
+    const result = quickSort(duplicates);
+    expect(result).toEqual([1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]);
+  });
+
+  test('handles an already sorted array', () => {
+    const sorted = [1, 2, 3, 4, 5];
+    const result = quickSort(sorted);
+    expect(result).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  test('handles a reverse sorted array', () => {
+    const reversed = [5, 4, 3, 2, 1];
+    const result = quickSort(reversed);
+    expect(result).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  test('sorts an array of strings', () => {
+    const strings = ['banana', 'apple', 'cherry', 'date'];
+    const result = quickSort(strings);
+    expect(result).toEqual(['apple', 'banana', 'cherry', 'date']);
+  });
+});
