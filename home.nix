@@ -84,7 +84,6 @@ in {
       zoxide
       lsd
       aider-chat-full
-      codecompanion-nvim
       cmake
 
       # other packages that i need to use
