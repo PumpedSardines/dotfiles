@@ -43,6 +43,20 @@ enum Commands {
     Config {},
 }
 
+/// Takes a string and converts it into how tmux will rename the session
+fn tmuxify(s: &str) -> String {
+    let mut res = String::new();
+    for c in s.chars() {
+        if c.is_alphanumeric() || c == '-' || c == '_' {
+            res.push(c);
+        } else {
+            res.push('_');
+        }
+    }
+
+    res
+}
+
 fn main() {
     let args = Args::parse();
 
@@ -58,18 +72,19 @@ fn main() {
         let item = item.unwrap();
 
         let workspace = workspaces.iter().find(|w| w.name == item).unwrap();
+        let name = tmuxify(&workspace.name);
 
         use tmux_interface::{HasSession, NewSession, NewWindow, SendKeys, SwitchClient, Tmux};
 
         let v = Tmux::new()
-            .add_command(HasSession::new().target_session(workspace.name.clone()))
+            .add_command(HasSession::new().target_session(name.clone()))
             .output()
             .unwrap();
 
         if v.status().code() == Some(0) {
             Tmux::new()
                 .add_command(
-                    SwitchClient::new().target_session(format!("{}", workspace.name.clone())),
+                    SwitchClient::new().target_session(format!("{}", name.clone())),
                 )
                 .output()
                 .unwrap();
@@ -88,12 +103,12 @@ fn main() {
 
         let new_session = match first_window.map(|win| win.clone().name).flatten() {
             Some(name) => NewSession::new()
-                .session_name(workspace.name.clone())
+                .session_name(name.clone())
                 .detached()
                 .window_name(name)
                 .start_directory(workspace.path.clone()),
             None => NewSession::new()
-                .session_name(workspace.name.clone())
+                .session_name(name.clone())
                 .detached()
                 .start_directory(workspace.path.clone()),
         };
@@ -103,11 +118,11 @@ fn main() {
         for window in rest_of_windows {
             let new_window = match window.map(|win| win.clone().name).flatten() {
                 Some(name) => NewWindow::new()
-                    .target_window(format!("{}:", workspace.name))
+                    .target_window(format!("{}:", name))
                     .start_directory(workspace.path.clone())
                     .window_name(name),
                 None => NewWindow::new()
-                    .target_window(format!("{}:", workspace.name))
+                    .target_window(format!("{}:", name))
                     .start_directory(workspace.path.clone()),
             };
 
@@ -127,7 +142,7 @@ fn main() {
                 Tmux::new()
                     .add_command(
                         SendKeys::new()
-                            .target_pane(format!("{}:{}.1", workspace.name, window_index))
+                            .target_pane(format!("{}:{}.1", name, window_index))
                             .key(&format!("{} Enter", window.command)),
                     )
                     .output()
@@ -137,7 +152,7 @@ fn main() {
 
         Tmux::new()
             .add_command(
-                SwitchClient::new().target_session(format!("{}:1", workspace.name.clone())),
+                SwitchClient::new().target_session(format!("{}:1", name.clone())),
             )
             .output()
             .unwrap();
