@@ -1,1 +1,1 @@
-require("window-picker").setup()
+-- require("window-picker").setup()

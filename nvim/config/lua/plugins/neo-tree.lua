@@ -18,9 +18,17 @@ require("neo-tree").setup({
   window = {
     width = 30,
     mappings = {
+      -- Old 
+      -- I also disabled window-picker
+      -- ["h"] = "close_node",
+      -- ["l"] = "open_with_window_picker",
+      -- ["w"] = nil,
       ["h"] = "close_node",
-      ["l"] = "open_with_window_picker",
+      ["l"] = nil,  -- Unmap opening with window picker
       ["w"] = nil,
+      ["<cr>"] = nil,  -- Unmap opening with Enter key
+      ["o"] = nil,  -- Unmap opening with 'o' key
+      ["double_click"] = nil,  -- Unmap opening with double-click
     },
   },
   filesystem = {
