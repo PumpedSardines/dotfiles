@@ -45,6 +45,7 @@ in {
       none-ls-nvim
 
       avante-nvim
+      codecompanion-nvim
 
       (nvim-treesitter.withPlugins (_:
         nvim-treesitter.allGrammars
