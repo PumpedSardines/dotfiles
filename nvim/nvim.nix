@@ -83,7 +83,7 @@ in {
         "css-module-open"
         "1.0"
       )
-      lightspeed-nvim
+      leap-nvim
       tabby-nvim
       dressing-nvim
       gitsigns-nvim
