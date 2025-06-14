@@ -83,6 +83,7 @@ in {
       nixpkgsUnstable.cargo
       zoxide
       lsd
+      aider-chat-full
       cmake
 
       # other packages that i need to use
