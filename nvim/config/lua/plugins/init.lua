@@ -7,7 +7,7 @@ require("plugins.colorthemes")
 
 require("plugins.treesitter")
 
-require("plugins.lightspeed")
+require("plugins.leap")
 require("plugins.which-key")
 require("plugins.neo-tree")
 require("plugins.telescope")
