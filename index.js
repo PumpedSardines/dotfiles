@@ -3,28 +3,51 @@
  * 
  * This file contains tests for the quick sort algorithm functions
  * using Jest testing framework.
+ * 
+ * Tests include:
+ * - Sorting arrays of integers (positive, negative, and mixed)
+ * - Handling edge cases (empty arrays, single-element arrays)
+ * - Performance benchmarking for different input sizes
+ * - Comparison with native Array.sort() method
+ * 
+ * Each test case validates that:
+ * 1. The array is properly sorted in ascending order
+ * 2. The original array is not modified (when implementing non-mutating sort)
+ * 3. All original elements are present in the sorted array
  */
 
 // Import the functions to test
 const { quickSort, partition, swap } = require('./quickSort');
 
 describe('Swap Function', () => {
-  test('swaps two elements in an array', () => {
-    const arr = [1, 2, 3, 4, 5];
-    swap(arr, 0, 4);
-    expect(arr).toEqual([5, 2, 3, 4, 1]);
+  test.each([
+    [[1, 2, 3, 4, 5], 0, 4, [5, 2, 3, 4, 1]],
+    [[10, 20, 30, 40, 50], 1, 3, [10, 40, 30, 20, 50]],
+    [[100, 200, 300], 0, 2, [300, 200, 100]],
+    [['a', 'b', 'c', 'd'], 0, 3, ['d', 'b', 'c', 'a']],
+  ])('swaps two elements in an array %j using indices %i and %i', (arr, idx1, idx2, expected) => {
+    swap(arr, idx1, idx2);
+    expect(arr).toEqual(expected);
   });
 
-  test('handles swapping an element with itself', () => {
-    const arr = [1, 2, 3];
-    swap(arr, 1, 1);
-    expect(arr).toEqual([1, 2, 3]);
+  test.each([
+    [[1, 2, 3], 1, 1, [1, 2, 3]],
+    [[10, 20, 30], 0, 0, [10, 20, 30]],
+    [['a', 'b', 'c'], 2, 2, ['a', 'b', 'c']],
+    [[true, false], 0, 0, [true, false]],
+  ])('handles swapping an element with itself in array %j at index %i', (arr, idx1, idx2, expected) => {
+    swap(arr, idx1, idx2);
+    expect(arr).toEqual(expected);
   });
 
-  test('works with arrays of different data types', () => {
-    const arr = [1, 'two', { three: 3 }];
-    swap(arr, 0, 2);
-    expect(arr).toEqual([{ three: 3 }, 'two', 1]);
+  test.each([
+    [[1, 'two', { three: 3 }], 0, 2, [{ three: 3 }, 'two', 1]],
+    [['a', 1, true], 0, 2, [true, 1, 'a']],
+    [[null, undefined, 'string'], 0, 1, [undefined, null, 'string']],
+    [[{}, [], 0], 1, 2, [{}, 0, []]],
+  ])('works with arrays of different data types %j swapping indices %i and %i', (arr, idx1, idx2, expected) => {
+    swap(arr, idx1, idx2);
+    expect(arr).toEqual(expected);
   });
 });
 
@@ -32,12 +55,12 @@ describe('Partition Function', () => {
   test('correctly partitions an array around a pivot', () => {
     const arr = [10, 7, 8, 9, 1, 5];
     const pivotIndex = partition(arr, 0, arr.length - 1);
-    
+
     // Elements before pivotIndex should be <= pivot
     for (let i = 0; i < pivotIndex; i++) {
       expect(arr[i]).toBeLessThanOrEqual(arr[pivotIndex]);
     }
-    
+
     // Elements after pivotIndex should be > pivot
     for (let i = pivotIndex + 1; i < arr.length; i++) {
       expect(arr[i]).toBeGreaterThan(arr[pivotIndex]);
