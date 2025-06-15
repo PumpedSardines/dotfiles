@@ -3,6 +3,17 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
+vim.diagnostic.config({
+  signs = {
+    priority = {
+      Error = 100,
+      Warn = 90,
+      Info = 80,
+      Hint = 70,
+    },
+  },
+})
+
 -- :help options
 local options = {
   backup = false,                         -- creates a backup file
@@ -47,6 +58,10 @@ vim.opt.shortmess:append("c")
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.diagnostic.config({
+  virtual_text = true
+})
 
 vim.cmd("set nonu")
 -- vim.cmd("set relativenumber")
