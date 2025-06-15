@@ -6,3 +6,8 @@ vim.cmd([[
     set termguicolors
   endif
 ]])
+
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', {
+  undercurl = true,
+  sp = '#FFA500', -- change to your desired color
+})
