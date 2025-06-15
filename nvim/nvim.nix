@@ -116,7 +116,7 @@ in {
         "neanias"
         "everforest-nvim"
         "2eb7c34"
-        ""
+        "sha256-LMIGPDhKZVqriGuPR9ICVo55QdyByLXOoRK82KfsRxU="
       )
       lush-nvim
       (
