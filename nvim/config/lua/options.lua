@@ -1,18 +1,7 @@
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
-vim.diagnostic.config({
-  signs = {
-    priority = {
-      Error = 100,
-      Warn = 90,
-      Info = 80,
-      Hint = 70,
-    },
-  },
-})
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError", priority = 100 })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn"  , priority = 90 })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo"  , priority = 80 })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint"   , priority = 70 })
 
 -- :help options
 local options = {
