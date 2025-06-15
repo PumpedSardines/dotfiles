@@ -10,7 +10,7 @@ if fritiof.get("ai.enabled") then
       inline = {
         adapter = {
           name = "anthropic",
-          model = 'claude-3.7-sonnet',
+          model = 'claude-3.5-sonnet',
         },
         -- adapter = "copilot",
         -- anthropic = function()
