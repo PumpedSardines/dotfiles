@@ -7,7 +7,15 @@ vim.cmd([[
   endif
 ]])
 
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', {
-  undercurl = true,
-  sp = '#FFA500', -- change to your desired color
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', {
+--   undercurl = true,
+--   sp = '#FFA500', -- change to your desired color
+-- })
+require("everforest").setup({
+  on_highlights = function(hl, palette)
+    hl.DiagnosticError = { fg = palette.none, bg = palette.none, sp = palette.red }
+    hl.DiagnosticWarn = { fg = palette.none, bg = palette.none,  sp = palette.yellow }
+    hl.DiagnosticInfo = { fg = palette.none, bg = palette.none,  sp = palette.blue }
+    hl.DiagnosticHint = { fg = palette.none, bg = palette.none,  sp = palette.green }
+  end,
 })
