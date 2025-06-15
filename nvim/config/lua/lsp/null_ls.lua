@@ -10,7 +10,7 @@ require("null-ls").setup({
 			diagnostic_config = {
 				underline = true,
 				virtual_text = false,
-				signs = true,
+				signs = false,
 				update_in_insert = false,
 				severity_sort = true,
 			},

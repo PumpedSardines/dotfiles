@@ -1,21 +1,3 @@
-/**
- * Unit Tests for Quick Sort implementation
- * 
- * This file contains tests for the quick sort algorithm functions
- * using Jest testing framework.
- * 
- * Tests include:
- * - Sorting arrays of integers (positive, negative, and mixed)
- * - Handling edge cases (empty arrays, single-element arrays)
- * - Performance benchmarking for different input sizes
- * - Comparison with native Array.sort() method
- * 
- * Each test case validates that:
- * 1. The array is properly sorted in ascending order
- * 2. The original array is not modified (when implementing non-mutating sort)
- * 3. All original elements are present in the sorted array
- */
-
 // Import the functions to test
 import { quickSort, partition, swap } from './quickSort.js';
 

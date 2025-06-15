@@ -12,14 +12,6 @@ if fritiof.get("ai.enabled") then
           name = "anthropic",
           model = 'claude-3.5-sonnet',
         },
-        -- adapter = "copilot",
-        -- anthropic = function()
-        --   return require("codecompanion.adapters").extend("anthropic", {
-        --     env = {
-        --       model = 'claude-3.7-sonnet'
-        --     },
-        --   })
-        -- end,
       },
     },
     prompt_library = {
