@@ -17,7 +17,7 @@
  */
 
 // Import the functions to test
-const { quickSort, partition, swap } = require('./quickSort');
+import { quickSort, partition, swap } from './quickSort.js';
 
 describe('Swap Function', () => {
   test.each([

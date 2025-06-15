@@ -7,7 +7,7 @@ if fritiof.get("ai.enabled") then
         adapter = "anthropic",
       },
       inline = {
-        adapter = "anthropic",
+        adapter = "copilot",
       },
     },
     prompt_library = {
