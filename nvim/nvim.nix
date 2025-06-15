@@ -111,8 +111,13 @@ in {
       telescope-fzy-native-nvim
       nvim-window-picker
 
-      nixpkgsUnstable.vimPlugins.everforest
-
+      (
+        vimPackageFromGitHub
+        "neanias"
+        "everforest-nvim"
+        "2eb7c34"
+        ""
+      )
       lush-nvim
       (
         vimPackageFromGitHub
