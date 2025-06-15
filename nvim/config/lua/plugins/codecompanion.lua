@@ -8,7 +8,10 @@ if fritiof.get("ai.enabled") then
       },
 
       inline = {
-        adapter = "anthropic",
+        adapter = {
+          name = "anthropic",
+          model = 'claude-3.7-sonnet',
+        },
         -- adapter = "copilot",
         -- anthropic = function()
         --   return require("codecompanion.adapters").extend("anthropic", {
