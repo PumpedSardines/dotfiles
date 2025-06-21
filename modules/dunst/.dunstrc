@@ -19,9 +19,9 @@
     # Horizontal padding
     horizontal_padding = 8
     # Width of frame around window
-    frame_width = 0
+    frame_width = 1
     # Color of frame around window
-    frame_color = "#4287f5"
+    frame_color = "#A7C080"
     # Sort messages by urgency
     sort = yes
     # Idle seconds
@@ -90,8 +90,8 @@
     close_all = ctrl+shift+space
 
 [urgency_normal]
-    background = "#202632"
-    foreground = "#ffffff"
+    background = "#2d353b"
+    foreground = "#D3C6AA"
     timeout = 5
 
 [urgency_critical]
