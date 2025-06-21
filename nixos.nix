@@ -1,4 +1,10 @@
-{
+{ pkgs, ... }: {
+  home.packages = with pkgs; [
+    pipewire    
+    discord
+    spotify
+    slack
+  ];
   imports = [
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
