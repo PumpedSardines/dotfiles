@@ -7,6 +7,7 @@
     blueman
     brightnessctl
     playerctl
+    wl-clipboard
   ];
   imports = [
     ./modules/nvim/nvim.nix

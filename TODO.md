@@ -2,7 +2,8 @@
 
 ## General
 - [ ] Fix dark mode button
-- [ ] Fix screen brightness
+- [X] Fix screen brightness
+- [ ] Fix aao (Swedish)
 - [ ] Fix AI in nvim
 
 ## Custom design
