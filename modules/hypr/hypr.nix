@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     hyprpaper
+    hyprshot
   ];
   home.file = {
     ".config/hypr" = {
