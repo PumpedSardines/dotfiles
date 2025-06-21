@@ -51,7 +51,6 @@
     vertical_alignment = center
     # Show age of message if message is older than x seconds
     show_age_threshold = -1
-    # Split notifications into multiple lines
     word_wrap = no
     # If message too long, add ellipsize to...
     ellipsize = middle
@@ -60,7 +59,7 @@
     # Stack duplicate notifications
     stack_duplicates = true
     # Hide number of duplicate notifications
-    hide_duplicate_count = true
+    hide_duplicate_count = false
     # Show indicatiors  for urls and actions
     show_indicators = no
    
