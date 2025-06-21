@@ -46,7 +46,7 @@
     # %% - literal %
     format = "<b>%a</b>\n<i>%s</i>\n%b"
     # Align message text horizontally
-    alignment = right
+    alignment = left
     # Align message text vertically
     vertical_alignment = center
     # Show age of message if message is older than x seconds
