@@ -15,7 +15,7 @@
 
     # NixOS specific
     ./modules/hypr/hypr.nix
-    ./modules/nautilus/nautilus.nix
+    ./modules/dolphin/dolphin.nix
     ./modules/electron-flags/electron-flags.nix
     ./modules/dunst/dunst.nix
     ./modules/waybar/waybar.nix
