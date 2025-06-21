@@ -39,7 +39,7 @@
     packages = with pkgs; [];
   };
 
-  programs.xsever.xkb.enable = true;
+  programs.xserver.xkb.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
