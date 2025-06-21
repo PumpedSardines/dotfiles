@@ -39,7 +39,13 @@
     packages = with pkgs; [];
   };
 
-  programs.xserver.xkb.enable = true;
+  services.xserver.enable = true;
+  services.xserver.layout = "custom";
+
+  services.xserver.extraLayouts.custom = {
+    description = "US layout with ao on AltGr+[";
+    symbolsFile = ./xkb/us-custom.xkb;
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
