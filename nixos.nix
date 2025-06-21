@@ -4,6 +4,7 @@
     discord
     spotify
     slack
+    blueman
   ];
   imports = [
     ./modules/nvim/nvim.nix

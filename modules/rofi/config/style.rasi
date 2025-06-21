@@ -15,7 +15,7 @@ configuration {
 }
 
 window { 
-	width: 35%;
+	width: 100%;
 	transparency: "real";
 	orientation: vertical;
 	border-color: #74adc0;
@@ -25,6 +25,7 @@ window {
 
 mainbox {
 	children: [inputbar, listview];
+  width: 35%;
 }
 
 
