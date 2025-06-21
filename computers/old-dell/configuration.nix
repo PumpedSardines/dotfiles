@@ -44,6 +44,7 @@
 
   services.xserver.xkb.extraLayouts.custom = {
     description = "US layout with ao on AltGr+[";
+    languages = ["eng"];
     symbolsFile = ./us-custom.xkb;
   };
 
