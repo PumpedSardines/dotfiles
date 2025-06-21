@@ -16,6 +16,7 @@
 
     # NixOS specific
     ./modules/hypr/hypr.nix
+    ./modules/nwg/nwg.nix
     ./modules/network-manager/network-manager.nix
     ./modules/dolphin/dolphin.nix
     ./modules/electron-flags/electron-flags.nix
