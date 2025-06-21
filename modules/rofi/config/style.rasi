@@ -7,7 +7,7 @@
 
 
 configuration {
-	show-icons: false;
+	show-icons: true;
   icon-theme: "Papirus";
 	location: 0;
 	font: "JetBrainsMono Nerd Font 12";	
@@ -15,17 +15,19 @@ configuration {
 }
 
 window { 
-	width: 100%;
+	width: 35%;
+  // height: 20%;
 	transparency: "real";
 	orientation: vertical;
-	border-color: #74adc0;
   border: 1 1 1 1;
+  background-color: #00000066;
   border-color:  #1E2326;
+  border-radius: 8px;
+  children: [mainbox];
 }
 
 mainbox {
 	children: [inputbar, listview];
-  width: 35%;
 }
 
 
@@ -55,12 +57,13 @@ element-icon {
 }
 
 listview {
-	columns: 1;
+	columns: 2;
 	lines: 9;
 	padding: 8 0;
 	fixed-height: true;
 	fixed-columns: true;
 	fixed-lines: true;
+  height: 20%;
 }
 
 // INPUT BAR 
@@ -76,10 +79,16 @@ inputbar {
   // background-image: url("~/Images/giraffe.jpg", width);
 	// padding: 180 0 0;
 	margin: 0 0 0 0;
+  border: 0 0 1 0;
+  padding: 4 0 8 12;
+  border-color:  #1E2326;
+  border-radius: 0px;
 } 
 
+/*
 prompt {
 	text-color: #aaffaa;
-	padding: 10 6 0 10;
-	margin: 0 -2 0 0;
+	padding: 8 6 0 8;
+	margin: 0 2 0 0;
 }
+*/
