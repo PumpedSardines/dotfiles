@@ -6,6 +6,7 @@
     slack
     blueman
     brightnessctl
+    playerctl
   ];
   imports = [
     ./modules/nvim/nvim.nix
