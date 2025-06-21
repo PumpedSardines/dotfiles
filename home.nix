@@ -6,12 +6,6 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./modules/nvim/nvim.nix
-    ./modules/tmux/tmux.nix
-    ./modules/git/git.nix
-    ./modules/lazygit/lazygit.nix
-    ./modules/wezterm/wezterm.nix
-    ./modules/misc/misc.nix
     ./nixos.nix
   ];
 }

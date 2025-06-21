@@ -6,6 +6,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos";
+  hardware.bluetooth.enable = true;
 
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Stockholm";
