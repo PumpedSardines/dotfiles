@@ -6,6 +6,7 @@
     slack
     blueman
     brightnessctl
+    localectl
     playerctl
     wl-clipboard
   ];
