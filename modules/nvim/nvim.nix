@@ -33,6 +33,8 @@ in {
     alejandra
     lua-language-server
     stylua
+    rustfmt
+    rust-analyzer
   ];
   programs.neovim = {
     enable = true;
