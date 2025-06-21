@@ -19,7 +19,7 @@
     # Horizontal padding
     horizontal_padding = 8
     # Width of frame around window
-    frame_width = 1
+    frame_width = 0
     # Color of frame around window
     frame_color = "#4287f5"
     # Sort messages by urgency
@@ -78,7 +78,7 @@
     class = Dunst
     startup_notification = false
     verbosity = mesg
-    corner_radius = 15
+    corner_radius = 8
     ignore_dbusclose = false
 
     mouse_left_click = close_current
