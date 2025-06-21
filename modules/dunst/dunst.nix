@@ -1,3 +1,9 @@
-{
-  services.dunst.enable = true;
+{ pkgs, ... }: {
+  home.packages = with pkgs; [
+    libnotify
+  ];
+  services.dunst = {
+    enable = true;
+    configFile = ./dunstrc;
+  };
 }
