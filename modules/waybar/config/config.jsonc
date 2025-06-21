@@ -17,6 +17,8 @@
 	],
   "group/perf": {
     "modules": [
+      "temperature",
+      "custom/divider",
       "disk",
       "custom/divider",
       "cpu",
@@ -68,6 +70,13 @@
     "min": 0,
     "max": 100,
     "orientation": "horizontal"
+  },
+   "temperature": {
+      // "thermal-zone": 2,
+      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      // "critical-threshold": 80,
+      // "format-critical": "{temperatureC}°C ",
+      "format": "Temp: {temperatureC}°C"
   },
   "battery": {
       "interval": 60,

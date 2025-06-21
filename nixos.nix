@@ -5,6 +5,7 @@
     spotify
     slack
     blueman
+    brightnessctl
   ];
   imports = [
     ./modules/nvim/nvim.nix
