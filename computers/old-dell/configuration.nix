@@ -44,7 +44,7 @@
 
   services.xserver.extraLayouts.custom = {
     description = "US layout with ao on AltGr+[";
-    symbolsFile = ./xkb/us-custom.xkb;
+    symbolsFile = ./us-custom.xkb;
   };
 
   fonts.packages = with pkgs; [
