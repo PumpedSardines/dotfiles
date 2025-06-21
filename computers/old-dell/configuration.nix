@@ -39,9 +39,7 @@
     packages = with pkgs; [];
   };
 
-  services.xserver.enable = true;
-  # services.xserver.layout = "custom";
-
+  # services.xserver.enable = true;
   services.xserver.xkb.extraLayouts.custom = {
     description = "US layout with ao on AltGr+[";
     languages = ["eng"];
