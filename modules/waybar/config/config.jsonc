@@ -1,0 +1,38 @@
+{
+	"layer": "top",
+	"position": "top",
+	"margin": 0,
+	"height": 20,
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+    "cpu",
+		"disk",
+		"memory",
+		"battery"
+	],
+	"clock": {
+		"actions": {
+		}
+	},
+	"cpu": {
+	},
+	"battery": {
+		"statuses": {
+			"good": 80,
+			"warning": 40,
+			"critical": 15
+		}	
+	},
+  "hyprland/workspaces": {
+  },
+	"memory": {
+		"format": "{}%",
+		"interval": 1
+	}
+
+}

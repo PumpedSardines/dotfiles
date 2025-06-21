@@ -1,0 +1,84 @@
+@theme "/dev/null"
+
+* {
+	bg: #2D353B;
+	background-color: @bg;
+}
+
+
+configuration {
+	show-icons: false;
+  icon-theme: "Papirus";
+	location: 0;
+	font: "JetBrainsMono Nerd Font 12";	
+	display-drun: "";
+}
+
+window { 
+	width: 25%;
+	transparency: "real";
+	orientation: vertical;
+	border-color: #74adc0;
+  border: 1 1 1 1;
+  border-color:  #1E2326;
+}
+
+mainbox {
+	children: [inputbar, listview];
+}
+
+
+// ELEMENT
+// -----------------------------------
+
+element {
+	padding: 4 16;
+	text-color: #D3C6AA;
+}
+
+element selected {
+  color: #2D353B;
+	background-color: #A7C080;
+}
+
+element-text {
+	background-color: inherit;
+	text-color: inherit;
+}
+
+element-icon {
+	size: 16 px;
+	background-color: inherit;
+	padding: 0 6 0 0;
+	alignment: vertical;
+}
+
+listview {
+	columns: 1;
+	lines: 9;
+	padding: 8 0;
+	fixed-height: true;
+	fixed-columns: true;
+	fixed-lines: true;
+}
+
+// INPUT BAR 
+//------------------------------------------------
+
+entry {
+	text-color: #EFE7DD;
+	padding: 8 8 0 0;
+	margin: 0 0 0 0;
+}
+
+inputbar {
+  // background-image: url("~/Images/giraffe.jpg", width);
+	// padding: 180 0 0;
+	margin: 0 0 0 0;
+} 
+
+prompt {
+	text-color: #aaffaa;
+	padding: 10 6 0 10;
+	margin: 0 -2 0 0;
+}

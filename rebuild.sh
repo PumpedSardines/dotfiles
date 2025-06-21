@@ -1,3 +1,1 @@
-#!/bin/bash
-
-nix run home-manager/master -- switch --flake ~/.config/home-manager
+sudo nixos-rebuild switch --flake .#fritiof-old-dell

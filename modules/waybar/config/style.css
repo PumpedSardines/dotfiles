@@ -1,0 +1,43 @@
+#waybar {
+	background-color: rgb(45, 53, 59);
+  border-bottom: 1px solid #1E2326;
+	border-radius: 0px;
+	color: #D3C6AA;
+	font-size: 14px;
+}
+
+.module {
+}
+
+.modules-right .module {
+	margin-right: 8px
+}
+
+.good {
+  background-color: red;
+}
+
+#workspaces {
+  padding: 0px;
+  /* padding-left: 16px; */
+}
+
+#workspaces button {
+  min-height: unset;
+  min-width: unset;
+  background-color: #343F44;
+  border-radius: 0;
+	color: #D3C6AA;
+}
+
+#workspaces button.active {
+  border-radius: 0;
+  background-color: #A7C080;
+	color: rgb(45, 53, 59);
+}
+
+#workspaces button.focused {
+  border-radius: 0;
+  background-color: #A7C080;
+	color: rgb(45, 53, 59);
+}

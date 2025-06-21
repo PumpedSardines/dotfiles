@@ -1,23 +1,21 @@
 {
-  description = "Home Manager configuration of fritiofrusck";
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?rev=f8e2ebd66d097614d51a56a755450d4ae1632df1";
-    home-manager = {
-      url = "github:nix-community/home-manager?rev=5b9156fa9a8b8beba917b8f9adbfd27bf63e16af";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+  inputs = { nixpkgs.url = "nixpkgs/nixos-25.05";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  }: let
-    system = "aarch64-darwin";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    homeConfigurations."fritiofrusck" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [./home.nix];
+  outputs = { self, nixpkgs, home-manager } @attrs: {
+    nixosConfigurations.fritiof-old-dell = nixpkgs.lib.nixosSystem rec {
+      pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; };}; system = "x86_64-linux";
+      modules = [ 
+        ./computers/old-dell/configuration.nix
+            ({ config, pkgs, options, ... }: { nix.registry.nixpkgs.flake = nixpkgs; })
+        home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.fritiof = ./home.nix;
+          }
+      ];
     };
   };
 }

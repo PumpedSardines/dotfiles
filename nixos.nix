@@ -1,10 +1,4 @@
 {
-  home.username = "fritiof";
-  home.homeDirectory = "/home/fritiof";
-  home.stateVersion = "25.05";
-
-  programs.home-manager.enable = true;
-
   imports = [
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
@@ -12,6 +6,10 @@
     ./modules/lazygit/lazygit.nix
     ./modules/wezterm/wezterm.nix
     ./modules/misc/misc.nix
-    ./nixos.nix
+    ./modules/hypr/hypr.nix
+    ./modules/electron-flags/electron-flags.nix
+    ./modules/dunst/dunst.nix
+    ./modules/waybar/waybar.nix
+    ./modules/rofi/rofi.nix
   ];
 }
