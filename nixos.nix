@@ -5,6 +5,7 @@
     spotify
     slack
     blueman
+    libnotify
   ];
   imports = [
     ./modules/nvim/nvim.nix
