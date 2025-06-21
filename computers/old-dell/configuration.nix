@@ -30,6 +30,11 @@
     packages = with pkgs; [];
   };
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+  ];
+
   programs.hyprland.enable = true;
 
   environment.variables = {

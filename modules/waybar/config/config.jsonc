@@ -1,24 +1,47 @@
 {
 	"layer": "top",
 	"position": "top",
-	"margin": 8,
-	"height": 20,
+	"margin-top": 8,
+	"margin-left": 8,
+	"margin-right": 8,
+  "margin-bottom": 4,
+	"height": 32,
 	"modules-left": [
 		"hyprland/workspaces"
 	],
-	"modules-center": [
-		"clock"
-	],
 	"modules-right": [
-    "cpu",
-		"disk",
-		"memory",
-		"battery"
+    "group/perf",
+    "group/signal",
+    "group/core",
 	],
+  "group/perf": {
+    "modules": [
+      "disk",
+      "cpu",
+      "memory",
+    ],
+    "orientation": "horizontal"
+  },
+  "group/signal": {
+    "modules": [
+      "network",
+    ],
+    "orientation": "horizontal"
+  },
+  "group/core": {
+    "modules": [
+      "battery",
+      "clock"
+    ],
+    "orientation": "horizontal"
+  },
 	"clock": {
 		"actions": {
 		}
 	},
+  "network": {
+    "format-wifi": " {essid}"
+  },
 	"cpu": {
 	},
 	"battery": {
