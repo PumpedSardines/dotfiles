@@ -21,7 +21,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.fritiof = ./home.nix;
             home-manager.extraSpecialArgs = { 
-              quickshell = nixpkgsUnstable.quickshell
+              quickshell = nixpkgsUnstable.quickshell;
             };
           }
       ];
