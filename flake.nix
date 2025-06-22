@@ -13,7 +13,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
-        overlays = [unstableOverlay];
+        overlays = [self.unstableOverlay];
       };
       system = "x86_64-linux";
       modules = [ 
