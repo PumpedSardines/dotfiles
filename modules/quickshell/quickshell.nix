@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ nixpkgsUnstable, ... }: {
   home.packages = [
+    nixpkgsUnstable.quickshell
   ];
 }

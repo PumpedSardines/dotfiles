@@ -7,13 +7,9 @@
   };
   outputs = { self, nixpkgsUnstable, nixpkgs, home-manager } @attrs: {
     nixosConfigurations.fritiof-old-dell = nixpkgs.lib.nixosSystem rec {
-      unstableOverlay = final: prev: {
-         quickshell = nixpkgsUnstable.quickshell;
-      };
       pkgs = import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
-        overlays = [self.unstableOverlay];
       };
       system = "x86_64-linux";
       modules = [ 
@@ -24,6 +20,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.fritiof = ./home.nix;
+            home-manager.extraSpecialArgs = { inherit nixpkgsUnstable };
           }
       ];
     };
