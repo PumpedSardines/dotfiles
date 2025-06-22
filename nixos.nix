@@ -5,7 +5,6 @@
     spotify
     slack
     blueman
-    steam
     brightnessctl
     playerctl
     wl-clipboard

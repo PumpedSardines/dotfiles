@@ -52,6 +52,7 @@
   ];
 
   programs.hyprland.enable = true;
+  programs.steam.enable = true;
 
   environment.variables = {
     NIXOS_OZONE_WL = "1";
