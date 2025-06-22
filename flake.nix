@@ -7,10 +7,10 @@
   };
   outputs = { self, nixpkgsUnstable, nixpkgs, home-manager } @attrs: {
     nixosConfigurations.fritiof-old-dell = nixpkgs.lib.nixosSystem rec {
-      pkgs = import nixpkgs {
-        inherit system;
-        config = { allowUnfree = true; };
-      };
+      # pkgs = import nixpkgs {
+      #   inherit system;
+      #   config = { allowUnfree = true; };
+      # };
       system = "x86_64-linux";
       modules = [ 
         ./computers/old-dell/configuration.nix
