@@ -106,7 +106,7 @@
     // },
   },
 	"disk": {
-    "format": "Disk: {percentage_free}%"
+    "format": "Disk: {percentage_full}%"
 	},
 	"cpu": {
     "format": "Cpu: {usage}%"
