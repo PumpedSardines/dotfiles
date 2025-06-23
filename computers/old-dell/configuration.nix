@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [./hardware-configuration.nix];
+  imports = [./hardware-configuration.nix ./nvidia.nix];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -15,6 +15,7 @@
   services.tlp = {
     enable = true;
   };
+
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
