@@ -37,7 +37,7 @@
     isNormalUser = true;
     description = "Fritiof";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [nvidia-smi];
   };
 
   # services.xserver.enable = true;
