@@ -6,5 +6,6 @@
     httpie
     ripgrep
     cargo
+    neofetch
   ];
 }
