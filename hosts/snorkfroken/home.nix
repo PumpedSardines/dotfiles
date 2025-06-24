@@ -13,5 +13,7 @@
     ../../modules/common/optional/direnv/home.nix
     ../../modules/common/optional/fzf/home.nix
     ../../modules/common/optional/tools/home.nix
+
+    ../../modules/darwin/optional/dark-theme/home.nix
   ];
 }
