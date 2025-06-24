@@ -54,10 +54,5 @@ in {
   ];
   home.file."${plistPath}".text = plistContent;
   # This needs to run manually sadly :(
-  home.activation.loadLaunchAgent = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ -f "${fullPlistPath}" ]; then
-      launchctl unload "${fullPlistPath}" 2>/dev/null || true
-      launchctl load "${fullPlistPath}"
-    fi
-  '';
+  # launchctl load "${fullPlistPath}"
 }

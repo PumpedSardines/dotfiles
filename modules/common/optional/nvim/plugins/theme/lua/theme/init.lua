@@ -7,18 +7,20 @@ local is_darwin = function ()
 end
 
 local get_dark_mode = function ()
+  let default_dark_mode = true
+
   if is_darwin() then
-    local script = "osascript -e 'tell application \"System Events\" to tell appearance preferences to return dark mode'"
-    local handle = io.popen(script)
-    if not handle then
-      return nil, "Failed to execute command"
+    local dark_theme_file = os.getenv("HOME") .. "/.config/dark_theme"
+    local f = io.open(dark_theme_file, "r")
+    if f == nil then
+      return default_dark_mode
     end
-    local result = handle:read("*a")
-    handle:close()
-    return result == "true\n"
+    local content = f:read("*a")
+    f:close()
+    return content == "1"
   end
 
-  return true
+  return default_dark_mode
 end
 
 M.register = function (cb)
