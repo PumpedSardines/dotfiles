@@ -6,7 +6,21 @@ if wezterm.config_builder then
 end
 
 -- https://github.com/Gogh-Co/Gogh
-config.color_schemes = {
+config.hide_tab_bar_if_only_one_tab = true
+config.automatically_reload_config = true
+config.window_close_confirmation = "NeverPrompt"
+
+config.font = wezterm.font("CaskaydiaCove Nerd Font")
+
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
+
+
+local color_schemes = {
   ["NeoVim Default Light"] = {
     background = "#E0E2EA",
     foreground = "#2c2e33",
@@ -121,20 +135,8 @@ config.color_schemes = {
     },
   },
 }
-config.hide_tab_bar_if_only_one_tab = true
-config.automatically_reload_config = true
-config.window_close_confirmation = "NeverPrompt"
 
-config.font = wezterm.font("CaskaydiaCove Nerd Font")
-
-config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
-}
-
-local theme = require("theme") or "Everforest Dark"
+local theme = require("reload-theme")
 config.color_scheme = theme
 
 return config

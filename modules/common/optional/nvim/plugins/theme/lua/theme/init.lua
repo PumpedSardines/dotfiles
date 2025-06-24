@@ -2,12 +2,12 @@ local M = {}
 
 local callbacks = {}
 
-local is_mac = function ()
+local is_darwin = function ()
   return vim.loop.os_uname().sysname == 'Darwin'
 end
 
 local get_dark_mode = function ()
-  if is_mac() then
+  if is_darwin() then
     local script = "osascript -e 'tell application \"System Events\" to tell appearance preferences to return dark mode'"
     local handle = io.popen(script)
     if not handle then
@@ -18,9 +18,6 @@ local get_dark_mode = function ()
     return result == "true\n"
   end
 end
-
--- For debugging right now
-M.get_dark_mode = get_dark_mode
 
 M.register = function (cb)
   if type(cb) ~= 'function' then
