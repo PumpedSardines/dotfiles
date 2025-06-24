@@ -42,10 +42,11 @@ M.refresh = function ()
   end
 end
 
-local refresh_loop = function ()
+local L = {}
+L.refresh_loop = function ()
   vim.defer_fn(function ()
     M.refresh()
-    vim.schedule_wrap(refresh_loop)()
+    L.refresh_loop()
   end, 5000)
 end
 
