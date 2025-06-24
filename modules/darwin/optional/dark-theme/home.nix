@@ -21,6 +21,9 @@
       echo "No change in dark mode status"
     fi
   '';
+  plistName = "com.fritiof.recalculate-dark-theme.plist";
+  plistPath = "Library/LaunchAgents/${plistName}";
+  fullPlistPath = "$HOME/${plistPath}";
 
   plistContent = ''
     <?xml version="1.0" encoding="UTF-8"?>
@@ -49,6 +52,11 @@ in {
   home.packages = [
     recalculate-dark-theme
   ];
-
-  home.file."Library/LaunchAgents/com.fritiof.recalculate-dark-theme.plist".text = plistContent;
+  home.file."${plistPath}".text = plistContent;
+  home.activation.loadLaunchAgent = pkgs.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ -f "${fullPlistPath}" ]; then
+      launchctl unload "${fullPlistPath}" 2>/dev/null || true
+      launchctl load "${fullPlistPath}"
+    fi
+  '';
 }
