@@ -17,7 +17,7 @@ vim.cmd([[
 ]])
 
 local fwatch = require("fwatch")
-local wezterm_color_path = os.getenv("HOME") .. "/.config/wezterm/color.toml"
+local wezterm_color_path = os.getenv("HOME") .. "/.config/wezterm/theme.lua"
 
 local function update_theme(dark)
   local theme = (dark and "everforest" or "everforest")
@@ -35,6 +35,7 @@ local function run_theme_calculation()
   -- If the file does not exist, we set theme to dark
   if f == nil then
     update_theme(true)
+    return
   end
 
   local first_line = f:lines()()
