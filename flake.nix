@@ -26,5 +26,20 @@
           }
       ];
     };
+    homeConfigurations."fritiofrusck" = let
+      system = "aarch64-darwin";
+      pkgs = import nixpkgs {
+        system = system;
+        config = {
+          allowUnfree = true;
+          allowUnfreePredicate = _: true;
+        };
+      };
+      in home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = ["./hosts/snorkfröken/home.nix"];
+        extraSpecialArgs = {
+        };
+      };
   };
 }
