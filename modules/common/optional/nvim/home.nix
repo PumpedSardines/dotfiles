@@ -97,6 +97,11 @@ in {
       )
       (
         vimPackageFromPluginDir
+        "theme"
+        "1.0"
+      )
+      (
+        vimPackageFromPluginDir
         "hihi"
         "1.0"
       )
