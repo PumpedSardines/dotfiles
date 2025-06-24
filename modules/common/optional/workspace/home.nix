@@ -19,7 +19,7 @@
     nvim $(workspace config)
   '';
   workspace = let
-    repo = pkgs.lib.cleanSource ./packages/workspace;
+    repo = pkgs.lib.cleanSource ./.;
     manifest = (builtins.fromTOML (builtins.readFile "${repo}/Cargo.toml")).package;
   in
     pkgs.rustPlatform.buildRustPackage {
