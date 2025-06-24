@@ -17,7 +17,7 @@ vim.cmd([[
 ]])
 
 local fwatch = require("fwatch")
-local alacrity_color_path = os.getenv("HOME") .. "/.config/alacritty/color.toml"
+local wezterm_color_path = os.getenv("HOME") .. "/.config/wezterm/color.toml"
 
 local function update_theme(dark)
   local theme = (dark and "everforest" or "everforest")
@@ -30,7 +30,7 @@ local function update_theme(dark)
 end
 
 local function run_theme_calculation()
-  local f = io.open(alacrity_color_path)
+  local f = io.open(wezterm_color_path)
 
   -- If the file does not exist, we set theme to dark
   if f == nil then
@@ -38,7 +38,7 @@ local function run_theme_calculation()
   end
 
   local first_line = f:lines()()
-  if first_line == "# DARK" then
+  if first_line == "return \"Everforest Dark\"" then
     update_theme(true)
   else
     update_theme(false)
@@ -48,7 +48,7 @@ end
 
 run_theme_calculation()
 
-fwatch.watch(alacrity_color_path, {
+fwatch.watch(wezterm_color_path, {
   on_event = function()
     vim.defer_fn(function()
       run_theme_calculation()
