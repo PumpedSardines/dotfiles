@@ -33,11 +33,13 @@ local iter = function()
   window:set_config_overrides({
     color_scheme = get_theme_name(),
   })
-  wezterm.time.call_after(1.0, function()
+  wezterm.time.call_after(5.0, function()
     iter()
   end)
 end
 
-iter()
+wezterm.on('window-config-reloaded', function(window, _)
+  iter()
+end)
 
 return get_theme_name()
