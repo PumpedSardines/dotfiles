@@ -44,7 +44,7 @@ L.refresh_loop = function ()
   vim.defer_fn(function ()
     M.refresh()
     L.refresh_loop()
-  end, 5000)
+  end, 1000)
 end
 
 M.setup = function ()
