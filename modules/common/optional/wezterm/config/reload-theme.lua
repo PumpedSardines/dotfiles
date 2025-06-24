@@ -26,7 +26,6 @@ local get_theme_name = function()
 end
 
 local iter = function()
-  current_theme = (current_theme % #themes) + 1
   window:set_config_overrides({
     color_scheme = get_theme_name(),
   })
@@ -34,6 +33,7 @@ local iter = function()
     iter()
   end)
 end
+
 wezterm.on('window-config-reloaded', function(window, _)
   iter()
 end)
