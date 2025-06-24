@@ -37,7 +37,7 @@
       };
       in home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = ["./hosts/snorkfröken/home.nix"];
+        modules = [./hosts/snorkfroken/home.nix];
         extraSpecialArgs = {
         };
       };
