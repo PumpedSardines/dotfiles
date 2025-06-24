@@ -5,4 +5,4 @@ Modules/
     darwin/
         - macos specific modules
     home/
-        - home manager
+        - home manager, c

@@ -1,0 +1,106 @@
+snippet iife Create an iife
+	(() => {
+		${0}
+	})()
+
+snippet aiife Create an async iife
+	(async () => {
+		${0}
+	})()
+
+snippet sb storybook page with props 
+	import React from "react";
+  import { ComponentStory, ComponentMeta } from '@storybook/react';
+	import _${1} from ".";
+
+	const setting: ComponentMeta<typeof _${1}> = {
+		title: "${2:GROUP}/${1}",
+		component:  _${1}
+	}
+
+	export default setting
+
+	const Template: ComponentStory<typeof _${1}> = args => (
+		<_${1} {...args} />
+	);
+
+	export const ${1} = Template.bind({});
+	${1}.args = {
+		${0}
+	};
+snippet sb7 Storybook page with the new format
+	import type { Meta, StoryObj } from '@storybook/react';
+
+	import ${1} from './';
+
+	const meta: Meta<typeof ${1}> = {
+  	title: '${2}/${1}',
+  	component: ${1},
+	};
+
+	export default meta;
+
+	type Story = StoryObj<typeof ${1}>;
+
+	export const Primary: Story = {
+  	args: {
+  		${0}
+  	},
+	};
+
+snippet rce react component default export
+	import React from "react";
+
+	type ${1}Props = {
+		${2}
+	};
+
+	function ${1}(props: ${1}Props) {
+		return ${0}
+	}
+
+	export default ${1};
+
+snippet rcem react component memo default export
+	import React from "react";
+
+	type ${1}Props = {
+		${2}
+	};
+
+	function ${1}(props: ${1}Props) {
+		return ${0}
+	}
+
+	export default React.memo(${1});
+
+snippet arce async react component default export
+	import React from "react";
+
+	type ${1}Props = {
+		${2}
+	};
+
+	async function ${1}(props: ${1}Props) {
+		return ${0}
+	}
+
+	export default ${1};
+
+snippet rc react component 
+	type ${1}Props = {
+		${2}
+	};
+
+	function ${1}(props: ${1}Props) {
+		return ${0}
+	}
+
+snippet rhe React hook default export
+	import React from 'react';
+
+	function use${1:HookName}() {
+		${0}
+	}
+
+	export default use${1:HookName};
