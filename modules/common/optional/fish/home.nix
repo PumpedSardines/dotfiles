@@ -33,5 +33,12 @@
         '';
       };
     };
+    theme = {
+      description = "Set the color theme";
+      argumentNames = ["theme"];
+      body = ''
+        wezterm-theme $theme
+      '';
+    };
   };
 }
