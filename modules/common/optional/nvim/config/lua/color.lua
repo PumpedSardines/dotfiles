@@ -6,11 +6,11 @@ local is_darwin = function ()
   return vim.loop.os_uname().sysname == 'Darwin'
 end
 
-get_dark_mode = function ()
+local get_dark_mode = function ()
   local default_dark_mode = true
 
   if is_darwin() then
-    local dark_theme_file = os.getenv("HOME") .. "/.config/dark_theme"
+    local dark_theme_file = os.getenv("HOME") .. "/.config/dark-theme"
     local f = io.open(dark_theme_file, "r")
     if f == nil then
       return default_dark_mode
@@ -49,7 +49,7 @@ L.refresh_loop = function ()
   if is_darwin() then
     local fwatch = require("fwatch")
     -- Using the darwin dark-theme program that is made by me :)
-    local dark_theme_file = os.getenv("HOME") .. "/.config/dark_theme"
+    local dark_theme_file = os.getenv("HOME") .. "/.config/dark-theme"
     local f = io.open(dark_theme_file)
     if f == nil then
       -- Dark theme module is not installed
