@@ -6,3 +6,4 @@ home/
 _de/
 _modules
 computers/
+!modules/common/optional/nvim/plugins/fritiof
