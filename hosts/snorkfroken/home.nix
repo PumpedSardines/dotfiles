@@ -3,16 +3,15 @@
   home.homeDirectory = "/Users/fritiofrusck";
 
   imports = [
-    ../../modules/home/core/home-manager/home.nix    
-    ../../modules/home/core/zsh/home.nix
-    ../../modules/home/core/fish/home.nix
-    ../../modules/home/core/git/home.nix
-    ../../modules/home/core/lazygit/home.nix
-    ../../modules/home/core/nvim/home.nix
-    ../../modules/home/core/tmux/home.nix
-    ../../modules/home/core/wezterm/home.nix
-    ../../modules/home/core/direnv/home.nix
-    ../../modules/home/core/fzf/home.nix
-    ../../modules/home/core/tools/home.nix
+    ../../modules/common/core/home-manager/home.nix    
+    ../../modules/common/optional/fish/home.nix
+    ../../modules/common/optional/git/home.nix
+    ../../modules/common/optional/lazygit/home.nix
+    ../../modules/common/optional/nvim/home.nix
+    ../../modules/common/optional/tmux/home.nix
+    ../../modules/common/optional/wezterm/home.nix
+    ../../modules/common/optional/direnv/home.nix
+    ../../modules/common/optional/fzf/home.nix
+    ../../modules/common/optional/tools/home.nix
   ];
 }

@@ -22,9 +22,33 @@
     };
 in {
 # LSP
-  home.packages = import ./lsp.nix {
-    pkgs = pkgs;
-  };
+  home.packages = with pkgs; [
+    deno
+    prettierd # JavaScript formatter
+    nodePackages.eslint_d # JavaScript linter
+    nodePackages.pnpm
+    nodePackages.typescript-language-server
+    vscode-langservers-extracted # html, css, json, eslint
+    nodePackages."@astrojs/language-server"
+    nest-cli
+    stylua
+    lua-language-server
+    alejandra
+    nixd
+    zig
+    zls
+    gopls
+    go
+    jdk21
+    gleam
+    erlang
+    rustfmt
+    rust-analyzer
+    php
+    php83Packages.php-cs-fixer
+    php83Packages.composer
+    nodePackages_latest.intelephense
+  ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;
