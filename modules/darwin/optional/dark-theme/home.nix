@@ -1,4 +1,4 @@
-{ pkgs, ... }: let
+{ pkgs, lib, ... }: let
   recalculate-dark-theme = pkgs.writeShellScriptBin "recalculate-dark-theme" ''
     #!/bin/bash
     FILE="$HOME/.config/dark-theme"
@@ -53,7 +53,7 @@ in {
     recalculate-dark-theme
   ];
   home.file."${plistPath}".text = plistContent;
-  home.activation.loadLaunchAgent = pkgs.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.loadLaunchAgent = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     if [ -f "${fullPlistPath}" ]; then
       launchctl unload "${fullPlistPath}" 2>/dev/null || true
       launchctl load "${fullPlistPath}"
