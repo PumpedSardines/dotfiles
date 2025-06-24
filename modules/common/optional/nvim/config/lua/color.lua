@@ -6,7 +6,7 @@ local is_darwin = function ()
   return vim.loop.os_uname().sysname == 'Darwin'
 end
 
-local get_dark_mode = function ()
+get_dark_mode = function ()
   local default_dark_mode = true
 
   if is_darwin() then
