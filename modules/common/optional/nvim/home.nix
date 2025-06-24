@@ -64,8 +64,10 @@ in {
       nvim-web-devicons
 
       nvim-lspconfig
-      rustaceanvim
       none-ls-nvim
+
+      avante-nvim
+      codecompanion-nvim
 
       (nvim-treesitter.withPlugins (_:
         nvim-treesitter.allGrammars
@@ -103,6 +105,7 @@ in {
         "css-module-open"
         "1.0"
       )
+      leap-nvim
       tabby-nvim
       dressing-nvim
       gitsigns-nvim
@@ -130,7 +133,13 @@ in {
       telescope-fzy-native-nvim
       nvim-window-picker
 
-      everforest
+      (
+        vimPackageFromGitHub
+        "neanias"
+        "everforest-nvim"
+        "2eb7c34"
+        "sha256-LMIGPDhKZVqriGuPR9ICVo55QdyByLXOoRK82KfsRxU="
+      )
       lush-nvim
       (
         vimPackageFromGitHub
@@ -141,23 +150,7 @@ in {
       )
 
       fwatch-nvim # To update the colortheme on the fly
-
-     # (
-     #   vimPackageFromGitHub
-     #   "LukasPietzschmann"
-     #   "telescope-tabs"
-     #   "c357235"
-     #   "sha256-4mVDF/GOeQod89jeSkmbKoQpGzyL8dYaiwnZK3M4sFU="
-     # )
-
-     # (
-     #   vimPackageFromGitHub
-     #   "hedyhli"
-     #   "outline.nvim"
-     #   "bdfd2da"
-     #   "sha256-Il27Z/vQVJ3WSrFnTOUwBeAFCjopXwDhdsi7A5v1gzU="
-     # )
-
+      outline-nvim
       cspell-nvim
     ];
   };
