@@ -4,7 +4,7 @@ local is_mac = function ()
   return vim.loop.os_uname().sysname == 'Darwin'
 end
 
-function M:get_dark_mode()
+M.get_dark_mode = function ()
   if is_mac() then
     local script = "osascript -e 'tell application \"System Events\" to tell appearance preferences to return dark mode'"
     local handle = io.popen(script)
