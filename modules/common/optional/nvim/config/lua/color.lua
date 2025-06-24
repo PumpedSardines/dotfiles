@@ -7,7 +7,7 @@ local is_darwin = function ()
 end
 
 local get_dark_mode = function ()
-  let default_dark_mode = true
+  local default_dark_mode = true
 
   if is_darwin() then
     local dark_theme_file = os.getenv("HOME") .. "/.config/dark_theme"
