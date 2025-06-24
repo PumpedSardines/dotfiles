@@ -17,6 +17,8 @@ local get_dark_mode = function ()
     handle:close()
     return result == "true\n"
   end
+
+  return true
 end
 
 M.register = function (cb)
@@ -40,15 +42,31 @@ M.refresh = function ()
 end
 
 local L = {}
+
 L.refresh_loop = function ()
-  vim.defer_fn(function ()
-    M.refresh()
-    L.refresh_loop()
-  end, 1000)
+  if is_darwin() then
+    local fwatch = require("fwatch")
+    -- Using the darwin dark-theme program that is made by me :)
+    local dark_theme_file = os.getenv("HOME") .. "/.config/dark_theme"
+    local f = io.open(dark_theme_file)
+    if f == nil then
+      -- Dark theme module is not installed
+      -- Don't refresh automatically
+      return
+    end
+
+    fwatch.watch(dark_theme_file, {
+      on_event = function()
+        vim.defer_fn(function()
+          M.refresh()
+        end, 100)
+      end,
+    })
+  end
 end
 
 M.setup = function ()
-  -- L.refresh_loop()
+  L.refresh_loop()
 end
 
 return M
