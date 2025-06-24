@@ -8,5 +8,9 @@
       alias ls="lsd"
       zoxide init --cmd cd fish | source
     '';
+    fish_prompt = {
+      description = "Custom fish prompt";
+      body = "printf '%s%s%s > ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)";
+    };
   };
 }
