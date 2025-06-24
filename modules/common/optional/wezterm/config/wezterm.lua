@@ -20,7 +20,7 @@ config.window_padding = {
 }
 
 
-local color_schemes = {
+config.color_schemes = {
   ["NeoVim Default Light"] = {
     background = "#E0E2EA",
     foreground = "#2c2e33",
