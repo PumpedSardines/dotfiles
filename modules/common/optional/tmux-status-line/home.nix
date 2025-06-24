@@ -1,6 +1,6 @@
 { pkgs, ... }: let
   tmux-status-line = let
-    repo = pkgs.lib.cleanSource ./packages/tmux-status-line;
+    repo = pkgs.lib.cleanSource ./.;
     frameworks = pkgs.darwin.apple_sdk.frameworks;
     manifest = (builtins.fromTOML (builtins.readFile "${repo}/Cargo.toml")).package;
   in
