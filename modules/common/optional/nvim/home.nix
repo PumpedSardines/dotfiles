@@ -90,14 +90,11 @@ in {
       which-key-nvim
       nvim-config-local
       neo-tree-nvim
+      fwatch-nvim
+
       (
         vimPackageFromPluginDir
         "fritiof"
-        "1.0"
-      )
-      (
-        vimPackageFromPluginDir
-        "theme"
         "1.0"
       )
       (
@@ -154,7 +151,6 @@ in {
         "sha256-lJct4CISxv28Y5IeZtcTmvUZ8FBLv2TLf1MBiLYDmnw="
       )
 
-      fwatch-nvim # To update the colortheme on the fly
       outline-nvim
       cspell-nvim
     ];
