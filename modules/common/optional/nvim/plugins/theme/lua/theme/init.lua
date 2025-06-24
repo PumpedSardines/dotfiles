@@ -48,7 +48,7 @@ L.refresh_loop = function ()
 end
 
 M.setup = function ()
-  L.refresh_loop()
+  -- L.refresh_loop()
 end
 
 return M
