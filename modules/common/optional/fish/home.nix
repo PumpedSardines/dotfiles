@@ -32,13 +32,13 @@
           echo "Invalid argument \"$theme\", can be either dark or light"
         '';
       };
-    };
-    theme = {
-      description = "Set the color theme";
-      argumentNames = ["theme"];
-      body = ''
-        wezterm-theme $theme
-      '';
+      theme = {
+        description = "Set the color theme";
+        argumentNames = ["theme"];
+        body = ''
+          wezterm-theme $theme
+        '';
+      };
     };
   };
 }
