@@ -1,10 +1,12 @@
 local M = {}
 
+local callbacks = {}
+
 local is_mac = function ()
   return vim.loop.os_uname().sysname == 'Darwin'
 end
 
-M.get_dark_mode = function ()
+local get_dark_mode = function ()
   if is_mac() then
     local script = "osascript -e 'tell application \"System Events\" to tell appearance preferences to return dark mode'"
     local handle = io.popen(script)
@@ -13,8 +15,42 @@ M.get_dark_mode = function ()
     end
     local result = handle:read("*a")
     handle:close()
-    return result
+    return result == "true\n"
   end
+end
+
+-- For debugging right now
+M.get_dark_mode = get_dark_mode
+
+M.register = function (cb)
+  if type(cb) ~= 'function' then
+    error("Callback must be a function")
+  end
+  table.insert(callbacks, cb)
+  cb(get_dark_mode())
+end
+
+M.refresh = function ()
+  local dark_mode, err = get_dark_mode()
+  if err then
+    print("Error getting dark mode: " .. err)
+    return
+  end
+
+  for _, cb in ipairs(callbacks) do
+    cb(dark_mode)
+  end
+end
+
+local refresh_loop = function ()
+  vim.defer_fn(function ()
+    M.refresh()
+    vim.schedule_wrap(refresh_loop)()
+  end, 5000)
+end
+
+M.setup = function ()
+  refresh_loop()
 end
 
 return M

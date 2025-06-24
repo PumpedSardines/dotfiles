@@ -12,47 +12,13 @@ How it works:
 --]]
 
 -- Helper so we easily can change the theme from nvim
-vim.cmd([[
-  command! -nargs=1 Theme :call system('theme ' . <q-args>)
-]])
-
-local fwatch = require("fwatch")
-local wezterm_color_path = os.getenv("HOME") .. "/.config/wezterm/theme.lua"
-
-local function update_theme(dark)
+local t = require("theme")
+t.register(function(dark)
   local theme = (dark and "everforest" or "everforest")
   local is_dark = (dark and "dark" or "light")
 
   vim.cmd("let g:everforest_background = 'medium'")
   vim.cmd("set background=" .. is_dark)
   vim.cmd("colorscheme " .. theme)
-  return { theme, dark }
-end
-
-local function run_theme_calculation()
-  local f = io.open(wezterm_color_path)
-
-  -- If the file does not exist, we set theme to dark
-  if f == nil then
-    update_theme(true)
-    return
-  end
-
-  local first_line = f:lines()()
-  if first_line == "return \"Everforest Dark\"" then
-    update_theme(true)
-  else
-    update_theme(false)
-  end
-  f:close()
-end
-
-run_theme_calculation()
-
-fwatch.watch(wezterm_color_path, {
-  on_event = function()
-    vim.defer_fn(function()
-      run_theme_calculation()
-    end, 100)
-  end,
-})
+end)
+t.setup()
