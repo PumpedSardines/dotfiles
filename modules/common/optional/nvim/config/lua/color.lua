@@ -17,7 +17,7 @@ local get_dark_mode = function ()
     end
     local content = f:read("*a")
     f:close()
-    return content == "1"
+    return content == "1\n"
   end
 
   return default_dark_mode
