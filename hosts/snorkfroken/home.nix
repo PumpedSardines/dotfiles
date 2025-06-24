@@ -14,6 +14,9 @@
     ../../modules/common/optional/fzf/home.nix
     ../../modules/common/optional/tools/home.nix
 
+    ../../modules/common/optional/workspace/home.nix
+    ../../modules/common/optional/tmux-status-line/home.nix
+
     ../../modules/darwin/optional/dark-theme/home.nix
   ];
 }
