@@ -5,6 +5,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
+  
+  
   outputs = { self, nixpkgsUnstable, nixpkgs, home-manager } @attrs: {
     nixosConfigurations.fritiof-old-dell = nixpkgs.lib.nixosSystem rec {
       pkgs = import nixpkgs {
