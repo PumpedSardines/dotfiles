@@ -2,7 +2,8 @@
 require("plugins.config-local")
 require("plugins.luasnip")
 
-require("plugins.copilot")
+-- require("plugins.copilot")
+-- require("plugins.supermaven")
 require("plugins.colorthemes")
 
 require("plugins.treesitter")

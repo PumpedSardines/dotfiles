@@ -23,6 +23,7 @@
 in {
 # LSP
   home.packages = with pkgs; [
+    # LSP
     deno
     prettierd # JavaScript formatter
     nodePackages.eslint_d # JavaScript linter
@@ -48,6 +49,9 @@ in {
     php83Packages.php-cs-fixer
     php83Packages.composer
     nodePackages_latest.intelephense
+
+    # For telescope
+    ripgrep
   ];
   programs.neovim = {
     enable = true;
@@ -66,6 +70,8 @@ in {
       nvim-lspconfig
       none-ls-nvim
 
+      copilot-vim
+      supermaven-nvim
       avante-nvim
       codecompanion-nvim
 
@@ -121,7 +127,6 @@ in {
       cmp_luasnip
 
       lualine-nvim
-      copilot-vim
       todo-comments-nvim
 
       # Tweaks
