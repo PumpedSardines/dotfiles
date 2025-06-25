@@ -1,12 +1,8 @@
 require("supermaven-nvim").setup({
   keymaps = {
-    accept_suggestion = "<Tab>",
+    accept_suggestion = "<C-f>",
     clear_suggestion = "<C-]>",
-    accept_word = "<C-f>",
-  },
-  color = {
-    suggestion_color = "#ffffff",
-    cterm = 244,
+    accept_word = "<C-x>",
   },
   log_level = "info", -- set to "off" to disable logging completely
   disable_inline_completion = false, -- disables inline completion for use with cmp
