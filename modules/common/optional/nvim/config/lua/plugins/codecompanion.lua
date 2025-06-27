@@ -41,4 +41,23 @@ if fritiof.get("ai.enabled") then
       },
     },
   })
+
+  local wk = require("which-key")
+  wk.add({
+    mode = "n",
+    { "<leader>a", group = 'AI' },
+    {
+      "<leader>ak",
+      function()
+        vim.ui.input({ prompt = "Prompt: ", kind = "ai_inline" }, function(input)
+          if input == nil or input == "" then
+            return
+          end
+
+          vim.cmd("'<,'>CodeCompanion " .. input)
+        end)
+      end,
+      desc = "Chat with AI"
+    },
+  })
 end

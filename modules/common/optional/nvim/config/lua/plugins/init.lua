@@ -20,8 +20,6 @@ require("plugins.lualine")
 require("plugins.render-markdown")
 require("plugins.todo-comments")
 require("plugins.codecompanion")
-require("plugins.supermaven")
--- require("plugins.avante")
 
 require("plugins.tweaks.comment")
 require("plugins.tweaks.comment")
