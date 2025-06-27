@@ -54,6 +54,8 @@ if fritiof.get("ai.enabled") then
             return
           end
 
+          vim.print("'<,'>CodeCompanion " .. input)
+
           vim.cmd("'<,'>CodeCompanion " .. input)
         end)
       end,
