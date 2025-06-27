@@ -1,6 +1,6 @@
 {
   home.file = {
-    ".anthropic" = {
+    ".secrets/.anthropic" = {
       source = ../../../../secrets/antrhopic;
     };
   };
