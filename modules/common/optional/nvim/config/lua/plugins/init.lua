@@ -2,7 +2,6 @@
 require("plugins.config-local")
 require("plugins.luasnip")
 
--- require("plugins.copilot")
 require("plugins.colorthemes")
 
 require("plugins.treesitter")
@@ -20,6 +19,7 @@ require("plugins.lualine")
 require("plugins.render-markdown")
 require("plugins.todo-comments")
 require("plugins.codecompanion")
+require("plugins.copilot")
 
 require("plugins.tweaks.comment")
 require("plugins.tweaks.comment")
