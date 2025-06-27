@@ -13,7 +13,7 @@
         inherit system;
         config = { allowUnfree = true; };
       };
-arm      system = "x86_64-linux";
+system = "x86_64-linux";
       modules = [ 
         ./computers/old-dell/configuration.nix
             ({ config, pkgs, options, ... }: { nix.registry.nixpkgs.flake = nixpkgs; })
