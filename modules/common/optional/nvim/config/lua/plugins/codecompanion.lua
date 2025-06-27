@@ -44,7 +44,7 @@ if fritiof.get("ai.enabled") then
 
   local wk = require("which-key")
   wk.add({
-    mode = "n",
+    mode = "v",
     { "<leader>a", group = 'AI' },
     {
       "<leader>ak",
