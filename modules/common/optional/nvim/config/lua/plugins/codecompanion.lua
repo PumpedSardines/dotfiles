@@ -66,7 +66,7 @@ if fritiof.get("ai.enabled") then
                 Look at what the code does and write tests that should be implemented.
 
                 These should be unit tests, so remember that all dependencies should be mocked out. Think about this when writing,
-                the tests. WRite tests scenarios where the dependency errors or similar.
+                the tests. Write tests scenarios where the dependency errors or similar.
               ]]
           },
         },
@@ -80,7 +80,7 @@ if fritiof.get("ai.enabled") then
     { "<leader>a", group = 'AI' },
     {
       "<leader>ak",
-      "CodeCompanion",
+      "<cmd>CodeCompanion<CR>",
       desc = "Chat with AI"
     },
   })
