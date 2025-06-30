@@ -80,7 +80,7 @@ if fritiof.get("ai.enabled") then
     { "<leader>a", group = 'AI' },
     {
       "<leader>ak",
-      "<cmd>CodeCompanion<CR>",
+      "<cmd>'<,'>CodeCompanion<CR>",
       desc = "Chat with AI"
     },
   })
